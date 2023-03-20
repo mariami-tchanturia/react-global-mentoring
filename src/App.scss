@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap');
+
+// Color Palette
+$black: #232323;
+$white: #FFF;
+$pink: #F65261;
+$dark-grey: #424242;
+$light-grey: #555;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', sans-serif, Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.container-lg {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1080px;
+}
+
+.container-md {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+}

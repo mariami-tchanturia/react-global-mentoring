@@ -1,0 +1,45 @@
+$pale-pink: #F65261;
+$pale-yellow: #E6D5A9;
+$old-copper: #7E5233;
+
+.counter {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 80px 0;
+	background: $pale-yellow;
+
+	&__title {
+		margin-bottom: 30px;
+		color: $old-copper;
+	}
+
+	&__data {
+		display: flex;
+		align-items: center;
+	}
+
+	&__value {
+		margin: 0 15px;
+		color:  $old-copper;
+		font-size: 2rem;
+		text-shadow: 1px 1px 2px #333;
+		min-width: 50px;
+		text-align: center;
+	}
+
+	button {
+		padding: 10px 15px;
+		color: $old-copper;
+		font-size: 24px;
+		background: transparent;
+		border: 1px solid $old-copper;
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+
+		&:hover {
+			color: $pale-pink;
+			border: 1px solid $pale-pink;
+		}
+	}
+}
