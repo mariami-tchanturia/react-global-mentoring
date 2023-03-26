@@ -18,7 +18,7 @@ const Input = ({
 			className={`${styles[className]} ${styles.input}`}
 			value={value}
 			onChange={onChange && ((e) => onChange(e.target.value))}
-			onKeyUp={onKeyUp && ((e) => onKeyUp(e))}
+			onKeyUp={onKeyUp}
 		/>
   );
 };
