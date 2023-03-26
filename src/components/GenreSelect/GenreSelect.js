@@ -5,22 +5,22 @@ function GenreSelect({genres, defaultGenre , onSelect}) {
 	const [currentGenre , setCurrentGenre] = React.useState(defaultGenre || 'All');
 
 	return (
-    		<div className={styles.genreSelect}>
+    <div className={styles.genreSelect}>
 			<h1 className={styles.genreSelect__title}>GenreSelect Component</h1>
 			<ul className={styles.genreSelect__list}>
-			{genres.map(option => (
-				<li
-					key={option.id}
-					className={`${currentGenre === option.name ? styles.active : ''}`}
-					onClick={() => {
-					onSelect(option.name);
-					setCurrentGenre(option.name);
-				}}>
-					{option.name}
-				</li>
-			))}
+				{genres.map(genre => (
+					<li
+						key={genre.id}
+						className={`${currentGenre === genre.name ? styles.active : ''}`}
+						onClick={() => {
+						onSelect(genre.name);
+						setCurrentGenre(genre.name);
+					}}>
+						{genre.name}
+					</li>
+				))}
 			</ul>
-    		</div>
+    </div>
 	)
 }
 
