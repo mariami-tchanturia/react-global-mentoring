@@ -8,7 +8,7 @@ function App() {
     <div className="App">
 			<Counter initialValue={0} />
 			<SearchForm initialSearchQuery='Initial Query' onSearch={(keyword) => console.log(`Simulating search behaviour for keyword - ${keyword}`)}/>
-			<GenreSelect genres={GENRES} selectedGenre='All' onSelect={genre => console.log(genre)}/>
+			<GenreSelect genres={GENRES} defaultGenre='All' onSelect={genre => console.log(genre)}/>
     </div>
   );
 }

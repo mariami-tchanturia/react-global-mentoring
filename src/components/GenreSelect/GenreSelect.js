@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './GenreSelect.module.scss';
 
-function GenreSelect({genres, selectedGenre , onSelect}) {
-	const [currentGenre , setCurrentGenre] = React.useState(selectedGenre || 'All');
+function GenreSelect({genres, defaultGenre , onSelect}) {
+	const [currentGenre , setCurrentGenre] = React.useState(defaultGenre || 'All');
 
 	return (
     <div className={styles.genreSelect}>
