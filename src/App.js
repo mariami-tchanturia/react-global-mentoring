@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { Counter, GenreSelect, SearchForm} from './components';
+
+import { GENRES } from './constants';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+			<Counter initialValue={0} />
+			<SearchForm initialSearchQuery='Initial Query' onSearch={(keyword) => console.log(`Simulating search behaviour for keyword - ${keyword}`)}/>
+			<GenreSelect genres={GENRES} defaultGenre='All' onSelect={genre => console.log(genre)}/>
     </div>
   );
 }
