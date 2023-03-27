@@ -3,7 +3,7 @@ import { Button, Input } from '../../common';
 
 import styles from './SearchForm.module.scss';
 
-const SearchForm = ({ initialSearchQuery, onSearch }) => {
+const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery || '');
 
   function handleKeyUp(e) {
@@ -28,10 +28,14 @@ const SearchForm = ({ initialSearchQuery, onSearch }) => {
           />
           <Button
             onClick={() => onSearch(searchQuery)}
+            type='submit'
             className='btn--primary'
           >
             Search
           </Button>
+        </div>
+        <div className={styles.searchResult} data-cy='search-result-container'>
+          {searchResult}
         </div>
       </div>
     </>
