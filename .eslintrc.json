@@ -1,7 +1,8 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
   },
   "extends": ["eslint:recommended", "plugin:react/recommended"],
   "overrides": [],
@@ -20,6 +21,10 @@
   },
   "rules": {
     "no-var": "error",
+    "react/prop-types": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "linebreak-style": 1,
     "prefer-const": [
       "error",
       {
