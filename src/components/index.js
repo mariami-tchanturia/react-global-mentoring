@@ -5,3 +5,4 @@ export { default as Header } from "./Header/Header";
 export { default as Logo } from "./Logo/Logo";
 export { default as MoviesListing } from './MoviesListing/MoviesListing';
 export { default as MovieTile } from './MovieTile/MovieTile';
+export { default as MovieMenu } from './MovieMenu/MovieMenu';

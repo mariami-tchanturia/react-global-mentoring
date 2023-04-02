@@ -1,0 +1,53 @@
+.movieTile {
+	position: relative;
+	width: 325px;
+	color: rgba(255, 255, 255, 0.7);
+
+	&_poster {
+		position: relative;
+		margin-bottom: 21px;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&_description {
+		position: relative;
+	}
+
+	&_title {
+		margin: 0 75px 8px 0;
+		a {
+			font-size: 18px;
+			font-weight: 500;
+			line-height: 22px;
+			color: rgba(255, 255, 255, 0.7);
+			text-decoration: none;
+		}
+	}
+
+	&_genre {
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 17px;
+		opacity: 0.5;
+	}
+
+	&_releaseDate {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		width: 66px;
+		height: 26px;
+		font-size: 14px;
+		font-weight: 500;
+		line-height: 17px;
+		top: 0;
+		right: 0;
+		border: 1px solid rgba(151, 151, 151, 0.5);
+		border-radius: 4px;
+		opacity: 0.5;
+	}
+}

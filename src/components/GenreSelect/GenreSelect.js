@@ -6,7 +6,6 @@ function GenreSelect({genres, defaultGenre , onSelect}) {
 
 	return (
     		<div className={styles.genreSelect}>
-			<h1 className={styles.genreSelect__title}>GenreSelect Component</h1>
 			<ul className={styles.genreSelect__list}>
 			{genres.map(option => (
 				<li

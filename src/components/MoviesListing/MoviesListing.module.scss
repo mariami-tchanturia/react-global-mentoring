@@ -1,0 +1,12 @@
+.moviesWrapper {
+	background: #232323;
+	border-top: 10px solid rgba(136, 136, 136, 0.5);
+}
+
+.movies {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+  gap: 60px 35px;
+	padding: 24px 0;
+}
