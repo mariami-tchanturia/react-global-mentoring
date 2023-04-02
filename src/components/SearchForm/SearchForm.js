@@ -16,7 +16,6 @@ const SearchForm = ({initialSearchQuery , onSearch}) => {
   return (
     <>
 			<div className={styles.searchForm}>
-				<h1 className={styles.searchForm__title}>SearchForm Component</h1>
 				<div className={styles.searchForm__form}>
 					<Input
 						placeholderText='What do you want to watch?'
