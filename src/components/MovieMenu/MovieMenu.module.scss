@@ -45,8 +45,8 @@
 			content: "";
 			position: absolute;
 			bottom: 8px;
-			left: 50%;
-			transform: translateX(-50%);
+			right: 50%;
+			transform: translateX(50%);
 
 			.movieMenu.open & {
 				width: 1px;

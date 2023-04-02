@@ -1,0 +1,67 @@
+.movideDetail {
+	display: flex;
+	&_poster {
+		margin-right: 59px;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&_description {
+		width: 100%;
+	}
+
+	&_title {
+		display: flex;
+		align-items: center;
+		color: #fff;
+		font-weight: 300;
+		font-size: 40px;
+		line-height: 49px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+
+	&_rating {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 60px;
+		height: 60px;
+		margin-left: 38px;
+		font-weight: 300;
+		font-size: 20px;
+		line-height: 24px;
+		border-radius: 50%;
+		border: 1px solid #FFFFFF;
+	}
+
+	&_genre {
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 17px;
+		color: rgba(225, 255, 255, 0.5);
+		margin-bottom: 30px;
+	}
+
+	&_releaseDate,
+	&_duration {
+		color: #F65261;
+		font-weight: 300;
+		font-size: 24px;
+		line-height: 29px;
+	}
+
+	&_duration {
+		margin-left: 51px;
+	}
+
+	&_plot {
+		margin-top: 29px;
+		color: rgba(225, 255, 255, 0.5);
+		font-weight: 300;
+		font-size: 20px;
+		line-height: 24px;
+	}
+}

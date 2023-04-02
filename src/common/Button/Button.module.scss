@@ -36,6 +36,18 @@
 	}
 }
 
+.searchButton {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+	cursor: pointer;
+	transition: all .3s ease-in-out;
+
+	&:hover {
+		scale: 1.1;
+	}
+}
+
 .movieMenu_button {
 	display: block;
 	padding: 6.33px 14px 7.67px 23px;

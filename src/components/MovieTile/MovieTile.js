@@ -4,7 +4,7 @@ import { MovieMenu } from "../"
 
 import styles from './MovieTile.module.scss';
 
-function MovieTile({movie}) {
+function MovieTile({movie, setPreview}) {
 
 	function handleEdit() {
 
@@ -26,7 +26,7 @@ function MovieTile({movie}) {
 
 			<div className={styles.movieTile_description}>
 				<h2 className={styles.movieTile_title}>
-					<a href="#" title={title}>{title}</a>
+					<button onClick={() => setPreview(movie)}>{title}</button>
 				</h2>
 				<p className={styles.movieTile_genre}>{genre}</p>
         <span className={styles.movieTile_releaseDate}>{year}</span>
