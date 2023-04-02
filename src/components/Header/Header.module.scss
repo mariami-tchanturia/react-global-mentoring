@@ -1,6 +1,6 @@
 .header {
 	position: relative;
-	padding-top: 20px;
+	padding: 20px 0 151px;
 	background: url('../../assets/header-bg.png') #000;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -24,10 +24,3 @@
 	align-items: flex-start;
 	margin-bottom: 35px;
 }
-
-// .titleSearchWrapper {
-// 	position: absolute;
-// 	top: 50%;
-// 	left: 50%;
-// 	transform: translate(-50%, -50%);
-// }
