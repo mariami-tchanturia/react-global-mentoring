@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import GenreSelect from './GenreSelect';
 
@@ -39,7 +40,7 @@ describe('GenreSelect component tests:', () => {
       />
     );
 
-    fireEvent.click(screen.getByText(new RegExp(targetGenre, 'i')));
+    userEvent.click(screen.getByText(new RegExp(targetGenre, 'i')));
 
     expect(onSelectMock).toHaveBeenCalledWith(targetGenre);
   });

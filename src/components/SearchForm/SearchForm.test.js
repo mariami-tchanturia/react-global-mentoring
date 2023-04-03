@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 
 import SearchForm from './SearchForm';
 
@@ -23,7 +24,7 @@ describe('SearchForm component tests:', () => {
     );
 
     const searchButton = screen.getByRole('button');
-    fireEvent.click(searchButton);
+    userEvent.click(searchButton);
 
     expect(mockOnSearch).toHaveBeenCalledWith(initialSearchQuery);
   });
@@ -41,8 +42,9 @@ describe('SearchForm component tests:', () => {
     );
 
     const searchBox = screen.getByRole('textbox');
-    fireEvent.change(searchBox, { target: { value: currentSearchQuery } });
-    fireEvent.keyUp(searchBox, { key: 'Enter', code: 13, charCode: 13 });
+    searchBox.setSelectionRange(0, searchBox.value.length);
+    userEvent.type(searchBox, currentSearchQuery);
+    userEvent.type(searchBox, '{enter}');
 
     expect(mockOnSearch).toHaveBeenCalledWith(currentSearchQuery);
   });
