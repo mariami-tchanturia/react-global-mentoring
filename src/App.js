@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-			{/* <Counter initialValue={0} /> */}
+			<Counter initialValue={0} />
 
 			<Header preview={preview} setPreview={setPreview}/>
 			<MoviesListing genres={GENRES} movies={MOVIES} preview={preview} setPreview={setPreview} options={SELECT_OPTIONS}/>
