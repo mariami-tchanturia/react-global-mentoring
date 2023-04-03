@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import GenreSelect from './GenreSelect';
+import GenreSelect from '../GenreSelect';
 
-import { GENRES } from '../../constants/';
+import { GENRES } from '../../../constants';
 
 describe('GenreSelect component tests:', () => {
   it('Should render all genres passed in props', () => {
