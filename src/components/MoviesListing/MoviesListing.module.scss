@@ -10,3 +10,10 @@
   gap: 60px 35px;
 	padding: 24px 0;
 }
+
+.filterAndSort {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 2px solid #424242;
+}

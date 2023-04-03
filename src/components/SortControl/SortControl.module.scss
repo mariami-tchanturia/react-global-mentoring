@@ -1,0 +1,36 @@
+.sortControl {
+	&_label {
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 16px;
+		font-weight: 400;
+		line-height: 20px;
+		letter-spacing: 0.888889px;
+		text-transform: uppercase;
+	}
+
+	&_select {
+		margin-left: 31px;
+		padding: 5px 10px;
+		color: #FFFFFF;
+		font-size: 16px;
+		font-weight: 500;
+		line-height: 20px;
+		letter-spacing: 0.888889px;
+		text-transform: uppercase;
+		background: transparent;
+		border: none;
+		border-radius: 0;
+		// appearance: none;
+
+		&:active,
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+	}
+
+	&_option {
+		background: #2A202D;
+	}
+}

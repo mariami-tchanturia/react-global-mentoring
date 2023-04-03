@@ -7,4 +7,5 @@ export { default as MoviesListing } from './MoviesListing/MoviesListing';
 export { default as MovieTile } from './MovieTile/MovieTile';
 export { default as MovieMenu } from './MovieMenu/MovieMenu';
 export { default as MovieDetail } from './MovieDetail/MovieDetail';
+export { default as SortControl } from "./SortControl/SortControl";
 export { default as Footer } from "./Footer/Footer";

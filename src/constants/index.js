@@ -64,4 +64,15 @@ const MOVIES = [
   }
 ]
 
-export {GENRES, MOVIES}
+const SELECT_OPTIONS = [
+	{
+		id:1,
+		name: 'Release Date'
+	},
+	{
+		id:2,
+		name: 'Title'
+	},
+]
+
+export {GENRES, MOVIES, SELECT_OPTIONS}

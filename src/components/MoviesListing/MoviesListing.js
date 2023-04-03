@@ -1,19 +1,14 @@
 import React from 'react'
-import { GenreSelect, MovieTile } from "../"
+import { GenreSelect, MovieTile, SortControl } from "../"
 import styles from "./MoviesListing.module.scss"
 
-export default function MoviesListing({movies, genres, setPreview}) {
-
-	function handleShowPreview() {
-		console.log('')
-	}
-
+function MoviesListing({movies, genres, options, setPreview}) {
 	return (
 		<main className={styles.moviesWrapper}>
 			<div className="container-lg">
-				<div>
+				<div className={styles.filterAndSort}>
 					<GenreSelect genres={genres} defaultGenre='All' onSelect={genre => console.log(genre)}/>
-					{/* <SortControl/> */}
+					<SortControl label='Sort by' options={options} defaultOption='date' onSort={option => console.log(option)}/>
 				</div>
 
 				<div className={styles.movies}>
@@ -23,3 +18,5 @@ export default function MoviesListing({movies, genres, setPreview}) {
 		</main>
 	)
 }
+
+export default MoviesListing;
