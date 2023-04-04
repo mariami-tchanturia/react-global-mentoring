@@ -1,4 +1,4 @@
-export const GENRES = [
+export const GENRES_OPTIONS = [
   {
     id: 1,
     name: 'All',

@@ -13,7 +13,7 @@ function MovieMenu({ handleEdit, handleDelete }) {
     <div className={`${styles[toggleClass]} ${styles.movieMenu}`}>
       <button
         className={styles.movieMenu_dots}
-        onClick={() => setIsOpened((prev) => !prev)}
+        onClick={() => setIsOpened((prevState) => !prevState)}
       >
         <span />
       </button>

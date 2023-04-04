@@ -5,8 +5,9 @@ import styles from './SortControl.module.scss';
 function SortControl({ options, label, defaultOption, onSort }) {
   const [selectedOption, setSelectedOption] = useState(defaultOption);
 
-  function handleChange(e) {
-    const { value } = e.target;
+  function handleChange({ target }) {
+    const { value } = target;
+
     setSelectedOption(value);
     onSort(value);
   }

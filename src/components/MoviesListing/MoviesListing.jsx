@@ -9,7 +9,7 @@ function MoviesListing({ movies, genres, options, setPreview }) {
           <GenreSelect
             genres={genres}
             defaultGenre='All'
-            onSelect={(genre) => console.log(genre)}
+            onChange={(genre) => console.log(genre)}
           />
           <SortControl
             label='Sort by'

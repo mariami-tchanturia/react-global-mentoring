@@ -2,6 +2,7 @@ import styles from './MovieDetail.module.scss';
 
 function MovieDetail({ movie }) {
   const { title, year, genre, plot, rating, duration, poster_url } = movie;
+
   return (
     <article className={styles.movideDetail}>
       <div className={styles.movideDetail_poster}>
