@@ -1,4 +1,4 @@
-import { MovieMenu } from '../';
+import { MovieMenu } from '..';
 
 import styles from './MovieTile.module.scss';
 

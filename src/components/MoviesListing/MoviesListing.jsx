@@ -1,4 +1,4 @@
-import { GenreSelect, MovieTile, SortControl } from '../';
+import { GenreSelect, MovieTile, SortControl } from '..';
 import styles from './MoviesListing.module.scss';
 
 function MoviesListing({ movies, genres, options, setPreview }) {

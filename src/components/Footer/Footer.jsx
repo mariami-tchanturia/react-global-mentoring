@@ -1,4 +1,4 @@
-import { Logo } from '../';
+import { Logo } from '..';
 
 import styles from './Footer.module.scss';
 

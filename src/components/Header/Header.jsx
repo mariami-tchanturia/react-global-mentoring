@@ -1,5 +1,5 @@
 import { Button } from '../../common';
-import { Logo, MovieDetail, SearchForm } from '../';
+import { Logo, MovieDetail, SearchForm } from '..';
 
 import styles from './Header.module.scss';
 
