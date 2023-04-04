@@ -1,4 +1,4 @@
-const GENRES = [
+export const GENRES = [
   {
     id: 1,
     name: 'All',
@@ -21,7 +21,7 @@ const GENRES = [
   },
 ];
 
-const MOVIES = [
+export const MOVIES = [
   {
     id: 1,
     title: 'Star Wars: The Last Jedi',
@@ -68,7 +68,7 @@ const MOVIES = [
   },
 ];
 
-const SELECT_OPTIONS = [
+export const SELECT_OPTIONS = [
   {
     id: 1,
     name: 'Release Date',
@@ -78,5 +78,3 @@ const SELECT_OPTIONS = [
     name: 'Title',
   },
 ];
-
-export { GENRES, MOVIES, SELECT_OPTIONS };
