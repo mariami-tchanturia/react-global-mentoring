@@ -3,7 +3,7 @@ import { Logo, MovieDetail, SearchForm } from '../';
 
 import styles from './Header.module.scss';
 
-const SEARCH_ICON = require('../../assets/search-icon.png');
+import searchIcon from '../../assets/search-icon.png';
 
 function Header({ preview, setPreview }) {
   return (
@@ -13,7 +13,7 @@ function Header({ preview, setPreview }) {
 
         {preview ? (
           <Button className='searchButton' onClick={() => setPreview(null)}>
-            <img src={SEARCH_ICON} alt='Switch to Search mode' />
+            <img src={searchIcon} alt='Switch to Search mode' />
           </Button>
         ) : (
           <Button className='addMovie'>+ Add Movie</Button>
