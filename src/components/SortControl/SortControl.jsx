@@ -2,15 +2,15 @@ import { useState } from 'react';
 
 import styles from './SortControl.module.scss';
 
-function SortControl({ options, label, defaultOption, onSort }) {
+const SortControl = ({ options, label, defaultOption, onSort }) => {
   const [selectedOption, setSelectedOption] = useState(defaultOption);
 
-  function handleChange({ target }) {
+  const handleChange = ({ target }) => {
     const { value } = target;
 
     setSelectedOption(value);
     onSort(value);
-  }
+  };
 
   return (
     <div className={styles.sortControl}>
@@ -32,6 +32,6 @@ function SortControl({ options, label, defaultOption, onSort }) {
       </label>
     </div>
   );
-}
+};
 
 export default SortControl;

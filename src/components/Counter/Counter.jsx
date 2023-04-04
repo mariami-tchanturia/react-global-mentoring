@@ -2,13 +2,8 @@ import React from 'react';
 
 import styles from './Counter.module.scss';
 
-function Button({ handleClick, name, type }) {
-  return React.createElement(
-    'button',
-    { onClick: handleClick, type: type },
-    name
-  );
-}
+const Button = ({ handleClick, name, type }) =>
+  React.createElement('button', { onClick: handleClick, type: type }, name);
 
 class Counter extends React.Component {
   constructor(props) {

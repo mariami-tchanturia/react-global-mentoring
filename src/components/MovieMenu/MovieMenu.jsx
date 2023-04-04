@@ -4,7 +4,7 @@ import { Button } from '../../common';
 
 import styles from './MovieMenu.module.scss';
 
-function MovieMenu({ handleEdit, handleDelete }) {
+const MovieMenu = ({ handleEdit, handleDelete }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const toggleClass = isOpened ? 'open' : '';
@@ -34,5 +34,6 @@ function MovieMenu({ handleEdit, handleDelete }) {
       </div>
     </div>
   );
-}
+};
+
 export default MovieMenu;

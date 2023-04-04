@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './GenreSelect.module.scss';
 
-function GenreSelect({ genres, defaultGenre, onChange }) {
+const GenreSelect = ({ genres, defaultGenre, onChange }) => {
   const [currentGenre, setCurrentGenre] = React.useState(defaultGenre || 'All');
 
   return (
@@ -22,6 +22,6 @@ function GenreSelect({ genres, defaultGenre, onChange }) {
       </ul>
     </div>
   );
-}
+};
 
 export default GenreSelect;

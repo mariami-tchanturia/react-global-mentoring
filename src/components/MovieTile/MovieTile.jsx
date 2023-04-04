@@ -2,10 +2,10 @@ import { MovieMenu } from '..';
 
 import styles from './MovieTile.module.scss';
 
-function MovieTile({ movie, setPreview }) {
-  function handleEdit() {}
+const MovieTile = ({ movie, setPreview }) => {
+  const handleEdit = () => {};
 
-  function handleDlete() {}
+  const handleDlete = () => {};
 
   const { title, year, genre, poster_url } = movie;
 
@@ -26,6 +26,6 @@ function MovieTile({ movie, setPreview }) {
       </div>
     </div>
   );
-}
+};
 
 export default MovieTile;

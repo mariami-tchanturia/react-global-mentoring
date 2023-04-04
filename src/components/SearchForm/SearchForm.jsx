@@ -6,12 +6,12 @@ import styles from './SearchForm.module.scss';
 const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery || '');
 
-  function handleKeyUp(e) {
-    if (e.key === 'Enter') {
+  const handleKeyUp = ({ key }) => {
+    if (key === 'Enter') {
       console.log('Enter was triggered');
       onSearch(searchQuery);
     }
-  }
+  };
 
   return (
     <>

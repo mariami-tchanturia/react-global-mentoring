@@ -1,6 +1,6 @@
 import styles from './MovieDetail.module.scss';
 
-function MovieDetail({ movie }) {
+const MovieDetail = ({ movie }) => {
   const { title, year, genre, plot, rating, duration, poster_url } = movie;
 
   return (
@@ -24,6 +24,6 @@ function MovieDetail({ movie }) {
       </div>
     </article>
   );
-}
+};
 
 export default MovieDetail;
