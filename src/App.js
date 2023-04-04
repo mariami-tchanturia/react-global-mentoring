@@ -3,7 +3,8 @@ import { useState } from 'react';
 
 import { Counter, MoviesListing, Header, Footer } from './components';
 
-import { GENRES, MOVIES, SELECT_OPTIONS } from './constants';
+import { GENRES, SELECT_OPTIONS } from './constants';
+import { MOCKED_MOVIES } from './mocks/mocks';
 
 function App() {
   const [preview, setPreview] = useState(null);
@@ -15,7 +16,7 @@ function App() {
       <Header preview={preview} setPreview={setPreview} />
       <MoviesListing
         genres={GENRES}
-        movies={MOVIES}
+        movies={MOCKED_MOVIES}
         preview={preview}
         setPreview={setPreview}
         options={SELECT_OPTIONS}
