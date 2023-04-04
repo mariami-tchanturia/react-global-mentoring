@@ -15,7 +15,7 @@ function MovieMenu({ handleEdit, handleDelete }) {
         className={styles.movieMenu_dots}
         onClick={() => setIsOpened((prev) => !prev)}
       >
-        <span></span>
+        <span />
       </button>
 
       <div className={styles.movieMenu_content}>
