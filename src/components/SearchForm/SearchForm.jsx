@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
+
 import { Button, Input } from '../../common';
 
 import styles from './SearchForm.module.scss';
 
 const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery || '');
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
 
   const handleKeyUp = ({ key }) => {
     if (key === 'Enter') {
@@ -38,6 +40,15 @@ const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
       </div>
     </>
   );
+};
+
+SearchForm.propTypes = {
+  initialSearchQuery: PropTypes.string,
+  onSearch: PropTypes.func,
+};
+
+SearchForm.defaultProps = {
+  initialSearchQuery: '',
 };
 
 export default SearchForm;

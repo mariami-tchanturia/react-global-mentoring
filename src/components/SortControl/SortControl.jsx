@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './SortControl.module.scss';
 
@@ -32,6 +33,13 @@ const SortControl = ({ options, label, defaultOption, onSort }) => {
       </label>
     </div>
   );
+};
+
+SortControl.propTypes = {
+  options: PropTypes.arrayOf(PropTypes.object),
+  label: PropTypes.string,
+  defaultOption: PropTypes.string,
+  onSort: PropTypes.func,
 };
 
 export default SortControl;

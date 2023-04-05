@@ -1,11 +1,16 @@
+import PropTypes from 'prop-types';
 import { MovieMenu } from '..';
 
 import styles from './MovieTile.module.scss';
 
 const MovieTile = ({ movie, setPreview }) => {
-  const handleEdit = () => {};
+  const handleEdit = () => {
+    console.log('Edit button was clicked');
+  };
 
-  const handleDlete = () => {};
+  const handleDelete = () => {
+    console.log('Delete button was clicked');
+  };
 
   const { title, year, genre, poster_url } = movie;
 
@@ -14,7 +19,7 @@ const MovieTile = ({ movie, setPreview }) => {
       <div className={styles.movieTile_poster}>
         <img src={poster_url} alt={`${title} poster`} />
 
-        <MovieMenu handleEdit={handleEdit} handleDlete={handleDlete} />
+        <MovieMenu handleEdit={handleEdit} handleDelete={handleDelete} />
       </div>
 
       <div className={styles.movieTile_description}>
@@ -26,6 +31,11 @@ const MovieTile = ({ movie, setPreview }) => {
       </div>
     </div>
   );
+};
+
+MovieTile.propTypes = {
+  setPreview: PropTypes.func,
+  movie: PropTypes.object,
 };
 
 export default MovieTile;

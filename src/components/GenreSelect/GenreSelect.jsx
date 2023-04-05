@@ -1,8 +1,9 @@
-import React from 'react';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 import styles from './GenreSelect.module.scss';
 
 const GenreSelect = ({ genres, defaultGenre, onChange }) => {
-  const [currentGenre, setCurrentGenre] = React.useState(defaultGenre || 'All');
+  const [currentGenre, setCurrentGenre] = useState(defaultGenre);
 
   return (
     <div className={styles.genreSelect}>
@@ -22,6 +23,16 @@ const GenreSelect = ({ genres, defaultGenre, onChange }) => {
       </ul>
     </div>
   );
+};
+
+GenreSelect.propTypes = {
+  defaultGenre: PropTypes.string,
+  onChange: PropTypes.func,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+GenreSelect.defaultProps = {
+  defaultGenre: 'All',
 };
 
 export default GenreSelect;

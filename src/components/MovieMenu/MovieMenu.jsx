@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { Button } from '../../common';
 
@@ -34,6 +35,11 @@ const MovieMenu = ({ handleEdit, handleDelete }) => {
       </div>
     </div>
   );
+};
+
+MovieMenu.propTypes = {
+  handleEdit: PropTypes.func,
+  handleDelete: PropTypes.func,
 };
 
 export default MovieMenu;

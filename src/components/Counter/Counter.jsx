@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Counter.module.scss';
 
@@ -9,7 +10,7 @@ class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: this.props.initialValue || 0,
+      count: this.props.initialValue,
     };
   }
 
@@ -64,5 +65,19 @@ class Counter extends React.Component {
     );
   }
 }
+
+Button.propTypes = {
+  handleClick: PropTypes.func,
+  name: PropTypes.string,
+  type: PropTypes.string,
+};
+
+Counter.propTypes = {
+  initialValue: PropTypes.number,
+};
+
+Counter.defaultProps = {
+  initialValue: 0,
+};
 
 export default Counter;

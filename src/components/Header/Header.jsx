@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { Button } from '../../common';
 import { Logo, MovieDetail, SearchForm } from '..';
 
@@ -11,11 +13,11 @@ const Header = ({ preview, setPreview }) => (
       <Logo />
 
       {preview ? (
-        <Button className='searchButton' onClick={() => setPreview(null)}>
+        <Button className='btn--transparent' onClick={() => setPreview(null)}>
           <img src={searchIcon} alt='Switch to Search mode' />
         </Button>
       ) : (
-        <Button className='addMovie'>+ Add Movie</Button>
+        <Button className='btn--secondary'>+ Add Movie</Button>
       )}
     </div>
 
@@ -38,5 +40,10 @@ const Header = ({ preview, setPreview }) => (
     </div>
   </header>
 );
+
+Header.propTypes = {
+  preview: PropTypes.object,
+  setPreview: PropTypes.func,
+};
 
 export default Header;

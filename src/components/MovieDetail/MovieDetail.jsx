@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import styles from './MovieDetail.module.scss';
 
 const MovieDetail = ({ movie }) => {
@@ -24,6 +26,10 @@ const MovieDetail = ({ movie }) => {
       </div>
     </article>
   );
+};
+
+MovieDetail.propTypes = {
+  movie: PropTypes.object,
 };
 
 export default MovieDetail;

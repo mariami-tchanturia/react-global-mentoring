@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import { GenreSelect, MovieTile, SortControl } from '..';
 import styles from './MoviesListing.module.scss';
 
@@ -26,5 +28,12 @@ const MoviesListing = ({ movies, genres, options, setPreview }) => (
     </div>
   </main>
 );
+
+MoviesListing.propTypes = {
+  setPreview: PropTypes.func,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MoviesListing;

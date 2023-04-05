@@ -1,6 +1,8 @@
+import PropTypes from 'prop-types';
+
 import styles from './Button.module.scss';
 
-const Button = ({ className = '', type = 'button', children, ...props }) => (
+const Button = ({ className, type, children, ...props }) => (
   <button
     className={`${styles[className]} ${styles.btn}`}
     type={type}
@@ -9,5 +11,16 @@ const Button = ({ className = '', type = 'button', children, ...props }) => (
     {children}
   </button>
 );
+
+Button.propTypes = {
+  className: PropTypes.string,
+  type: PropTypes.string,
+  children: PropTypes.string,
+};
+
+Button.defaultProps = {
+  className: '',
+  type: 'button',
+};
 
 export default Button;
