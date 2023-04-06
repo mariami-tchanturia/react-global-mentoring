@@ -15,7 +15,7 @@ const Button = ({ className, type, children, ...props }) => (
 Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 Button.defaultProps = {
