@@ -43,7 +43,7 @@ const MovieTile = ({ movie, setPreview }) => {
 
 MovieTile.propTypes = {
   setPreview: PropTypes.func,
-  // movie: PropTypes.object,
+  movie: PropTypes.object,
 };
 
 export default MovieTile;

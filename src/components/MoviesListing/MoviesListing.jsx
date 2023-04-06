@@ -30,10 +30,10 @@ const MoviesListing = ({ movies, genres, options, setPreview }) => (
 );
 
 MoviesListing.propTypes = {
-  // setPreview: PropTypes.func,
-  // movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // genres: PropTypes.arrayOf(PropTypes.object).isRequired,
-  // options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setPreview: PropTypes.func,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MoviesListing;
