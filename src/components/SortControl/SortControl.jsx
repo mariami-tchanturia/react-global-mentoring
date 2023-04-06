@@ -25,7 +25,12 @@ const SortControl = ({ options, label, defaultOption, onSort }) => {
           value={selectedOption}
         >
           {options.map(({ id, name }) => (
-            <option key={id} className={styles.sortControl_option} value={name}>
+            <option
+              key={id}
+              className={styles.sortControl_option}
+              value={name}
+              data-testid={`option-${id}`}
+            >
               {name}
             </option>
           ))}

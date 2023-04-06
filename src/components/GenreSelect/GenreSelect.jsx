@@ -28,7 +28,7 @@ const GenreSelect = ({ genres, defaultGenre, onChange }) => {
 GenreSelect.propTypes = {
   defaultGenre: PropTypes.string,
   onChange: PropTypes.func,
-  // genres: PropTypes.arrayOf(PropTypes.object).isRequired,
+  genres: PropTypes.array,
 };
 
 GenreSelect.defaultProps = {
