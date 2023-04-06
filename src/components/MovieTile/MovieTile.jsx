@@ -17,17 +17,25 @@ const MovieTile = ({ movie, setPreview }) => {
   return (
     <div className={styles.movieTile}>
       <div className={styles.movieTile_poster}>
-        <img src={poster_url} alt={`${title} poster`} />
+        <img
+          src={poster_url}
+          alt={`${title} poster`}
+          data-testid='movie-posterurl'
+        />
 
         <MovieMenu handleEdit={handleEdit} handleDelete={handleDelete} />
       </div>
 
       <div className={styles.movieTile_description}>
-        <h2 className={styles.movieTile_title}>
+        <h2 className={styles.movieTile_title} data-testid='movie-title'>
           <button onClick={() => setPreview(movie)}>{title}</button>
         </h2>
-        <p className={styles.movieTile_genre}>{genre}</p>
-        <span className={styles.movieTile_releaseDate}>{year}</span>
+        <p className={styles.movieTile_genre} data-testid='movie-genre'>
+          {genre}
+        </p>
+        <span className={styles.movieTile_releaseDate} data-testid='movie-year'>
+          {year}
+        </span>
       </div>
     </div>
   );

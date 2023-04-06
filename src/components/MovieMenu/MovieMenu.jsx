@@ -11,7 +11,10 @@ const MovieMenu = ({ handleEdit, handleDelete }) => {
   const toggleClass = isOpened ? 'open' : '';
 
   return (
-    <div className={`${styles[toggleClass]} ${styles.movieMenu}`}>
+    <div
+      className={`${styles[toggleClass]} ${styles.movieMenu}`}
+      data-testid='movie-menu'
+    >
       <button
         className={styles.movieMenu_dots}
         onClick={() => setIsOpened((prevState) => !prevState)}
@@ -22,12 +25,20 @@ const MovieMenu = ({ handleEdit, handleDelete }) => {
       <div className={styles.movieMenu_content}>
         <ul>
           <li>
-            <Button onClick={handleEdit} className='movieMenu_button'>
+            <Button
+              onClick={handleEdit}
+              className='movieMenu_button'
+              data-testid='movie-edit'
+            >
               Edit
             </Button>
           </li>
           <li>
-            <Button onClick={handleDelete} className='movieMenu_button'>
+            <Button
+              onClick={handleDelete}
+              className='movieMenu_button'
+              data-testid='movie-delete'
+            >
               Delete
             </Button>
           </li>
