@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import MovieMenu from '../MovieMenu';
+import { MovieMenu } from '../MovieMenu';
 
 describe('MovieMenu component tests:', () => {
   it('Should render movie menu', () => {

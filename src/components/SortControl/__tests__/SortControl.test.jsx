@@ -3,7 +3,7 @@ import userEvent from '@testing-library/user-event';
 
 import { SELECT_OPTIONS } from '../../../constants';
 
-import SortControl from '../SortControl';
+import { SortControl } from '../SortControl';
 
 describe('SortControl component tests:', () => {
   it('Should correctly set a label', () => {

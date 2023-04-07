@@ -42,12 +42,13 @@ export class Counter extends React.Component {
             handleClick: this.handleDecrement,
             name: 'Decrement',
             type: 'button',
+            key: '1',
           },
           null
         ),
         createElement(
           'h2',
-          { className: styles.counter__value },
+          { className: styles.counter__value, key: '2' },
           this.state.count
         ),
         createElement(
@@ -56,6 +57,7 @@ export class Counter extends React.Component {
             handleClick: this.handleIncrement,
             name: 'Increment',
             type: 'button',
+            key: '3',
           },
           null
         ),

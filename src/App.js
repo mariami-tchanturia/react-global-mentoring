@@ -1,7 +1,10 @@
 import './App.scss';
 import { useState } from 'react';
 
-import { Counter, MoviesListing, Header, Footer } from './components';
+import { Counter } from './components/Counter/Counter';
+import { MoviesListing } from './components/MoviesListing/MoviesListing';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
 
 import { GENRES_OPTIONS, SELECT_OPTIONS } from './constants';
 import { MOCKED_MOVIES } from './mocks/mocks';

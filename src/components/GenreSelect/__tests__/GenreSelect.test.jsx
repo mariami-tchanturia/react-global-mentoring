@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import GenreSelect from '../GenreSelect';
+import { GenreSelect } from '../GenreSelect';
 
 import { GENRES_OPTIONS } from '../../../constants';
 

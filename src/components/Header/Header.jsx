@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 
 import { Button } from '../../common';
-import { Logo, MovieDetail, SearchForm } from '..';
+import { Logo } from '../../components/Logo//Logo';
+import { MovieDetail } from '../../components/MovieDetail/MovieDetail';
+import { SearchForm } from '../../components/SearchForm/SearchForm';
 
 import styles from './Header.module.scss';
 

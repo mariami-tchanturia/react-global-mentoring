@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button, Input } from '../../common';
+import { Button } from '../../common/Button/Button';
+import { Input } from '../../common/Input/Input';
 
 import styles from './SearchForm.module.scss';
 

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { MovieMenu } from '..';
+import { MovieMenu } from '../../components/MovieMenu/MovieMenu';
 
 import styles from './MovieTile.module.scss';
 
