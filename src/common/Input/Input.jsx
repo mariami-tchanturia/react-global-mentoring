@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Input.module.scss';
 
-const Input = ({
+export const Input = ({
   placeholderText,
   type,
   name,
@@ -38,5 +38,3 @@ Input.defaultProps = {
   type: 'text',
   className: '',
 };
-
-export default Input;

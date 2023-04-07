@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { GenreSelect, MovieTile, SortControl } from '..';
 import styles from './MoviesListing.module.scss';
 
-const MoviesListing = ({ movies, genres, options, setPreview }) => (
+export const MoviesListing = ({ movies, genres, options, setPreview }) => (
   <main className={styles.moviesWrapper}>
     <div className='container-lg'>
       <div className={styles.filterAndSort}>
@@ -35,5 +35,3 @@ MoviesListing.propTypes = {
   genres: PropTypes.arrayOf(PropTypes.object).isRequired,
   options: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
-export default MoviesListing;

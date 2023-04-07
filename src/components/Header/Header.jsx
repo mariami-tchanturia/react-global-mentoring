@@ -7,7 +7,7 @@ import styles from './Header.module.scss';
 
 import searchIcon from '../../assets/search-icon.png';
 
-const Header = ({ preview, setPreview }) => (
+export const Header = ({ preview, setPreview }) => (
   <header className={styles.header}>
     <div className={`${styles.logoButtonWrapper} container-lg`}>
       <Logo />
@@ -45,5 +45,3 @@ Header.propTypes = {
   preview: PropTypes.object,
   setPreview: PropTypes.func,
 };
-
-export default Header;

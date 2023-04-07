@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './MovieDetail.module.scss';
 
-const MovieDetail = ({ movie }) => {
+export const MovieDetail = ({ movie }) => {
   const { title, year, genre, plot, rating, duration, poster_url } = movie;
 
   return (
@@ -54,5 +54,3 @@ const MovieDetail = ({ movie }) => {
 MovieDetail.propTypes = {
   movie: PropTypes.object,
 };
-
-export default MovieDetail;

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from './SortControl.module.scss';
 
-const SortControl = ({ options, label, defaultOption, onSort }) => {
+export const SortControl = ({ options, label, defaultOption, onSort }) => {
   const [selectedOption, setSelectedOption] = useState(defaultOption);
 
   const handleChange = ({ target }) => {
@@ -46,5 +46,3 @@ SortControl.propTypes = {
   defaultOption: PropTypes.string,
   onSort: PropTypes.func,
 };
-
-export default SortControl;

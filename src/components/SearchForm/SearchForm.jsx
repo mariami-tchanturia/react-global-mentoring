@@ -5,7 +5,7 @@ import { Button, Input } from '../../common';
 
 import styles from './SearchForm.module.scss';
 
-const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
+export const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
   const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
 
   const handleKeyUp = ({ key }) => {
@@ -50,5 +50,3 @@ SearchForm.propTypes = {
 SearchForm.defaultProps = {
   initialSearchQuery: '',
 };
-
-export default SearchForm;

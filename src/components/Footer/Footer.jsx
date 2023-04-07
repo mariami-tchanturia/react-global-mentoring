@@ -2,10 +2,8 @@ import { Logo } from '../';
 
 import styles from './Footer.module.scss';
 
-const Footer = () => (
+export const Footer = () => (
   <footer className={styles.footer}>
     <Logo />
   </footer>
 );
-
-export default Footer;

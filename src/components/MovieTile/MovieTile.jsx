@@ -3,7 +3,7 @@ import { MovieMenu } from '..';
 
 import styles from './MovieTile.module.scss';
 
-const MovieTile = ({ movie, setPreview }) => {
+export const MovieTile = ({ movie, setPreview }) => {
   const handleEdit = () => {
     console.log('Edit button was clicked');
   };
@@ -45,5 +45,3 @@ MovieTile.propTypes = {
   setPreview: PropTypes.func,
   movie: PropTypes.object,
 };
-
-export default MovieTile;

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './GenreSelect.module.scss';
 
-const GenreSelect = ({ genres, defaultGenre, onChange }) => {
+export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
   const [currentGenre, setCurrentGenre] = useState(defaultGenre);
 
   return (
@@ -34,5 +34,3 @@ GenreSelect.propTypes = {
 GenreSelect.defaultProps = {
   defaultGenre: 'All',
 };
-
-export default GenreSelect;
