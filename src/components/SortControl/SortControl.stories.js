@@ -1,4 +1,4 @@
-import SortControl from './SortControl';
+import { SortControl } from './SortControl';
 
 import { SELECT_OPTIONS } from '../../constants/index';
 

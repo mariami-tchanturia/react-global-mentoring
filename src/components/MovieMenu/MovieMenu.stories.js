@@ -1,4 +1,4 @@
-import MovieMenu from './MovieMenu';
+import { MovieMenu } from './MovieMenu';
 
 export default {
   title: 'Components/MovieMenu',

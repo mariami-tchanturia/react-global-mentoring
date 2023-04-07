@@ -1,4 +1,4 @@
-import MovieDetail from './MovieDetail';
+import { MovieDetail } from './MovieDetail';
 
 import { MOCKED_MOVIES } from '../../mocks/mocks';
 

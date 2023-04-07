@@ -1,4 +1,4 @@
-import MovieTile from './MovieTile';
+import { MovieTile } from './MovieTile';
 
 import { MOCKED_MOVIES } from '../../mocks/mocks';
 

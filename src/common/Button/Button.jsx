@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 import styles from './Button.module.scss';
 
-export const Button = ({ className, type, children, ...props }) => (
+const Button = ({ className, type, children, ...props }) => (
   <button
     className={`${styles[className]} ${styles.btn}`}
     type={type}
@@ -22,3 +22,5 @@ Button.defaultProps = {
   className: '',
   type: 'button',
 };
+
+export { Button };

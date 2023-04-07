@@ -1,4 +1,4 @@
-import MoviesListing from './MoviesListing';
+import { MoviesListing } from './MoviesListing';
 
 import { MOCKED_MOVIES } from '../../mocks/mocks';
 import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
