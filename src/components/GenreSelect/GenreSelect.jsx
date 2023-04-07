@@ -6,22 +6,25 @@ export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
   const [currentGenre, setCurrentGenre] = useState(defaultGenre);
 
   return (
-    <div className={styles.genreSelect}>
+    <nav className={styles.genreSelect}>
       <ul className={styles.genreSelect__list}>
         {genres.map(({ id, name }) => (
-          <li
-            key={id}
-            className={`${currentGenre === name ? styles.active : ''}`}
-            onClick={() => {
-              onChange(name);
-              setCurrentGenre(name);
-            }}
-          >
-            {name}
+          <li key={id}>
+            <a
+              href='#'
+              className={`${currentGenre === name ? styles.active : ''}`}
+              title={name}
+              onClick={() => {
+                onChange(name);
+                setCurrentGenre(name);
+              }}
+            >
+              {name}
+            </a>
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 
