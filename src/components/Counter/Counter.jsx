@@ -1,20 +1,16 @@
-import React from 'react';
+import React, { createElement } from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Counter.module.scss';
 
-function Button({ handleClick, name, type }) {
-  return React.createElement(
-    'button',
-    { onClick: handleClick, type: type },
-    name
-  );
-}
+const Button = ({ handleClick, name, type }) =>
+  createElement('button', { onClick: handleClick, type: type }, name);
 
-class Counter extends React.Component {
+export class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: this.props.initialValue || 0,
+      count: this.props.initialValue,
     };
   }
 
@@ -31,43 +27,55 @@ class Counter extends React.Component {
   };
 
   render() {
-    return React.createElement(
+    return createElement(
       'div',
       { className: styles.counter },
-      React.createElement(
+      createElement(
         'h1',
         { className: styles.counter__title },
         'Counter Component'
       ),
-      React.createElement(
-        'div',
-        { className: styles.counter__data },
-        React.createElement(
+      createElement('div', { className: styles.counter__data }, [
+        createElement(
           Button,
           {
             handleClick: this.handleDecrement,
             name: 'Decrement',
             type: 'button',
+            key: '1',
           },
           null
         ),
-        React.createElement(
+        createElement(
           'h2',
-          { className: styles.counter__value },
+          { className: styles.counter__value, key: '2' },
           this.state.count
         ),
-        React.createElement(
+        createElement(
           Button,
           {
             handleClick: this.handleIncrement,
             name: 'Increment',
             type: 'button',
+            key: '3',
           },
           null
-        )
-      )
+        ),
+      ])
     );
   }
 }
 
-export default Counter;
+Button.propTypes = {
+  handleClick: PropTypes.func,
+  name: PropTypes.string,
+  type: PropTypes.string,
+};
+
+Counter.propTypes = {
+  initialValue: PropTypes.number,
+};
+
+Counter.defaultProps = {
+  initialValue: 0,
+};

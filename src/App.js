@@ -1,27 +1,30 @@
 import './App.scss';
 import { useState } from 'react';
-import { Counter, GenreSelect, SearchForm } from './components';
 
-import { GENRES } from './constants';
+import { Counter } from './components/Counter/Counter';
+import { MoviesListing } from './components/MoviesListing/MoviesListing';
+import { Header } from './components/Header/Header';
+import { Footer } from './components/Footer/Footer';
+
+import { GENRES_OPTIONS, SELECT_OPTIONS } from './constants';
+import { MOCKED_MOVIES } from './mocks/mocks';
 
 function App() {
-  const [searchResult, setSearchResult] = useState(
-    'Search Result for Initial Query'
-  );
+  const [preview, setPreview] = useState(null);
 
   return (
     <div className='App'>
       <Counter initialValue={0} />
-      <SearchForm
-        initialSearchQuery='Initial Query'
-        searchResult={searchResult}
-        onSearch={(keyword) => setSearchResult(keyword)}
+
+      <Header preview={preview} setPreview={setPreview} />
+      <MoviesListing
+        genres={GENRES_OPTIONS}
+        movies={MOCKED_MOVIES}
+        preview={preview}
+        setPreview={setPreview}
+        options={SELECT_OPTIONS}
       />
-      <GenreSelect
-        genres={GENRES}
-        defaultGenre='All'
-        onSelect={(genre) => console.log(genre)}
-      />
+      <Footer />
     </div>
   );
 }

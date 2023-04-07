@@ -1,4 +1,4 @@
-export const GENRES = [
+export const GENRES_OPTIONS = [
   {
     id: 1,
     name: 'All',
@@ -18,5 +18,16 @@ export const GENRES = [
   {
     id: 5,
     name: 'Crime',
+  },
+];
+
+export const SELECT_OPTIONS = [
+  {
+    id: 1,
+    name: 'Release Date',
+  },
+  {
+    id: 2,
+    name: 'Title',
   },
 ];

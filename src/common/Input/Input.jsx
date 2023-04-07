@@ -1,13 +1,15 @@
+import PropTypes from 'prop-types';
+
 import styles from './Input.module.scss';
 
-const Input = ({
+export const Input = ({
   placeholderText,
-  type = 'text',
+  type,
   name,
   value,
   onChange,
   onKeyUp,
-  className = '',
+  className,
 }) => {
   return (
     <input
@@ -22,4 +24,17 @@ const Input = ({
   );
 };
 
-export default Input;
+Input.propTypes = {
+  placeHolderText: PropTypes.string,
+  type: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  className: PropTypes.string,
+  onChange: PropTypes.func,
+  onKeyUp: PropTypes.func,
+};
+
+Input.defaultProps = {
+  type: 'text',
+  className: '',
+};

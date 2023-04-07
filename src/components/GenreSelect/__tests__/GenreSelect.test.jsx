@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import GenreSelect from '../GenreSelect';
+import { GenreSelect } from '../GenreSelect';
 
-import { GENRES } from '../../../constants';
+import { GENRES_OPTIONS } from '../../../constants';
 
 describe('GenreSelect component tests:', () => {
   it('Should render all genres passed in props', () => {
-    render(<GenreSelect genres={GENRES} />);
+    render(<GenreSelect genres={GENRES_OPTIONS} />);
 
-    const passedGenreNames = GENRES.map((genre) => genre.name);
+    const passedGenreNames = GENRES_OPTIONS.map((genre) => genre.name);
     const renderedGenreNames = screen
       .getAllByRole('listitem')
       .map((item) => item.textContent);
@@ -20,7 +20,7 @@ describe('GenreSelect component tests:', () => {
   it('Should highlight a defaultGenre, that is passed in props', () => {
     const defaultGenre = 'Documentary';
 
-    render(<GenreSelect genres={GENRES} defaultGenre={defaultGenre} />);
+    render(<GenreSelect genres={GENRES_OPTIONS} defaultGenre={defaultGenre} />);
 
     expect(screen.getByText(new RegExp(defaultGenre, 'i'))).toHaveClass(
       'active'
@@ -30,18 +30,18 @@ describe('GenreSelect component tests:', () => {
   it('Should call onChange callback and pass correct genre in arguments, when clicking on genre', () => {
     const defaultGenre = 'All';
     const targetGenre = 'Crime';
-    const onSelectMock = jest.fn();
+    const onChangeMock = jest.fn();
 
     render(
       <GenreSelect
-        genres={GENRES}
+        genres={GENRES_OPTIONS}
         defaultGenre={defaultGenre}
-        onSelect={onSelectMock}
+        onChange={onChangeMock}
       />
     );
 
     userEvent.click(screen.getByText(new RegExp(targetGenre, 'i')));
 
-    expect(onSelectMock).toHaveBeenCalledWith(targetGenre);
+    expect(onChangeMock).toHaveBeenCalledWith(targetGenre);
   });
 });

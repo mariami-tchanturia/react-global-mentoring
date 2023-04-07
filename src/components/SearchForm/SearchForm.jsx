@@ -1,22 +1,24 @@
 import { useState } from 'react';
-import { Button, Input } from '../../common';
+import PropTypes from 'prop-types';
+
+import { Button } from '../../common/Button/Button';
+import { Input } from '../../common/Input/Input';
 
 import styles from './SearchForm.module.scss';
 
-const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery || '');
+export const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
+  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
 
-  function handleKeyUp(e) {
-    if (e.key === 'Enter') {
+  const handleKeyUp = ({ key }) => {
+    if (key === 'Enter') {
       console.log('Enter was triggered');
       onSearch(searchQuery);
     }
-  }
+  };
 
   return (
     <>
       <div className={styles.searchForm}>
-        <h1 className={styles.searchForm__title}>SearchForm Component</h1>
         <div className={styles.searchForm__form}>
           <Input
             placeholderText='What do you want to watch?'
@@ -28,7 +30,6 @@ const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
           />
           <Button
             onClick={() => onSearch(searchQuery)}
-            type='submit'
             className='btn--primary'
           >
             Search
@@ -42,4 +43,11 @@ const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
   );
 };
 
-export default SearchForm;
+SearchForm.propTypes = {
+  initialSearchQuery: PropTypes.string,
+  onSearch: PropTypes.func,
+};
+
+SearchForm.defaultProps = {
+  initialSearchQuery: '',
+};
