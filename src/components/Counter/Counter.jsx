@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { createElement } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Counter.module.scss';
 
 const Button = ({ handleClick, name, type }) =>
-  React.createElement('button', { onClick: handleClick, type: type }, name);
+  createElement('button', { onClick: handleClick, type: type }, name);
 
-class Counter extends React.Component {
+export class Counter extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,18 +27,16 @@ class Counter extends React.Component {
   };
 
   render() {
-    return React.createElement(
+    return createElement(
       'div',
       { className: styles.counter },
-      React.createElement(
+      createElement(
         'h1',
         { className: styles.counter__title },
         'Counter Component'
       ),
-      React.createElement(
-        'div',
-        { className: styles.counter__data },
-        React.createElement(
+      createElement('div', { className: styles.counter__data }, [
+        createElement(
           Button,
           {
             handleClick: this.handleDecrement,
@@ -47,12 +45,12 @@ class Counter extends React.Component {
           },
           null
         ),
-        React.createElement(
+        createElement(
           'h2',
           { className: styles.counter__value },
           this.state.count
         ),
-        React.createElement(
+        createElement(
           Button,
           {
             handleClick: this.handleIncrement,
@@ -60,8 +58,8 @@ class Counter extends React.Component {
             type: 'button',
           },
           null
-        )
-      )
+        ),
+      ])
     );
   }
 }
@@ -79,5 +77,3 @@ Counter.propTypes = {
 Counter.defaultProps = {
   initialValue: 0,
 };
-
-export default Counter;
