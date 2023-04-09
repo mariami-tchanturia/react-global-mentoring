@@ -5,6 +5,8 @@ import { Button } from '../../common';
 import { Logo } from '../../components/Logo//Logo';
 import { MovieDetail } from '../../components/MovieDetail/MovieDetail';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
+import { MovieForm } from '../../components/MovieForm/MovieForm';
+import { Dialog } from '../../common/Dialog/Dialog';
 
 import styles from './Header.module.scss';
 
@@ -31,7 +33,6 @@ export const Header = ({ preview, setPreview }) => {
           </Button>
         )}
       </div>
-
       <div className={`container-lg`}>
         {preview ? (
           <MovieDetail movie={preview} />
@@ -49,6 +50,16 @@ export const Header = ({ preview, setPreview }) => {
           </div>
         )}
       </div>
+
+      {showAddMovie && (
+        <Dialog
+          title='Add movie'
+          size='lg'
+          handleClose={() => toggleAddMovie(false)}
+        >
+          <MovieForm />
+        </Dialog>
+      )}
     </header>
   );
 };
