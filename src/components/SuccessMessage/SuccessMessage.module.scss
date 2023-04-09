@@ -1,0 +1,27 @@
+.successMessage {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #FFFFFF;
+
+	&_img {
+		width: 66px;
+		margin-bottom: 31px;
+	}
+	&_title {
+		margin-bottom: 29px;
+		font-size: 40px;
+		font-weight: 300;
+		line-height: 49px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+	}
+	&_paragraph {
+		font-size: 20px;
+		font-weight: 400;
+		line-height: 24px;
+		max-width: 302px;
+		text-align: center;
+	}
+}

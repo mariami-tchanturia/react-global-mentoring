@@ -1,15 +1,19 @@
+import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { MovieMenu } from '../../components/MovieMenu/MovieMenu';
 
 import styles from './MovieTile.module.scss';
-
 export const MovieTile = ({ movie, setPreview }) => {
+  const [showDeleteMovie, toggleDeleteMovie] = useState(true);
+  const [showEditMovie, toggleEditMovie] = useState(true);
+
   const handleEdit = () => {
-    console.log('Edit button was clicked');
+    toggleEditMovie(true);
   };
 
   const handleDelete = () => {
-    console.log('Delete button was clicked');
+    toggleDeleteMovie(true);
   };
 
   const { title, year, genre, poster_url } = movie;

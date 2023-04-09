@@ -4,11 +4,22 @@
 }
 
 .movies {
-	display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-  gap: 60px 35px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 35px 60px;
 	padding: 24px 0;
+
+	@media only screen and (max-width: 1200px){
+		grid-gap: 35px;
+	}
+
+	@media only screen and (max-width: 768px){
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media only screen and (max-width: 576px){
+		grid-template-columns: repeat(1, 1fr);
+	}
 }
 
 .filterAndSort {

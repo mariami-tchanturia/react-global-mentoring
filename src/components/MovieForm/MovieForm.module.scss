@@ -1,0 +1,21 @@
+
+
+.formItems {
+	display: grid;
+	grid-template-columns: 1.5fr 1fr;
+	grid-gap: 30px;
+	margin-bottom: 30px;
+}
+
+.textarea {
+	margin-bottom: 60px;
+}
+
+.formActions {
+	display: flex;
+	justify-content: flex-end;
+
+	button:first-child {
+		margin-right: 13px;
+	}
+}

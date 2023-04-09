@@ -10,17 +10,25 @@ export const Input = ({
   onChange,
   onKeyUp,
   className,
+  labelText,
 }) => {
   return (
-    <input
-      type={type}
-      name={name}
-      placeholder={placeholderText}
-      className={`${styles[className]} ${styles.input}`}
-      value={value}
-      onChange={onChange && ((e) => onChange(e.target.value))}
-      onKeyUp={onKeyUp}
-    />
+    <div className={styles.inputWrapper}>
+      {labelText && (
+        <label htmlFor={name} className={styles.label}>
+          {labelText}
+        </label>
+      )}
+      <input
+        type={type}
+        name={name}
+        placeholder={placeholderText}
+        className={`${styles[className]} ${styles.input}`}
+        value={value}
+        onChange={onChange && ((e) => onChange(e.target.value))}
+        onKeyUp={onKeyUp}
+      />
+    </div>
   );
 };
 

@@ -9,3 +9,6 @@ export { MovieMenu } from './MovieMenu/MovieMenu';
 export { MovieDetail } from './MovieDetail/MovieDetail';
 export { SortControl } from './SortControl/SortControl';
 export { Footer } from './Footer/Footer';
+export { MovieForm } from './MovieForm/MovieForm';
+export { SuccessMessage } from './SuccessMessage/SuccessMessage';
+export { DeleteConfirmation } from './DeleteConfirmation/DeleteConfirmation';
