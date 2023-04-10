@@ -4,11 +4,14 @@ import { MovieDetail } from '../MovieDetail';
 
 import { MOCKED_MOVIES } from '../../../mocks/mocks';
 
+import { formatGenres } from '../../../helpers/formatGenres';
+import { getMovieDuration } from '../../../helpers/getMovieDuration';
+
 describe('MovieDetail component tests:', () => {
   it('Should render if movie is displayed', () => {
-    render(<MovieDetail movie={MOCKED_MOVIES[0]} />);
+    render(<MovieDetail activeMovie={MOCKED_MOVIES[0]} />);
 
-    const { title, year, genre, plot, rating, duration, poster_url } =
+    const { title, year, genres, plot, rating, duration, poster_url } =
       MOCKED_MOVIES[0];
 
     const renderedPosterUrl = screen.getByTestId('movie-posterurl');
@@ -21,10 +24,10 @@ describe('MovieDetail component tests:', () => {
 
     expect(renderedPosterUrl).toHaveAttribute('src', poster_url);
     expect(renderedTitle).toHaveTextContent(title);
-    expect(renderedYear).toBe(year.toString());
-    expect(renderedGenre).toBe(genre);
+    expect(renderedYear).toBe(year);
+    expect(renderedGenre).toBe(formatGenres(genres));
     expect(renderedPlot).toBe(plot);
-    expect(renderedRating).toBe(rating.toString());
-    expect(renderedDuration).toBe(duration);
+    expect(renderedRating).toBe(rating);
+    expect(renderedDuration).toBe(getMovieDuration(duration));
   });
 });
