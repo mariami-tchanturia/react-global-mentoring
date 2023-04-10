@@ -7,6 +7,8 @@ import { Button } from '../../common/Button/Button';
 import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
 
+import { GENRES_OPTIONS } from '../../constants';
+
 import styles from './MovieForm.module.scss';
 
 const INITIAL_STATE = {
@@ -21,6 +23,7 @@ const INITIAL_STATE = {
 
 export const MovieForm = ({ movie, handleSubmit }) => {
   const [formData, setFormData] = useState(movie || INITIAL_STATE);
+  const [multiSelectValue, setMultiSelectValue] = useState(movie?.genres || []);
 
   const handleReset = () => {
     setFormData({ id, ...INITIAL_STATE });
@@ -28,6 +31,10 @@ export const MovieForm = ({ movie, handleSubmit }) => {
 
   const handleChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleMultiSelectChange = (option) => {
+    // setMultiSelectValue(option);
   };
 
   const { id, title, year, rating, duration, poster_url, plot, genres } =
@@ -65,12 +72,15 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           value={rating}
           onChange={(value) => handleChange('rating', value)}
         />
-        <Input
-          placeholderText='7.6'
-          required={true}
-          label='Genre'
-          value={''}
-          onChange={(value) => handleChange('genres', value)} //Needs to be change logic
+
+        {/* This needs to be styled and changed to controlled */}
+        <Select
+          closeMenuOnSelect={false}
+          className={styles.multiSelect}
+          defaultValue={movie?.genres || []}
+          isMulti
+          options={GENRES_OPTIONS}
+          onChange={handleMultiSelectChange}
         />
         <Input
           placeholderText='minutes'
