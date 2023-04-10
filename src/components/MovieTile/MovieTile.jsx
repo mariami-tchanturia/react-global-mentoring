@@ -2,11 +2,15 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { MovieMenu } from '../../components/MovieMenu/MovieMenu';
+import { DeleteConfirmation } from '../../components/DeleteConfirmation/DeleteConfirmation';
+import { MovieForm } from '../MovieForm/MovieForm';
+import { Dialog } from '../../common';
 
 import styles from './MovieTile.module.scss';
-export const MovieTile = ({ movie, setPreview }) => {
-  const [showDeleteMovie, toggleDeleteMovie] = useState(true);
-  const [showEditMovie, toggleEditMovie] = useState(true);
+
+export const MovieTile = ({ movie, setActiveMovie }) => {
+  const [showDeleteMovie, toggleDeleteMovie] = useState(false);
+  const [showEditMovie, toggleEditMovie] = useState(false);
 
   const handleEdit = () => {
     toggleEditMovie(true);
@@ -32,7 +36,7 @@ export const MovieTile = ({ movie, setPreview }) => {
 
       <div className={styles.movieTile_description}>
         <h2 className={styles.movieTile_title} data-testid='movie-title'>
-          <button onClick={() => setPreview(movie)}>{title}</button>
+          <button onClick={() => setActiveMovie(movie)}>{title}</button>
         </h2>
         <p className={styles.movieTile_genre} data-testid='movie-genre'>
           {genre}
@@ -41,6 +45,26 @@ export const MovieTile = ({ movie, setPreview }) => {
           {year}
         </span>
       </div>
+
+      {showEditMovie && (
+        <Dialog
+          title='Add movie'
+          size='lg'
+          handleClose={() => toggleEditMovie(false)}
+        >
+          <MovieForm />
+        </Dialog>
+      )}
+
+      {showDeleteMovie && (
+        <Dialog
+          title='Add movie'
+          size='sm'
+          handleClose={() => toggleDeleteMovie(false)}
+        >
+          <DeleteConfirmation />
+        </Dialog>
+      )}
     </div>
   );
 };

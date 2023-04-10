@@ -6,7 +6,7 @@ import { SortControl } from '../../components/SortControl/SortControl';
 
 import styles from './MoviesListing.module.scss';
 
-export const MoviesListing = ({ movies, genres, options, setPreview }) => (
+export const MoviesListing = ({ movies, genres, options, setActiveMovie }) => (
   <main className={styles.moviesWrapper}>
     <div className='container-lg'>
       <div className={styles.filterAndSort}>
@@ -25,7 +25,11 @@ export const MoviesListing = ({ movies, genres, options, setPreview }) => (
 
       <div className={styles.movies}>
         {movies.map((movie) => (
-          <MovieTile key={movie.id} movie={movie} setPreview={setPreview} />
+          <MovieTile
+            key={movie.id}
+            movie={movie}
+            setActiveMovie={setActiveMovie}
+          />
         ))}
       </div>
     </div>

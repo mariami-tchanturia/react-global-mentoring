@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 
 import styles from './MovieDetail.module.scss';
 
-export const MovieDetail = ({ movie }) => {
-  const { title, year, genre, plot, rating, duration, poster_url } = movie;
+export const MovieDetail = ({ activeMovie }) => {
+  const { title, year, genre, plot, rating, duration, poster_url } =
+    activeMovie;
 
   return (
     <article className={styles.movideDetail}>
