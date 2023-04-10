@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { Button } from '../../common';
 import { Logo } from '../../components/Logo//Logo';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
@@ -13,6 +15,17 @@ import styles from './Header.module.scss';
 export const Header = () => {
   const [showAddMovie, toggleAddMovie] = useState(false);
   const [showAddMovieSuccess, toggleAddMovieSuccess] = useState(false);
+
+  const handleCreate = (movie) => {
+    const id = uuidv4();
+    const newMovie = { id, ...movie };
+
+    console.log('Simulating Movie Creation');
+    console.log(`This should be new movie: `, newMovie);
+
+    toggleAddMovie(false);
+    toggleAddMovieSuccess(true);
+  };
 
   return (
     <header className={styles.header}>
@@ -43,7 +56,7 @@ export const Header = () => {
           size='lg'
           handleClose={() => toggleAddMovie(false)}
         >
-          <MovieForm handleClose={() => toggleAddMovie(false)} />
+          <MovieForm handleSubmit={handleCreate} />
         </Dialog>
       )}
 

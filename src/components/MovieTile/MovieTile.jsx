@@ -21,7 +21,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
     toggleEditMovie(false);
   };
 
-  const handleDelete = (movie) => {
+  const handleDelete = () => {
     console.log('Simulating Movie Delete');
     console.log(`The ID of movie, that should be removed is: `, id);
 
