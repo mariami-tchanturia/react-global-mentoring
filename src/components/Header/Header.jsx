@@ -43,7 +43,7 @@ export const Header = () => {
           size='lg'
           handleClose={() => toggleAddMovie(false)}
         >
-          <MovieForm />
+          <MovieForm handleClose={() => toggleAddMovie(false)} />
         </Dialog>
       )}
 

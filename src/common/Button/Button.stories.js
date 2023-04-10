@@ -23,6 +23,13 @@ Secondary.args = {
   children: '+ Add Movie',
 };
 
+export const Default = Template.bind({});
+
+Default.args = {
+  className: 'btn--default',
+  children: 'Reset',
+};
+
 export const Transparent = Template.bind({});
 
 Transparent.args = {

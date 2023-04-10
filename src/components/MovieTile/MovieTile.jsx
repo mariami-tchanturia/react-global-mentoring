@@ -48,17 +48,17 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
 
       {showEditMovie && (
         <Dialog
-          title='Add movie'
+          title='Edit movie'
           size='lg'
           handleClose={() => toggleEditMovie(false)}
         >
-          <MovieForm />
+          <MovieForm movie={movie} />
         </Dialog>
       )}
 
       {showDeleteMovie && (
         <Dialog
-          title='Add movie'
+          title='Delete movie'
           size='sm'
           handleClose={() => toggleDeleteMovie(false)}
         >
