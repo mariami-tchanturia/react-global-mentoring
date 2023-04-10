@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './MovieForm.module.scss';
+import Select from 'react-select';
+
 import { Button } from '../../common/Button/Button';
 import { Input } from '../../common/Input/Input';
 import { Textarea } from '../../common/Textarea/Textarea';
 
+import styles from './MovieForm.module.scss';
+
 const INITIAL_STATE = {
-  id: '',
   title: '',
   year: '',
   rating: '',
@@ -17,20 +19,18 @@ const INITIAL_STATE = {
   genres: '',
 };
 
-export const MovieForm = ({ movie, handleSubmit, handleClose }) => {
+export const MovieForm = ({ movie, handleSubmit }) => {
   const [formData, setFormData] = useState(movie || INITIAL_STATE);
 
   const handleReset = () => {
-    setFormData(INITIAL_STATE);
+    setFormData({ id, ...INITIAL_STATE });
   };
 
   const handleChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  console.log({ movie });
-
-  const { id, title, year, rating, duration, poster_url, plot, genre } =
+  const { id, title, year, rating, duration, poster_url, plot, genres } =
     formData;
 
   return (
@@ -39,7 +39,7 @@ export const MovieForm = ({ movie, handleSubmit, handleClose }) => {
         <Input
           placeholderText='Movie title'
           required={true}
-          label='Overview'
+          label='Title'
           value={title}
           onChange={(value) => handleChange('title', value)}
         />
@@ -70,7 +70,7 @@ export const MovieForm = ({ movie, handleSubmit, handleClose }) => {
           required={true}
           label='Genre'
           value={''}
-          onChange={(value) => handleChange('genre', value)}
+          onChange={(value) => handleChange('genres', value)} //Needs to be change logic
         />
         <Input
           placeholderText='minutes'
@@ -95,7 +95,7 @@ export const MovieForm = ({ movie, handleSubmit, handleClose }) => {
         <Button className='btn--default' onClick={handleReset}>
           Reset
         </Button>
-        <Button className='btn--primary' onClick={handleSubmit}>
+        <Button className='btn--primary' onClick={() => handleSubmit(formData)}>
           Submit
         </Button>
       </div>

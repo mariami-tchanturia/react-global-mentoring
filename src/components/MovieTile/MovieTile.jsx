@@ -14,15 +14,21 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
   const [showEditMovie, toggleEditMovie] = useState(false);
   const [showDeleteMovie, toggleDeleteMovie] = useState(false);
 
-  const handleEdit = () => {
-    toggleEditMovie(true);
+  const handleupdate = (movie) => {
+    console.log('Simulating Movie Update');
+    console.log(`This should be new movie: `, movie);
+
+    toggleEditMovie(false);
   };
 
-  const handleDelete = () => {
-    toggleDeleteMovie(true);
+  const handleDelete = (movie) => {
+    console.log('Simulating Movie Delete');
+    console.log(`The ID of movie, that should be removed is: `, id);
+
+    toggleDeleteMovie(false);
   };
 
-  const { title, year, genres, poster_url } = movie;
+  const { id, title, year, genres, poster_url } = movie;
 
   return (
     <div className={styles.movieTile}>
@@ -33,7 +39,10 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
           data-testid='movie-posterurl'
         />
 
-        <MovieMenu handleEdit={handleEdit} handleDelete={handleDelete} />
+        <MovieMenu
+          handleEdit={() => toggleEditMovie(true)}
+          handleDelete={() => toggleDeleteMovie(true)}
+        />
       </div>
 
       <div className={styles.movieTile_description}>
@@ -54,7 +63,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
           size='lg'
           handleClose={() => toggleEditMovie(false)}
         >
-          <MovieForm movie={movie} />
+          <MovieForm movie={movie} handleSubmit={handleupdate} />
         </Dialog>
       )}
 
@@ -64,7 +73,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
           size='sm'
           handleClose={() => toggleDeleteMovie(false)}
         >
-          <DeleteConfirmation />
+          <DeleteConfirmation handleDelete={handleDelete} />
         </Dialog>
       )}
     </div>

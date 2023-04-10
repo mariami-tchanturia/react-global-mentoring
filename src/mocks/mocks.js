@@ -2,8 +2,8 @@ export const MOCKED_MOVIES = [
   {
     id: 1,
     title: 'Star Wars: The Last Jedi',
-    year: 2017,
-    rating: 8.9,
+    year: '2017',
+    rating: '8.9',
     duration: '154',
     genres: ['Action', 'Adventure', 'Fantasy'],
     plot: 'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
@@ -13,8 +13,8 @@ export const MOCKED_MOVIES = [
   {
     id: 2,
     title: 'Black Swan',
-    year: 2010,
-    rating: 6.8,
+    year: '2010',
+    rating: '6.8',
     duration: '51',
     genres: ['Drama', 'Thriller'],
     plot: 'A committed dancer wins the lead role in a production of Tchaikovskys "Swan Lake" only to find herself struggling to maintain her sanity.',
@@ -24,8 +24,8 @@ export const MOCKED_MOVIES = [
   {
     id: 3,
     title: 'Star Wars: The Last Jedi',
-    year: 2017,
-    rating: 8.9,
+    year: '2017',
+    rating: '8.9',
     duration: '127',
     genres: ['Action', 'Adventure', 'Fantasy'],
     plot: 'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
@@ -35,8 +35,8 @@ export const MOCKED_MOVIES = [
   {
     id: 4,
     title: 'Black Swan',
-    year: 2010,
-    rating: 6.8,
+    year: '2010',
+    rating: '6.8',
     duration: '200',
     genres: ['Drama', 'Thriller'],
     plot: 'A committed dancer wins the lead role in a production of Tchaikovskys "Swan Lake" only to find herself struggling to maintain her sanity.',
