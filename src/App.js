@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className='App'>
-      {/* <Counter initialValue={0} /> */}
+      <Counter initialValue={0} />
 
       {activeMovie ? (
         <MovieDetailPage
