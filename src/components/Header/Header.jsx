@@ -5,12 +5,14 @@ import { Button } from '../../common';
 import { Logo } from '../../components/Logo//Logo';
 import { SearchForm } from '../../components/SearchForm/SearchForm';
 import { MovieForm } from '../../components/MovieForm/MovieForm';
+import { SuccessMessage } from '../../components/SuccessMessage/SuccessMessage';
 import { Dialog } from '../../common/Dialog/Dialog';
 
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [showAddMovie, toggleAddMovie] = useState(false);
+  const [showAddMovieSuccess, toggleAddMovieSuccess] = useState(false);
 
   return (
     <header className={styles.header}>
@@ -42,6 +44,12 @@ export const Header = () => {
           handleClose={() => toggleAddMovie(false)}
         >
           <MovieForm />
+        </Dialog>
+      )}
+
+      {showAddMovieSuccess && (
+        <Dialog size='sm' handleClose={() => toggleAddMovieSuccess(false)}>
+          <SuccessMessage />
         </Dialog>
       )}
     </header>

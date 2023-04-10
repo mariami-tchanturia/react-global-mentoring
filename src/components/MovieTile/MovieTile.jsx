@@ -9,8 +9,8 @@ import { Dialog } from '../../common';
 import styles from './MovieTile.module.scss';
 
 export const MovieTile = ({ movie, setActiveMovie }) => {
-  const [showDeleteMovie, toggleDeleteMovie] = useState(false);
   const [showEditMovie, toggleEditMovie] = useState(false);
+  const [showDeleteMovie, toggleDeleteMovie] = useState(false);
 
   const handleEdit = () => {
     toggleEditMovie(true);
