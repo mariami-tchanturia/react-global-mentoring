@@ -41,7 +41,11 @@ export const MovieForm = ({ movie, handleSubmit }) => {
     formData;
 
   return (
-    <form className={styles.movieForm} onSubmit={handleSubmit}>
+    <form
+      className={styles.movieForm}
+      onSubmit={handleSubmit}
+      data-testid='movie-form'
+    >
       <div className={styles.formItems}>
         <Input
           placeholderText='Movie title'

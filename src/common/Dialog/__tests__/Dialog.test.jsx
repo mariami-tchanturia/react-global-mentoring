@@ -18,7 +18,7 @@ describe('Dialog component tests:', () => {
     expect(screen.getByText(new RegExp(title, 'i'))).toBeInTheDocument();
   });
 
-  it('Should call modal handleClose callback', function () {
+  it('Should call modal handleClose callback', () => {
     document.body.innerHTML = '<div id="modal" />';
     const mockHandleClose = jest.fn();
 
