@@ -16,7 +16,11 @@ export const Dialog = ({ title, children, handleClose, size }) => {
     <FocusTrap>
       <div className={styles.overlay}>
         <div className={`${styles.dialog} ${styles[sizeClass]}`}>
-          <Button className='btn--transparent' onClick={handleClose}>
+          <Button
+            className='btn--transparent'
+            onClick={handleClose}
+            data-testid='modal-close'
+          >
             <img src={closeIcon} alt='Close the modal' />
           </Button>
           {title && <h1 className={styles.dialog_title}>{title}</h1>}
