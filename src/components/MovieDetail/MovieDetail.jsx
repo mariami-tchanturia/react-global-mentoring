@@ -2,8 +2,11 @@ import PropTypes from 'prop-types';
 
 import styles from './MovieDetail.module.scss';
 
+import { getMovieDuration } from '../../helpers/getMovieDuration';
+import { formatGenres } from '../../helpers/formatGenres';
+
 export const MovieDetail = ({ activeMovie }) => {
-  const { title, year, genre, plot, rating, duration, poster_url } =
+  const { title, year, genres, plot, rating, duration, poster_url } =
     activeMovie;
 
   return (
@@ -27,7 +30,7 @@ export const MovieDetail = ({ activeMovie }) => {
           </span>
         </h1>
         <p className={styles.movideDetail_genre} data-testid='movie-genre'>
-          {genre}
+          {formatGenres(genres)}
         </p>
         <p>
           <span
@@ -40,7 +43,7 @@ export const MovieDetail = ({ activeMovie }) => {
             className={styles.movideDetail_duration}
             data-testid='movie-duration'
           >
-            {duration}
+            {getMovieDuration(duration)}
           </span>
         </p>
 

@@ -4,8 +4,8 @@ export const MOCKED_MOVIES = [
     title: 'Star Wars: The Last Jedi',
     year: 2017,
     rating: 8.9,
-    duration: '2h 34m',
-    genre: 'Action, Adventure, Fantasy',
+    duration: '154',
+    genres: ['Action', 'Adventure', 'Fantasy'],
     plot: 'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
     poster_url:
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_SX300.jpg',
@@ -15,8 +15,8 @@ export const MOCKED_MOVIES = [
     title: 'Black Swan',
     year: 2010,
     rating: 6.8,
-    duration: '2h 34m',
-    genre: 'Drama, Thriller',
+    duration: '51',
+    genres: ['Drama', 'Thriller'],
     plot: 'A committed dancer wins the lead role in a production of Tchaikovskys "Swan Lake" only to find herself struggling to maintain her sanity.',
     poster_url:
       'https://images-na.ssl-images-amazon.com/images/M/MV5BNzY2NzI4OTE5MF5BMl5BanBnXkFtZTcwMjMyNDY4Mw@@._V1_SX300.jpg',
@@ -26,8 +26,8 @@ export const MOCKED_MOVIES = [
     title: 'Star Wars: The Last Jedi',
     year: 2017,
     rating: 8.9,
-    duration: '2h 34m',
-    genre: 'Action, Adventure, Fantasy',
+    duration: '127',
+    genres: ['Action', 'Adventure', 'Fantasy'],
     plot: 'Rey develops her newly discovered abilities with the guidance of Luke Skywalker, who is unsettled by the strength of her powers. Meanwhile, the Resistance prepares to do battle with the First Order.',
     poster_url:
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_SX300.jpg',
@@ -37,8 +37,8 @@ export const MOCKED_MOVIES = [
     title: 'Black Swan',
     year: 2010,
     rating: 6.8,
-    duration: '2h 34m',
-    genre: 'Drama, Thriller',
+    duration: '200',
+    genres: ['Drama', 'Thriller'],
     plot: 'A committed dancer wins the lead role in a production of Tchaikovskys "Swan Lake" only to find herself struggling to maintain her sanity.',
     poster_url:
       'https://images-na.ssl-images-amazon.com/images/M/MV5BNzY2NzI4OTE5MF5BMl5BanBnXkFtZTcwMjMyNDY4Mw@@._V1_SX300.jpg',

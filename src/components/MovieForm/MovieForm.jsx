@@ -14,7 +14,7 @@ const INITIAL_STATE = {
   duration: '',
   poster_url: '',
   plot: '',
-  genre: '',
+  genres: '',
 };
 
 export const MovieForm = ({ movie, handleSubmit, handleClose }) => {
@@ -69,7 +69,7 @@ export const MovieForm = ({ movie, handleSubmit, handleClose }) => {
           placeholderText='7.6'
           required={true}
           label='Genre'
-          value={genre}
+          value={''}
           onChange={(value) => handleChange('genre', value)}
         />
         <Input

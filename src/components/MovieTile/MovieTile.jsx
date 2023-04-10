@@ -6,6 +6,8 @@ import { DeleteConfirmation } from '../../components/DeleteConfirmation/DeleteCo
 import { MovieForm } from '../MovieForm/MovieForm';
 import { Dialog } from '../../common';
 
+import { formatGenres } from '../../helpers/formatGenres';
+
 import styles from './MovieTile.module.scss';
 
 export const MovieTile = ({ movie, setActiveMovie }) => {
@@ -20,7 +22,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
     toggleDeleteMovie(true);
   };
 
-  const { title, year, genre, poster_url } = movie;
+  const { title, year, genres, poster_url } = movie;
 
   return (
     <div className={styles.movieTile}>
@@ -39,7 +41,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
           <button onClick={() => setActiveMovie(movie)}>{title}</button>
         </h2>
         <p className={styles.movieTile_genre} data-testid='movie-genre'>
-          {genre}
+          {formatGenres(genres)}
         </p>
         <span className={styles.movieTile_releaseDate} data-testid='movie-year'>
           {year}
