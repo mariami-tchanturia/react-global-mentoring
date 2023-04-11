@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { Button } from '../../common/Button/Button';
+import { Button } from '../../common';
 import styles from './MovieMenu.module.scss';
 
 export const MovieMenu = ({ handleEdit, handleDelete }) => {

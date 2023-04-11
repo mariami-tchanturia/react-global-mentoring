@@ -1,4 +1,4 @@
-import { MovieForm } from '../../components';
+import { MovieForm } from './MovieForm';
 
 import { MOCKED_MOVIES } from '../../mocks/mocks';
 
