@@ -8,18 +8,18 @@ export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
   return (
     <nav className={styles.genreSelect}>
       <ul className={styles.genreSelect__list}>
-        {genres.map(({ id, name }) => (
-          <li key={id}>
+        {genres.map(({ value, label }) => (
+          <li key={value}>
             <a
               href='#'
-              className={`${currentGenre === name ? styles.active : ''}`}
-              title={name}
+              className={`${currentGenre === label ? styles.active : ''}`}
+              title={label}
               onClick={() => {
-                onChange(name);
-                setCurrentGenre(name);
+                onChange(label);
+                setCurrentGenre(label);
               }}
             >
-              {name}
+              {label}
             </a>
           </li>
         ))}

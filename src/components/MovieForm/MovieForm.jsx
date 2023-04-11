@@ -18,12 +18,11 @@ const INITIAL_STATE = {
   duration: '',
   poster_url: '',
   plot: '',
-  genres: '',
+  genres: [],
 };
 
 export const MovieForm = ({ movie, handleSubmit }) => {
   const [formData, setFormData] = useState(movie || INITIAL_STATE);
-  const [multiSelectValue, setMultiSelectValue] = useState(movie?.genres || []);
 
   const handleReset = () => {
     setFormData({ id, ...INITIAL_STATE });
@@ -31,10 +30,6 @@ export const MovieForm = ({ movie, handleSubmit }) => {
 
   const handleChange = (name, value) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleMultiSelectChange = (option) => {
-    // setMultiSelectValue(option);
   };
 
   const { id, title, year, rating, duration, poster_url, plot, genres } =
@@ -76,15 +71,13 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           value={rating}
           onChange={(value) => handleChange('rating', value)}
         />
-
-        {/* This needs to be styled and changed to controlled */}
         <Select
           closeMenuOnSelect={false}
           className={styles.multiSelect}
-          defaultValue={movie?.genres || []}
+          defaultValue={movie?.genres || genres}
           isMulti
-          options={GENRES_OPTIONS}
-          onChange={handleMultiSelectChange}
+          options={GENRES_OPTIONS.filter((item) => item.label !== 'All')}
+          onChange={(option) => handleChange('genres', option)}
         />
         <Input
           placeholderText='minutes'

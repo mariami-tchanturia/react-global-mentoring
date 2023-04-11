@@ -9,7 +9,7 @@ describe('GenreSelect component tests:', () => {
   it('Should render all genres passed in props', () => {
     render(<GenreSelect genres={GENRES_OPTIONS} />);
 
-    const passedGenreNames = GENRES_OPTIONS.map((genre) => genre.name);
+    const passedGenreNames = GENRES_OPTIONS.map((genre) => genre.label);
     const renderedGenreNames = screen
       .getAllByRole('listitem')
       .map((item) => item.textContent);
