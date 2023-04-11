@@ -30,8 +30,8 @@ export const Header = () => {
           + Add Movie
         </Button>
       </div>
-      <div className={`container-lg`}>
-        <div className={`${styles.titleSearchWrapper} container-md`}>
+      <div className='container-lg'>
+        <div className='container-md'>
           <h1 className={styles.header__title}>Find your movie</h1>
           <SearchForm
             initialSearchQuery='Initial Query'
