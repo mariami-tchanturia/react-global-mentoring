@@ -1,12 +1,9 @@
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
-
 import FocusTrap from 'focus-trap-react';
 
 import { Button } from '../../common';
-
 import styles from './Dialog.module.scss';
-
 import closeIcon from '../../assets/close-icon.png';
 
 export const Dialog = ({ title, children, handleClose, size }) => {

@@ -1,6 +1,8 @@
-import { MovieForm } from '../../components/MovieForm/MovieForm';
-import { DeleteConfirmation } from '../../components/DeleteConfirmation/DeleteConfirmation';
-import { SuccessMessage } from '../../components/SuccessMessage/SuccessMessage';
+import {
+  MovieForm,
+  DeleteConfirmation,
+  SuccessMessage,
+} from '../../components';
 import { Dialog } from '../';
 
 import { MOCKED_MOVIES } from '../../mocks/mocks';

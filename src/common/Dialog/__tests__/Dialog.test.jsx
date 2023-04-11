@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { Dialog } from '../../';
-import { MovieForm } from '../../../components/MovieForm/MovieForm';
+import { MovieForm } from '../../../components';
 
 describe('Dialog component tests:', () => {
   it('Should render correct title', () => {

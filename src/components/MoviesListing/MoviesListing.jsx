@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 
-import { GenreSelect } from '../../components/GenreSelect/GenreSelect';
-import { MovieTile } from '../../components/MovieTile/MovieTile';
-import { SortControl } from '../../components/SortControl/SortControl';
-
+import { GenreSelect, MovieTile, SortControl } from '../../components';
 import styles from './MoviesListing.module.scss';
 
 export const MoviesListing = ({ movies, genres, options, setActiveMovie }) => (

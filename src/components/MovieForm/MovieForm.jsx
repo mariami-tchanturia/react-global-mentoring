@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import Select from 'react-select';
 
-import { Button } from '../../common/Button/Button';
-import { Input } from '../../common/Input/Input';
-import { Textarea } from '../../common/Textarea/Textarea';
-
+import { Button, Input, Textarea } from '../../common';
 import { GENRES_OPTIONS } from '../../constants';
-
 import styles from './MovieForm.module.scss';
 
 const INITIAL_STATE = {
@@ -36,11 +31,7 @@ export const MovieForm = ({ movie, handleSubmit }) => {
     formData;
 
   return (
-    <form
-      className={styles.movieForm}
-      onSubmit={handleSubmit}
-      data-testid='movie-form'
-    >
+    <form onSubmit={handleSubmit} data-testid='movie-form'>
       <div className={styles.formItems}>
         <Input
           placeholderText='Movie title'

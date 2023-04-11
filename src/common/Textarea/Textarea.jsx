@@ -23,7 +23,7 @@ export const Textarea = ({
         className={`${styles.textarea} ${styles[className]}`}
         required={required}
         value={value}
-        onChange={onChange && ((e) => onChange(e.target.value))}
+        onChange={onChange && (({ target }) => onChange(target.value))}
       />
     </div>
   );

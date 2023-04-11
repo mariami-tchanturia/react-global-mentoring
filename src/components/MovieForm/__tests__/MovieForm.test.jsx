@@ -2,10 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import { MovieForm } from '../MovieForm';
-
 import { MOCKED_MOVIES } from '../../../mocks/mocks';
-
-import { getMovieDuration } from '../../../helpers/getMovieDuration';
 
 describe('MovieForm component tests', function () {
   it('Should render MovieForm', () => {

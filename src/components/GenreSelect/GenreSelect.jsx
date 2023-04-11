@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import styles from './GenreSelect.module.scss';
 
 export const GenreSelect = ({ genres, defaultGenre, onChange }) => {

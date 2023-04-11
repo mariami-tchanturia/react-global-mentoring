@@ -25,7 +25,7 @@ export const Input = ({
         placeholder={placeholderText}
         className={`${styles[className]} ${styles.input}`}
         value={value}
-        onChange={onChange && ((e) => onChange(e.target.value))}
+        onChange={onChange && (({ target }) => onChange(target.value))}
         onKeyUp={onKeyUp}
       />
     </div>

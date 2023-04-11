@@ -1,7 +1,7 @@
 import './App.scss';
 import { useState } from 'react';
 
-import { Counter } from './components/Counter/Counter';
+import { Counter } from './components';
 
 import MovieListPage from './pages/MovieListPage/MovieListPage';
 import MovieDetailPage from './pages/MovieDetailPage/MovieDetailPage';

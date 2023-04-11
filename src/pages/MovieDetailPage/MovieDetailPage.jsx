@@ -1,8 +1,5 @@
-import { MoviesListing } from '../../components/MoviesListing/MoviesListing';
-import { Footer } from '../../components/Footer/Footer';
+import { MoviesListing, MovieDetail, Footer, Logo } from '../../components';
 import { Button } from '../../common';
-import { Logo } from '../../components/Logo//Logo';
-import { MovieDetail } from '../../components/MovieDetail/MovieDetail';
 
 import styles from './MovieDetailPage.module.scss';
 

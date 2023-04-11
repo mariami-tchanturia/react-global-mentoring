@@ -1,6 +1,4 @@
-import { MoviesListing } from '../../components/MoviesListing/MoviesListing';
-import { Header } from '../../components/Header/Header';
-import { Footer } from '../../components/Footer/Footer';
+import { Header, Footer, MoviesListing } from '../../components';
 
 import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
 

@@ -1,6 +1,6 @@
 import styles from './DeleteConfirmation.module.scss';
 
-import { Button } from '../../common/Button/Button';
+import { Button } from '../../common';
 
 export const DeleteConfirmation = ({ handleDelete }) => (
   <div className={styles.deleteConfirmation}>

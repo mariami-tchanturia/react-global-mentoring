@@ -1,5 +1,4 @@
 import { Button } from './Button';
-
 import searchIcon from '../../assets/search-icon.png';
 
 export default {

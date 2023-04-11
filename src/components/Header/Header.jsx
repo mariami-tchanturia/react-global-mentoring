@@ -1,15 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import { v4 as uuidv4 } from 'uuid';
 
-import { Button } from '../../common';
-import { Logo } from '../../components/Logo//Logo';
-import { SearchForm } from '../../components/SearchForm/SearchForm';
-import { MovieForm } from '../../components/MovieForm/MovieForm';
-import { SuccessMessage } from '../../components/SuccessMessage/SuccessMessage';
-import { Dialog } from '../../common/Dialog/Dialog';
-
+import { Logo, SearchForm, MovieForm, SuccessMessage } from '../../components';
+import { Button, Dialog } from '../../common';
 import styles from './Header.module.scss';
 
 export const Header = () => {
