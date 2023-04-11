@@ -77,6 +77,20 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
 };
 
 MovieTile.propTypes = {
-  setPreview: PropTypes.func,
-  movie: PropTypes.object,
+  setActiveMovie: PropTypes.func,
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
+      })
+    ),
+    year: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    plot: PropTypes.string.isRequired,
+    poster_url: PropTypes.string.isRequired,
+  }),
 };

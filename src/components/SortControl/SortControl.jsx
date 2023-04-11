@@ -41,7 +41,12 @@ export const SortControl = ({ options, label, defaultOption, onSort }) => {
 };
 
 SortControl.propTypes = {
-  options: PropTypes.arrayOf(PropTypes.object),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
   label: PropTypes.string,
   defaultOption: PropTypes.string,
   onSort: PropTypes.func,

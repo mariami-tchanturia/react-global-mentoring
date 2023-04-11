@@ -40,6 +40,7 @@ Input.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   onKeyUp: PropTypes.func,
+  labelText: PropTypes.string,
 };
 
 Input.defaultProps = {

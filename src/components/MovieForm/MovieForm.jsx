@@ -17,7 +17,7 @@ const INITIAL_STATE = {
 };
 
 export const MovieForm = ({ movie, handleSubmit }) => {
-  const [formData, setFormData] = useState(movie || INITIAL_STATE);
+  const [formData, setFormData] = useState(movie);
 
   const handleReset = () => {
     setFormData({ id, ...INITIAL_STATE });
@@ -101,8 +101,26 @@ export const MovieForm = ({ movie, handleSubmit }) => {
   );
 };
 
-MovieForm.propTypes = {};
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
+      })
+    ),
+    year: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    plot: PropTypes.string.isRequired,
+    poster_url: PropTypes.string.isRequired,
+  }),
+
+  handleSubmit: PropTypes.func,
+};
 
 MovieForm.defaultProps = {
-  initialState: {},
+  movie: INITIAL_STATE,
 };

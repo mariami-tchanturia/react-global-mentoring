@@ -63,7 +63,4 @@ export const Header = () => {
   );
 };
 
-Header.propTypes = {
-  preview: PropTypes.object,
-  setPreview: PropTypes.func,
-};
+Header.propTypes = {};

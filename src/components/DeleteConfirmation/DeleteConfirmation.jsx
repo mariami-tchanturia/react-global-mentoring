@@ -1,6 +1,7 @@
-import styles from './DeleteConfirmation.module.scss';
+import PropTypes from 'prop-types';
 
 import { Button } from '../../common';
+import styles from './DeleteConfirmation.module.scss';
 
 export const DeleteConfirmation = ({ handleDelete }) => (
   <div className={styles.deleteConfirmation}>
@@ -12,3 +13,7 @@ export const DeleteConfirmation = ({ handleDelete }) => (
     </Button>
   </div>
 );
+
+DeleteConfirmation.propTypes = {
+  handleDelete: PropTypes.func,
+};

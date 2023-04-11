@@ -1,9 +1,8 @@
 import PropTypes from 'prop-types';
 
-import styles from './MovieDetail.module.scss';
-
 import { getMovieDuration } from '../../helpers/getMovieDuration';
 import { formatGenres } from '../../helpers/formatGenres';
+import styles from './MovieDetail.module.scss';
 
 export const MovieDetail = ({ activeMovie }) => {
   const { title, year, genres, plot, rating, duration, poster_url } =
@@ -56,5 +55,19 @@ export const MovieDetail = ({ activeMovie }) => {
 };
 
 MovieDetail.propTypes = {
-  movie: PropTypes.object,
+  activeMovie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
+      })
+    ),
+    year: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    plot: PropTypes.string.isRequired,
+    poster_url: PropTypes.string.isRequired,
+  }),
 };

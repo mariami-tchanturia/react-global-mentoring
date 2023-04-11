@@ -34,8 +34,34 @@ export const MoviesListing = ({ movies, genres, options, setActiveMovie }) => (
 );
 
 MoviesListing.propTypes = {
-  setPreview: PropTypes.func,
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  genres: PropTypes.arrayOf(PropTypes.object).isRequired,
-  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  setActiveMovie: PropTypes.func,
+  movies: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      genres: PropTypes.arrayOf(
+        PropTypes.shape({
+          value: PropTypes.number.isRequired,
+          label: PropTypes.string.isRequired,
+        })
+      ),
+      year: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      duration: PropTypes.string.isRequired,
+      plot: PropTypes.string.isRequired,
+      poster_url: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
 };

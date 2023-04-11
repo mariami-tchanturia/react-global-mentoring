@@ -32,7 +32,12 @@ export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
 GenreSelect.propTypes = {
   defaultGenre: PropTypes.string,
   onChange: PropTypes.func,
-  genres: PropTypes.array,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 GenreSelect.defaultProps = {
