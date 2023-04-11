@@ -13,7 +13,7 @@ export const Textarea = ({
   onChange,
 }) => {
   return (
-    <div className={styles.textareaWrapper}>
+    <div>
       {labelText && <label htmlFor={name}>{labelText}</label>}
       <textarea
         type='text'
