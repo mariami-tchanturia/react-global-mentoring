@@ -27,11 +27,17 @@ export const MovieForm = ({ movie, handleSubmit }) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    handleSubmit(formData);
+  };
+
   const { id, title, year, rating, duration, poster_url, plot, genres } =
     formData;
 
   return (
-    <form onSubmit={handleSubmit} data-testid='movie-form'>
+    <form onSubmit={onSubmit} data-testid='movie-form'>
       <div className={styles.formItems}>
         <Input
           placeholderText='Movie title'
@@ -93,7 +99,7 @@ export const MovieForm = ({ movie, handleSubmit }) => {
         <Button className='btn--default' onClick={handleReset}>
           Reset
         </Button>
-        <Button className='btn--primary' onClick={() => handleSubmit(formData)}>
+        <Button className='btn--primary' type='submit'>
           Submit
         </Button>
       </div>
