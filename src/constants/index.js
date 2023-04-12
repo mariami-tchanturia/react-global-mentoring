@@ -1,23 +1,23 @@
 export const GENRES_OPTIONS = [
   {
-    id: 1,
-    name: 'All',
+    value: 1,
+    label: 'All',
   },
   {
-    id: 2,
-    name: 'Documentary',
+    value: 2,
+    label: 'Documentary',
   },
   {
-    id: 3,
-    name: 'Comedy',
+    value: 3,
+    label: 'Comedy',
   },
   {
-    id: 4,
-    name: 'Horror',
+    value: 4,
+    label: 'Horror',
   },
   {
-    id: 5,
-    name: 'Crime',
+    value: 5,
+    label: 'Crime',
   },
 ];
 

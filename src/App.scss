@@ -18,11 +18,19 @@ $light-grey: #555;
 .container-lg {
   margin-left: auto;
   margin-right: auto;
-  width: 1080px;
+  max-width: 1080px;
+	width: 100%;
 }
 
 .container-md {
   margin-left: auto;
   margin-right: auto;
-  width: 960px;
+  max-width: 960px;
+	width: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+	.container-lg, .container-md {
+		padding: 0 40px;
+	}
 }

@@ -1,5 +1,4 @@
 import { Button } from './Button';
-
 import searchIcon from '../../assets/search-icon.png';
 
 export default {
@@ -21,6 +20,13 @@ export const Secondary = Template.bind({});
 Secondary.args = {
   className: 'btn--secondary',
   children: '+ Add Movie',
+};
+
+export const Default = Template.bind({});
+
+Default.args = {
+  className: 'btn--default',
+  children: 'Reset',
 };
 
 export const Transparent = Template.bind({});

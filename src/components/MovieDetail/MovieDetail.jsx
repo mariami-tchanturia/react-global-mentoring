@@ -1,9 +1,12 @@
 import PropTypes from 'prop-types';
 
+import { getMovieDuration } from '../../helpers/getMovieDuration';
+import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieDetail.module.scss';
 
-export const MovieDetail = ({ movie }) => {
-  const { title, year, genre, plot, rating, duration, poster_url } = movie;
+export const MovieDetail = ({ activeMovie }) => {
+  const { title, year, genres, plot, rating, duration, poster_url } =
+    activeMovie;
 
   return (
     <article className={styles.movideDetail}>
@@ -26,7 +29,7 @@ export const MovieDetail = ({ movie }) => {
           </span>
         </h1>
         <p className={styles.movideDetail_genre} data-testid='movie-genre'>
-          {genre}
+          {formatGenres(genres)}
         </p>
         <p>
           <span
@@ -39,7 +42,7 @@ export const MovieDetail = ({ movie }) => {
             className={styles.movideDetail_duration}
             data-testid='movie-duration'
           >
-            {duration}
+            {getMovieDuration(duration)}
           </span>
         </p>
 
@@ -52,5 +55,19 @@ export const MovieDetail = ({ movie }) => {
 };
 
 MovieDetail.propTypes = {
-  movie: PropTypes.object,
+  activeMovie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        label: PropTypes.string.isRequired,
+      })
+    ),
+    year: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    duration: PropTypes.string.isRequired,
+    plot: PropTypes.string.isRequired,
+    poster_url: PropTypes.string.isRequired,
+  }),
 };

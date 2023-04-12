@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import styles from './GenreSelect.module.scss';
 
 export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
@@ -8,18 +9,18 @@ export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
   return (
     <nav className={styles.genreSelect}>
       <ul className={styles.genreSelect__list}>
-        {genres.map(({ id, name }) => (
-          <li key={id}>
+        {genres.map(({ value, label }) => (
+          <li key={value}>
             <a
               href='#'
-              className={`${currentGenre === name ? styles.active : ''}`}
-              title={name}
+              className={`${currentGenre === label ? styles.active : ''}`}
+              title={label}
               onClick={() => {
-                onChange(name);
-                setCurrentGenre(name);
+                onChange(label);
+                setCurrentGenre(label);
               }}
             >
-              {name}
+              {label}
             </a>
           </li>
         ))}
@@ -31,7 +32,12 @@ export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
 GenreSelect.propTypes = {
   defaultGenre: PropTypes.string,
   onChange: PropTypes.func,
-  genres: PropTypes.array,
+  genres: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired,
+    })
+  ),
 };
 
 GenreSelect.defaultProps = {

@@ -1,33 +1,36 @@
-import PropTypes from 'prop-types';
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-import { Button } from '../../common';
-import { Logo } from '../../components/Logo//Logo';
-import { MovieDetail } from '../../components/MovieDetail/MovieDetail';
-import { SearchForm } from '../../components/SearchForm/SearchForm';
-
+import { Logo, SearchForm, MovieForm, SuccessMessage } from '../../components';
+import { Button, Dialog } from '../../common';
 import styles from './Header.module.scss';
 
-import searchIcon from '../../assets/search-icon.png';
+export const Header = () => {
+  const [showAddMovie, toggleAddMovie] = useState(false);
+  const [showAddMovieSuccess, toggleAddMovieSuccess] = useState(false);
 
-export const Header = ({ preview, setPreview }) => (
-  <header className={styles.header}>
-    <div className={`${styles.logoButtonWrapper} container-lg`}>
-      <Logo />
+  const handleCreate = (movie) => {
+    const id = uuidv4();
+    const newMovie = { id, ...movie };
 
-      {preview ? (
-        <Button className='btn--transparent' onClick={() => setPreview(null)}>
-          <img src={searchIcon} alt='Switch to Search mode' />
+    console.log('Simulating Movie Creation');
+    console.log(`This should be new movie: `, newMovie);
+
+    toggleAddMovie(false);
+    toggleAddMovieSuccess(true);
+  };
+
+  return (
+    <header className={styles.header}>
+      <div className={`${styles.logoButtonWrapper} container-lg`}>
+        <Logo />
+
+        <Button className='btn--secondary' onClick={() => toggleAddMovie(true)}>
+          + Add Movie
         </Button>
-      ) : (
-        <Button className='btn--secondary'>+ Add Movie</Button>
-      )}
-    </div>
-
-    <div className={`container-lg`}>
-      {preview ? (
-        <MovieDetail movie={preview} />
-      ) : (
-        <div className={`${styles.titleSearchWrapper} container-md`}>
+      </div>
+      <div className='container-lg'>
+        <div className='container-md'>
           <h1 className={styles.header__title}>Find your movie</h1>
           <SearchForm
             initialSearchQuery='Initial Query'
@@ -38,12 +41,23 @@ export const Header = ({ preview, setPreview }) => (
             }
           />
         </div>
-      )}
-    </div>
-  </header>
-);
+      </div>
 
-Header.propTypes = {
-  preview: PropTypes.object,
-  setPreview: PropTypes.func,
+      {showAddMovie && (
+        <Dialog
+          title='Add movie'
+          size='lg'
+          handleClose={() => toggleAddMovie(false)}
+        >
+          <MovieForm handleSubmit={handleCreate} />
+        </Dialog>
+      )}
+
+      {showAddMovieSuccess && (
+        <Dialog size='sm' handleClose={() => toggleAddMovieSuccess(false)}>
+          <SuccessMessage />
+        </Dialog>
+      )}
+    </header>
+  );
 };

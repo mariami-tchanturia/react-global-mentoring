@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { GenreSelect } from './GenreSelect';
 
+import { GenreSelect } from './GenreSelect';
 import { GENRES_OPTIONS } from '../../constants';
 
 export default {
