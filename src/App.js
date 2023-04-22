@@ -36,8 +36,6 @@ function App() {
       .finally(() => setLoading(false));
   }, [sortCriterion, searchQuery, activeGenre]);
 
-  console.log(movies);
-
   return (
     <div className='App'>
       {/* <Counter initialValue={0} /> */}
