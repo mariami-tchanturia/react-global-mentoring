@@ -8,11 +8,11 @@ import styles from './MovieForm.module.scss';
 
 const INITIAL_STATE = {
   title: '',
-  year: '',
-  rating: '',
-  duration: '',
-  poster_url: '',
-  plot: '',
+  release_date: '',
+  vote_average: '',
+  runtime: '',
+  poster_path: '',
+  overview: '',
   genres: [],
 };
 
@@ -33,8 +33,16 @@ export const MovieForm = ({ movie, handleSubmit }) => {
     handleSubmit(formData);
   };
 
-  const { id, title, year, rating, duration, poster_url, plot, genres } =
-    formData;
+  const {
+    id,
+    title,
+    release_date,
+    genres,
+    overview,
+    vote_average,
+    runtime,
+    poster_path,
+  } = formData;
 
   return (
     <form onSubmit={onSubmit} data-testid='movie-form'>
@@ -51,21 +59,21 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           type='date'
           data-date-inline-picker={true}
           label='Release date'
-          value={year}
+          value={release_date}
           onChange={(value) => handleChange('year', value)}
         />
         <Input
           placeholderText='https://'
           required={true}
           label='Movie URL'
-          value={poster_url}
+          value={poster_path}
           onChange={(value) => handleChange('poster_url', value)}
         />
         <Input
           placeholderText='7.6'
           required={true}
           label='Rating'
-          value={rating}
+          value={vote_average}
           onChange={(value) => handleChange('rating', value)}
         />
         <Select
@@ -80,7 +88,7 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           placeholderText='minutes'
           required={true}
           label='Runtime'
-          value={duration}
+          value={runtime}
           onChange={(value) => handleChange('duration', value)}
         />
       </div>
@@ -90,7 +98,7 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           placeholderText='Movie description'
           required={true}
           label='Overview'
-          value={plot}
+          value={overview}
           onChange={(value) => handleChange('plot', value)}
         />
       </div>

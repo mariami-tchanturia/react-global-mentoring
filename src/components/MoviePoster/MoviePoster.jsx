@@ -9,7 +9,7 @@ export const MoviePoster = ({ src, alt }) => {
 
   return (
     <img
-      src={!src ? defaultPoster : src}
+      src={src ? src : defaultPoster}
       alt={alt}
       data-testid='movie-posterurl'
       onError={handleError}

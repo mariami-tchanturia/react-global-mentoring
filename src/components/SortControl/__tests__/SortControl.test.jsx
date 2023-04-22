@@ -18,21 +18,14 @@ describe('SortControl component tests:', () => {
 
   it('Should correctly set default option', () => {
     const label = 'Test Label';
-    const defaultOption = SELECT_OPTIONS[0].name;
 
-    render(
-      <SortControl
-        options={SELECT_OPTIONS}
-        label={label}
-        defaultOption={defaultOption}
-      />
-    );
+    render(<SortControl options={SELECT_OPTIONS} label={label} />);
 
     const select = screen.getByRole('combobox', {
       name: label,
     });
 
-    expect(select).toHaveValue(defaultOption);
+    expect(select).toHaveValue(SELECT_OPTIONS[0].name);
   });
 
   it('Should display the correct number of options', () => {
@@ -61,34 +54,32 @@ describe('SortControl component tests:', () => {
 
   test('Should invoke event handler with correct parameter', () => {
     const label = 'Test Label';
-    const defaultOption = SELECT_OPTIONS[0].name;
-    const onSortMock = jest.fn();
+    const setSortCriterionMock = jest.fn();
 
     render(
       <SortControl
         label={label}
         options={SELECT_OPTIONS}
-        defaultOption={defaultOption}
-        onSort={onSortMock}
+        setSortCriterion={setSortCriterionMock}
       />
     );
 
     const select = screen.getByLabelText(`${label}`);
 
     userEvent.selectOptions(select, SELECT_OPTIONS[1].name);
-    expect(onSortMock).toHaveBeenCalledWith(SELECT_OPTIONS[1].name);
+    expect(setSortCriterionMock).toHaveBeenCalledWith(SELECT_OPTIONS[1].value);
   });
 
   test('Should change value when user chooses a new option', () => {
     const label = 'Test Label';
     const defaultOption = SELECT_OPTIONS[0].name;
+    const setSortCriterionMock = jest.fn();
 
     render(
       <SortControl
         label={label}
         options={SELECT_OPTIONS}
-        defaultOption={defaultOption}
-        onSort={(option) => console.log(option)}
+        setSortCriterion={setSortCriterionMock}
       />
     );
 

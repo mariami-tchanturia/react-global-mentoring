@@ -13,13 +13,12 @@ describe('MovieForm component tests', function () {
   it('Should render prefilled MovieForm, when movie is passed', () => {
     render(<MovieForm movie={MOCKED_MOVIES[0]} />);
 
-    const { title, plot, rating, duration } = MOCKED_MOVIES[0];
+    const { title, overview, vote_average, runtime } = MOCKED_MOVIES[0];
 
     expect(screen.getByDisplayValue(title)).toBeInTheDocument();
-    expect(screen.getByDisplayValue(plot)).toBeInTheDocument();
-    expect(screen.getByDisplayValue(duration)).toBeInTheDocument();
-    expect(screen.getByDisplayValue(rating)).toBeInTheDocument();
-    expect(screen.getByDisplayValue(duration)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(overview)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(runtime)).toBeInTheDocument();
+    expect(screen.getByDisplayValue(vote_average)).toBeInTheDocument();
   });
 
   it('Should call handleSubmit callback', () => {

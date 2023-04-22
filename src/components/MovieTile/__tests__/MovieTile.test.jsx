@@ -9,16 +9,17 @@ import { formatGenres } from '../../../helpers/formatGenres';
 describe('MovieTile component tests:', () => {
   it('Should render a movie with correct information', () => {
     render(<MovieTile movie={MOCKED_MOVIES[0]} />);
-    const { poster_url, title, year, genres } = MOCKED_MOVIES[0];
+
+    const { release_date, title, genres, poster_path } = MOCKED_MOVIES[0];
 
     const renderedPosterUrl = screen.getByTestId('movie-posterurl');
     const renderedTitle = screen.getByTestId('movie-title');
     const renderedGenre = screen.getByTestId('movie-genre').textContent;
     const renderedYear = screen.getByTestId('movie-release-date').textContent;
 
-    expect(renderedPosterUrl).toHaveAttribute('src', poster_url);
+    expect(renderedPosterUrl).toHaveAttribute('src', poster_path);
     expect(renderedTitle).toHaveTextContent(title);
-    expect(renderedYear).toBe(year.toString());
+    expect(renderedYear).toBe(parseInt(release_date).toString());
     expect(renderedGenre).toBe(formatGenres(genres));
   });
 

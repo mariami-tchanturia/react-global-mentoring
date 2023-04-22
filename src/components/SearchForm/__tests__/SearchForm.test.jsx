@@ -4,48 +4,33 @@ import userEvent from '@testing-library/user-event';
 import { SearchForm } from '../SearchForm';
 
 describe('SearchForm component tests:', () => {
-  it('Should render inoput with the value equal to passed in props', () => {
-    const initialSearchQuery = 'Test Text';
-    render(<SearchForm initialSearchQuery={initialSearchQuery} />);
+  it('Should call onChange with proper value, when typing to input and clicking on submit button', () => {
+    const searchQuery = 'Another Test Text';
+    const setSearchQueryMock = jest.fn();
+
+    render(<SearchForm setSearchQuery={setSearchQueryMock} />);
 
     const searchBox = screen.getByRole('textbox');
-    expect(searchBox).toHaveValue(initialSearchQuery);
-  });
-
-  it('Should call onChange with proper value, when typing to input and clicking on submit button', () => {
-    const initialSearchQuery = 'Test Text';
-    const mockOnSearch = jest.fn();
-
-    render(
-      <SearchForm
-        initialSearchQuery={initialSearchQuery}
-        onSearch={mockOnSearch}
-      />
-    );
+    searchBox.setSelectionRange(0, searchBox.value.length);
+    userEvent.type(searchBox, searchQuery);
 
     const searchButton = screen.getByRole('button');
     userEvent.click(searchButton);
 
-    expect(mockOnSearch).toHaveBeenCalledWith(initialSearchQuery);
+    expect(setSearchQueryMock).toHaveBeenCalledWith(searchQuery);
   });
 
-  it('Should call onChange with proper value, when typing to input and pressing on submit button', () => {
-    const initialSearchQuery = 'Test Text';
-    const currentSearchQuery = 'Another Test Text';
-    const mockOnSearch = jest.fn();
+  it('Should call onChange with proper value, when typing to input and pressing on Enter', () => {
+    const searchQuery = 'Another Test Text';
+    const setSearchQueryMock = jest.fn();
 
-    render(
-      <SearchForm
-        initialSearchQuery={initialSearchQuery}
-        onSearch={mockOnSearch}
-      />
-    );
+    render(<SearchForm setSearchQuery={setSearchQueryMock} />);
 
     const searchBox = screen.getByRole('textbox');
     searchBox.setSelectionRange(0, searchBox.value.length);
-    userEvent.type(searchBox, currentSearchQuery);
+    userEvent.type(searchBox, searchQuery);
     userEvent.type(searchBox, '{enter}');
 
-    expect(mockOnSearch).toHaveBeenCalledWith(currentSearchQuery);
+    expect(setSearchQueryMock).toHaveBeenCalledWith(searchQuery);
   });
 });

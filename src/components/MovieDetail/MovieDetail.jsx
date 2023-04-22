@@ -12,7 +12,7 @@ export const MovieDetail = ({ activeMovie }) => {
     genres,
     overview,
     vote_average,
-    duration,
+    runtime,
     poster_path,
   } = activeMovie;
 
@@ -47,7 +47,7 @@ export const MovieDetail = ({ activeMovie }) => {
             className={styles.movideDetail_duration}
             data-testid='movie-duration'
           >
-            {getMovieDuration(duration)}
+            {getMovieDuration(runtime)}
           </span>
         </p>
 
