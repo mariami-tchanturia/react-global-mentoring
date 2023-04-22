@@ -17,9 +17,9 @@ describe('MovieDetail component tests:', () => {
     const renderedPosterUrl = screen.getByTestId('movie-posterurl');
     const renderedTitle = screen.getByTestId('movie-title');
     const renderedGenre = screen.getByTestId('movie-genre').textContent;
-    const renderedYear = screen.getByTestId('movie-year').textContent;
-    const renderedPlot = screen.getByTestId('movie-plot').textContent;
-    const renderedRating = screen.getByTestId('movie-rating').textContent;
+    const renderedYear = screen.getByTestId('movie-release-date').textContent;
+    const renderedPlot = screen.getByTestId('movie-overview').textContent;
+    const renderedRating = screen.getByTestId('movie-vote-average').textContent;
     const renderedDuration = screen.getByTestId('movie-duration').textContent;
 
     expect(renderedPosterUrl).toHaveAttribute('src', poster_url);

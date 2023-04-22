@@ -1,25 +1,17 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './GenreSelect.module.scss';
 
-export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
-  const [currentGenre, setCurrentGenre] = useState(defaultGenre);
-
+export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
   return (
     <nav className={styles.genreSelect}>
       <ul className={styles.genreSelect__list}>
         {genres.map(({ value, label }) => (
-          <li key={value}>
-            <a
-              href='#'
-              className={`${currentGenre === label ? styles.active : ''}`}
-              title={label}
-              onClick={() => {
-                onChange(label);
-                setCurrentGenre(label);
-              }}
-            >
+          <li
+            key={value}
+            className={`${activeGenre === label ? styles.active : ''}`}
+          >
+            <a href='#' title={label} onClick={() => setActiveGenre(label)}>
               {label}
             </a>
           </li>
@@ -29,17 +21,19 @@ export const GenreSelect = ({ genres, defaultGenre, onChange }) => {
   );
 };
 
+export const GenreOptionsType = PropTypes.arrayOf(
+  PropTypes.shape({
+    value: PropTypes.number.isRequired,
+    label: PropTypes.string.isRequired,
+  })
+);
+
 GenreSelect.propTypes = {
-  defaultGenre: PropTypes.string,
-  onChange: PropTypes.func,
-  genres: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ),
+  activeGenre: PropTypes.string,
+  setActiveGenre: PropTypes.func,
+  genres: GenreOptionsType,
 };
 
 GenreSelect.defaultProps = {
-  defaultGenre: 'All',
+  activeGenre: 'All',
 };

@@ -24,10 +24,12 @@ export const GENRES_OPTIONS = [
 export const SELECT_OPTIONS = [
   {
     id: 1,
+    value: 'release_date',
     name: 'Release Date',
   },
   {
     id: 2,
+    value: 'title',
     name: 'Title',
   },
 ];

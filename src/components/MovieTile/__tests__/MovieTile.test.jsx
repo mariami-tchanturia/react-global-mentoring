@@ -14,7 +14,7 @@ describe('MovieTile component tests:', () => {
     const renderedPosterUrl = screen.getByTestId('movie-posterurl');
     const renderedTitle = screen.getByTestId('movie-title');
     const renderedGenre = screen.getByTestId('movie-genre').textContent;
-    const renderedYear = screen.getByTestId('movie-year').textContent;
+    const renderedYear = screen.getByTestId('movie-release-date').textContent;
 
     expect(renderedPosterUrl).toHaveAttribute('src', poster_url);
     expect(renderedTitle).toHaveTextContent(title);

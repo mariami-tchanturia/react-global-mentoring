@@ -3,20 +3,30 @@ import PropTypes from 'prop-types';
 import { GenreSelect, MovieTile, SortControl } from '../../components';
 import styles from './MoviesListing.module.scss';
 
-export const MoviesListing = ({ movies, genres, options, setActiveMovie }) => (
+import { MovieType } from '../MovieTile/MovieTile';
+import { GenreOptionsType } from '../../components/GenreSelect/GenreSelect';
+
+export const MoviesListing = ({
+  movies,
+  setActiveMovie,
+  genres,
+  options,
+  setSortCriterion,
+  activeGenre,
+  setActiveGenre,
+}) => (
   <main className={styles.moviesWrapper}>
     <div className='container-lg'>
       <div className={styles.filterAndSort}>
         <GenreSelect
           genres={genres}
-          defaultGenre='All'
-          onChange={(genre) => console.log(genre)}
+          activeGenre={activeGenre}
+          setActiveGenre={setActiveGenre}
         />
         <SortControl
           label='Sort by'
           options={options}
-          defaultOption='date'
-          onSort={(option) => console.log(option)}
+          setSortCriterion={setSortCriterion}
         />
       </div>
 
@@ -35,33 +45,13 @@ export const MoviesListing = ({ movies, genres, options, setActiveMovie }) => (
 
 MoviesListing.propTypes = {
   setActiveMovie: PropTypes.func,
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string.isRequired,
-      genres: PropTypes.arrayOf(
-        PropTypes.shape({
-          value: PropTypes.number.isRequired,
-          label: PropTypes.string.isRequired,
-        })
-      ),
-      year: PropTypes.string.isRequired,
-      rating: PropTypes.string.isRequired,
-      duration: PropTypes.string.isRequired,
-      plot: PropTypes.string.isRequired,
-      poster_url: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  genres: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.number.isRequired,
-      label: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  movies: PropTypes.arrayOf(MovieType),
+  genres: GenreOptionsType.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
       name: PropTypes.string.isRequired,
+      value: PropTypes.string.isRequired,
     })
   ).isRequired,
 };

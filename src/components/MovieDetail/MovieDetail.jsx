@@ -5,14 +5,21 @@ import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieDetail.module.scss';
 
 export const MovieDetail = ({ activeMovie }) => {
-  const { title, year, genres, plot, rating, duration, poster_url } =
-    activeMovie;
+  const {
+    title,
+    release_date,
+    genres,
+    overview,
+    vote_average,
+    duration,
+    poster_path,
+  } = activeMovie;
 
   return (
     <article className={styles.movideDetail}>
       <div className={styles.movideDetail_poster}>
         <img
-          src={poster_url}
+          src={poster_path}
           alt={`${title} poster`}
           data-testid='movie-posterurl'
         />
@@ -22,10 +29,11 @@ export const MovieDetail = ({ activeMovie }) => {
         <h1 className={styles.movideDetail_title} data-testid='movie-title'>
           {title}
           <span
-            className={styles.movideDetail_rating}
-            data-testid='movie-rating'
+            className={styles.movideDetail_vote_average}
+            data-testid='movie-vote-average
+						'
           >
-            {rating}
+            {vote_average}
           </span>
         </h1>
         <p className={styles.movideDetail_genre} data-testid='movie-genre'>
@@ -34,9 +42,9 @@ export const MovieDetail = ({ activeMovie }) => {
         <p>
           <span
             className={styles.movideDetail_releaseDate}
-            data-testid='movie-year'
+            data-testid='movie-release-date'
           >
-            {year}
+            {parseInt(release_date)}
           </span>
           <span
             className={styles.movideDetail_duration}
@@ -46,8 +54,11 @@ export const MovieDetail = ({ activeMovie }) => {
           </span>
         </p>
 
-        <p className={styles.movideDetail_plot} data-testid='movie-plot'>
-          {plot}
+        <p
+          className={styles.movideDetail_overview}
+          data-testid='movie-overview'
+        >
+          {overview}
         </p>
       </div>
     </article>
@@ -58,16 +69,11 @@ MovieDetail.propTypes = {
   activeMovie: PropTypes.shape({
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ),
-    year: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    plot: PropTypes.string.isRequired,
-    poster_url: PropTypes.string.isRequired,
+    genres: PropTypes.arrayOf(PropTypes.string),
+    release_date: PropTypes.string.isRequired,
+    vote_average: PropTypes.number.isRequired,
+    runtime: PropTypes.number.isRequired,
+    overview: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
   }),
 };

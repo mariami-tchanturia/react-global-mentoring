@@ -24,13 +24,13 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
     toggleDeleteMovie(false);
   };
 
-  const { id, title, year, genres, poster_url } = movie;
+  const { id, title, release_date, genres, poster_path } = movie;
 
   return (
     <div className={styles.movieTile}>
       <div className={styles.movieTile_poster}>
         <img
-          src={poster_url}
+          src={poster_path}
           alt={`${title} poster`}
           data-testid='movie-posterurl'
         />
@@ -48,8 +48,11 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
         <p className={styles.movieTile_genre} data-testid='movie-genre'>
           {formatGenres(genres)}
         </p>
-        <span className={styles.movieTile_releaseDate} data-testid='movie-year'>
-          {year}
+        <span
+          className={styles.movieTile_releaseDate}
+          data-testid='movie-release-date'
+        >
+          {parseInt(release_date)}
         </span>
       </div>
 
@@ -76,21 +79,24 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
   );
 };
 
+export const MovieType = PropTypes.shape({
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string),
+  release_date: PropTypes.string.isRequired,
+  vote_average: PropTypes.number.isRequired,
+  runtime: PropTypes.number,
+  overview: PropTypes.string.isRequired,
+  poster_path: PropTypes.string,
+});
+
 MovieTile.propTypes = {
   setActiveMovie: PropTypes.func,
+  movie: MovieType,
+};
+
+MovieTile.defalutProps = {
   movie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ),
-    year: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    plot: PropTypes.string.isRequired,
-    poster_url: PropTypes.string.isRequired,
+    poster_path: PropTypes.string.isRequired,
   }),
 };
