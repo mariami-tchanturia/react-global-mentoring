@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import { DeleteConfirmation, MovieMenu, MovieForm } from '../../components';
+import {
+  DeleteConfirmation,
+  MovieMenu,
+  MovieForm,
+  MoviePoster,
+} from '../../components';
 import { Dialog } from '../../common';
 import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieTile.module.scss';
@@ -29,11 +34,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
   return (
     <div className={styles.movieTile}>
       <div className={styles.movieTile_poster}>
-        <img
-          src={poster_path}
-          alt={`${title} poster`}
-          data-testid='movie-posterurl'
-        />
+        <MoviePoster src={poster_path} alt={`${title} poster`} />
 
         <MovieMenu
           handleEdit={() => toggleEditMovie(true)}

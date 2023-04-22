@@ -32,10 +32,5 @@ export const SearchForm = ({ setSearchQuery }) => {
 };
 
 SearchForm.propTypes = {
-  initialSearchQuery: PropTypes.string,
-  onSearch: PropTypes.func,
-};
-
-SearchForm.defaultProps = {
-  initialSearchQuery: '',
+  setSearchQuery: PropTypes.func,
 };

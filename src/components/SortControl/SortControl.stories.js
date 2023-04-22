@@ -13,5 +13,4 @@ export const Default = Template.bind({});
 Default.args = {
   options: SELECT_OPTIONS,
   label: 'Sort By',
-  defaultOption: 'date',
 };

@@ -20,7 +20,7 @@ describe('GenreSelect component tests:', () => {
   it('Should highlight a defaultGenre, that is passed in props', () => {
     const defaultGenre = 'Documentary';
 
-    render(<GenreSelect genres={GENRES_OPTIONS} defaultGenre={defaultGenre} />);
+    render(<GenreSelect genres={GENRES_OPTIONS} activeGenre={defaultGenre} />);
 
     expect(screen.getByText(new RegExp(defaultGenre, 'i'))).toHaveClass(
       'active'
@@ -35,7 +35,7 @@ describe('GenreSelect component tests:', () => {
     render(
       <GenreSelect
         genres={GENRES_OPTIONS}
-        defaultGenre={defaultGenre}
+        activeGenre={defaultGenre}
         onChange={onChangeMock}
       />
     );

@@ -19,6 +19,7 @@ function App() {
   const [activeGenre, setActiveGenre] = useState(defaultGenre);
   const [searchQuery, setSearchQuery] = useState('');
 
+  // TODO: Display spinner and error
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -34,6 +35,8 @@ function App() {
       .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
   }, [sortCriterion, searchQuery, activeGenre]);
+
+  console.log(movies);
 
   return (
     <div className='App'>

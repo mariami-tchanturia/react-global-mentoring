@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { getMovieDuration } from '../../helpers/getMovieDuration';
 import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieDetail.module.scss';
+import { MoviePoster } from '../MoviePoster/MoviePoster';
 
 export const MovieDetail = ({ activeMovie }) => {
   const {
@@ -18,11 +19,7 @@ export const MovieDetail = ({ activeMovie }) => {
   return (
     <article className={styles.movideDetail}>
       <div className={styles.movideDetail_poster}>
-        <img
-          src={poster_path}
-          alt={`${title} poster`}
-          data-testid='movie-posterurl'
-        />
+        <MoviePoster src={poster_path} alt={`${title} poster`} />
       </div>
 
       <div className={styles.movideDetail_description}>
@@ -74,6 +71,6 @@ MovieDetail.propTypes = {
     vote_average: PropTypes.number.isRequired,
     runtime: PropTypes.number.isRequired,
     overview: PropTypes.string.isRequired,
-    poster_path: PropTypes.string.isRequired,
+    poster_path: PropTypes.string,
   }),
 };
