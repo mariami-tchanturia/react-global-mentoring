@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Input } from '../../common';
@@ -7,11 +7,14 @@ import styles from './SearchForm.module.scss';
 export const SearchForm = ({ setSearchQuery }) => {
   const [searchKeyword, setSearchKeyword] = useState('');
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
 
-    setSearchQuery(searchKeyword);
-  };
+      setSearchQuery(searchKeyword);
+    },
+    [searchKeyword]
+  );
 
   return (
     <div className={styles.searchForm}>

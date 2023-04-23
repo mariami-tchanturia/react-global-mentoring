@@ -9,14 +9,13 @@ export default {
 };
 
 const Template = (args) => {
-  // eslint-disable-next-line no-unused-vars
-  const [activeGenre, setActiveGenre] = useState();
+  const [activeGenre, setActiveGenre] = useState('Horror');
 
   return (
     <GenreSelect
       {...args}
+      activeGenre={activeGenre}
       setActiveGenre={setActiveGenre}
-      activeGenre='Horror'
     />
   );
 };

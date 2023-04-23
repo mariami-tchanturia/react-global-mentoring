@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-
+import { MoviePoster } from '../MoviePoster/MoviePoster';
 import { getMovieDuration } from '../../helpers/getMovieDuration';
 import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieDetail.module.scss';
-import { MoviePoster } from '../MoviePoster/MoviePoster';
+
+import { MovieType } from '../MovieTile/MovieTile';
 
 export const MovieDetail = ({ activeMovie }) => {
   const {
@@ -63,14 +63,5 @@ export const MovieDetail = ({ activeMovie }) => {
 };
 
 MovieDetail.propTypes = {
-  activeMovie: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(PropTypes.string),
-    release_date: PropTypes.string.isRequired,
-    vote_average: PropTypes.number.isRequired,
-    runtime: PropTypes.number.isRequired,
-    overview: PropTypes.string.isRequired,
-    poster_path: PropTypes.string,
-  }),
+  activeMovie: MovieType,
 };
