@@ -9,7 +9,7 @@ export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
         {genres.map(({ value, label }) => (
           <li
             key={value}
-            className={`${activeGenre === label ? styles.active : ''}`}
+            className={activeGenre === label ? styles.active : ''}
             data-testid='movie-active-genre'
           >
             <a href='#' title={label} onClick={() => setActiveGenre(label)}>

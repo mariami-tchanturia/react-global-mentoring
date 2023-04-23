@@ -34,7 +34,7 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
   return (
     <div className={styles.movieTile}>
       <div className={styles.movieTile_poster}>
-        <MoviePoster src={poster_path} alt={`${title} poster`} />
+        <MoviePoster src={poster_path} alt={title} />
 
         <MovieMenu
           handleEdit={() => toggleEditMovie(true)}

@@ -19,7 +19,7 @@ export const MovieDetail = ({ activeMovie }) => {
   return (
     <article className={styles.movideDetail} data-testid='movie-detail'>
       <div className={styles.movideDetail_poster}>
-        <MoviePoster src={poster_path} alt={`${title} poster`} />
+        <MoviePoster src={poster_path} alt={title} />
       </div>
 
       <div className={styles.movideDetail_description}>
