@@ -95,9 +95,3 @@ MovieTile.propTypes = {
   setActiveMovie: PropTypes.func,
   movie: MovieType,
 };
-
-MovieTile.defalutProps = {
-  movie: PropTypes.shape({
-    poster_path: PropTypes.string.isRequired,
-  }),
-};
