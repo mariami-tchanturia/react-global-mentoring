@@ -25,6 +25,7 @@ export const SortControl = ({ options, label, setSortCriterion }) => {
           className={styles.sortControl_select}
           onChange={handleChange}
           value={selectedOption.name}
+          data-testid='sort-control'
         >
           {options.map(({ id, name }) => (
             <option

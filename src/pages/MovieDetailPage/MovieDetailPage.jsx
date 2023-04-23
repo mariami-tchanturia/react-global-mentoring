@@ -12,7 +12,6 @@ const MovieDetailPage = ({
   movies,
   activeMovie,
   setActiveMovie,
-
   setSortCriterion,
   activeGenre,
   setActiveGenre,

@@ -1,4 +1,4 @@
-describe('Search spec', () => {
+describe('MovieDetail page spec', () => {
   it('Check if Movie Detail shows up when clicking on movie title', () => {
     cy.visit('http://localhost:3000');
 
