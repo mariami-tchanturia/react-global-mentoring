@@ -13,7 +13,7 @@ export const SearchForm = ({ setSearchQuery }) => {
 
       setSearchQuery(searchKeyword);
     },
-    [searchKeyword]
+    [searchKeyword, setSearchQuery]
   );
 
   return (

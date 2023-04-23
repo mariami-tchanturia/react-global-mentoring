@@ -4,7 +4,7 @@ import { GenreSelect, MovieTile, SortControl } from '../../components';
 import styles from './MoviesListing.module.scss';
 
 import { MovieType } from '../MovieTile/MovieTile';
-import { GenreOptionsType } from '../../components/GenreSelect/GenreSelect';
+import { GenreOptionsType } from '../GenreSelect/GenreSelect';
 
 export const MoviesListing = ({
   movies,
