@@ -5,6 +5,7 @@ import Select from 'react-select';
 import { Button, Input, Textarea } from '../../common';
 import { GENRES_OPTIONS } from '../../constants';
 import styles from './MovieForm.module.scss';
+import { MovieType } from '../MovieTile/MovieTile';
 
 const INITIAL_STATE = {
   title: '',
@@ -60,21 +61,21 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           data-date-inline-picker={true}
           label='Release date'
           value={release_date}
-          onChange={(value) => handleChange('year', value)}
+          onChange={(value) => handleChange('release_date', value)}
         />
         <Input
           placeholderText='https://'
           required={true}
           label='Movie URL'
           value={poster_path}
-          onChange={(value) => handleChange('poster_url', value)}
+          onChange={(value) => handleChange('poster_path', value)}
         />
         <Input
           placeholderText='7.6'
           required={true}
           label='Rating'
           value={vote_average}
-          onChange={(value) => handleChange('rating', value)}
+          onChange={(value) => handleChange('vote_average', value)}
         />
         <Select
           closeMenuOnSelect={false}
@@ -89,7 +90,7 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           required={true}
           label='Runtime'
           value={runtime}
-          onChange={(value) => handleChange('duration', value)}
+          onChange={(value) => handleChange('runtime', value)}
         />
       </div>
 
@@ -99,7 +100,7 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           required={true}
           label='Overview'
           value={overview}
-          onChange={(value) => handleChange('plot', value)}
+          onChange={(value) => handleChange('overview', value)}
         />
       </div>
 
@@ -116,25 +117,6 @@ export const MovieForm = ({ movie, handleSubmit }) => {
 };
 
 MovieForm.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ),
-    year: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    plot: PropTypes.string.isRequired,
-    poster_url: PropTypes.string.isRequired,
-  }),
-
+  movie: MovieType,
   handleSubmit: PropTypes.func,
-};
-
-MovieForm.defaultProps = {
-  movie: INITIAL_STATE,
 };
