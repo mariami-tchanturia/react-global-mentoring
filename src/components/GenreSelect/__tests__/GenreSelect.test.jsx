@@ -20,28 +20,28 @@ describe('GenreSelect component tests:', () => {
   it('Should highlight a defaultGenre, that is passed in props', () => {
     const defaultGenre = 'Documentary';
 
-    render(<GenreSelect genres={GENRES_OPTIONS} defaultGenre={defaultGenre} />);
+    render(<GenreSelect genres={GENRES_OPTIONS} activeGenre={defaultGenre} />);
 
-    expect(screen.getByText(new RegExp(defaultGenre, 'i'))).toHaveClass(
-      'active'
-    );
+    expect(
+      screen.getByText(new RegExp(defaultGenre, 'i')).parentElement
+    ).toHaveClass('active');
   });
 
   it('Should call onChange callback and pass correct genre in arguments, when clicking on genre', () => {
     const defaultGenre = 'All';
     const targetGenre = 'Crime';
-    const onChangeMock = jest.fn();
+    const setActiveGenreMock = jest.fn();
 
     render(
       <GenreSelect
         genres={GENRES_OPTIONS}
-        defaultGenre={defaultGenre}
-        onChange={onChangeMock}
+        activeGenre={defaultGenre}
+        setActiveGenre={setActiveGenreMock}
       />
     );
 
     userEvent.click(screen.getByText(new RegExp(targetGenre, 'i')));
 
-    expect(onChangeMock).toHaveBeenCalledWith(targetGenre);
+    expect(setActiveGenreMock).toHaveBeenCalledWith(targetGenre);
   });
 });

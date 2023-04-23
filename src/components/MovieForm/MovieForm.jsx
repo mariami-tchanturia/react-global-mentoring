@@ -5,14 +5,15 @@ import Select from 'react-select';
 import { Button, Input, Textarea } from '../../common';
 import { GENRES_OPTIONS } from '../../constants';
 import styles from './MovieForm.module.scss';
+import { MovieType } from '../MovieTile/MovieTile';
 
 const INITIAL_STATE = {
   title: '',
-  year: '',
-  rating: '',
-  duration: '',
-  poster_url: '',
-  plot: '',
+  release_date: '',
+  vote_average: '',
+  runtime: '',
+  poster_path: '',
+  overview: '',
   genres: [],
 };
 
@@ -33,8 +34,16 @@ export const MovieForm = ({ movie, handleSubmit }) => {
     handleSubmit(formData);
   };
 
-  const { id, title, year, rating, duration, poster_url, plot, genres } =
-    formData;
+  const {
+    id,
+    title,
+    release_date,
+    genres,
+    overview,
+    vote_average,
+    runtime,
+    poster_path,
+  } = formData;
 
   return (
     <form onSubmit={onSubmit} data-testid='movie-form'>
@@ -51,22 +60,22 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           type='date'
           data-date-inline-picker={true}
           label='Release date'
-          value={year}
-          onChange={(value) => handleChange('year', value)}
+          value={release_date}
+          onChange={(value) => handleChange('release_date', value)}
         />
         <Input
           placeholderText='https://'
           required={true}
           label='Movie URL'
-          value={poster_url}
-          onChange={(value) => handleChange('poster_url', value)}
+          value={poster_path}
+          onChange={(value) => handleChange('poster_path', value)}
         />
         <Input
           placeholderText='7.6'
           required={true}
           label='Rating'
-          value={rating}
-          onChange={(value) => handleChange('rating', value)}
+          value={vote_average}
+          onChange={(value) => handleChange('vote_average', value)}
         />
         <Select
           closeMenuOnSelect={false}
@@ -80,8 +89,8 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           placeholderText='minutes'
           required={true}
           label='Runtime'
-          value={duration}
-          onChange={(value) => handleChange('duration', value)}
+          value={runtime}
+          onChange={(value) => handleChange('runtime', value)}
         />
       </div>
 
@@ -90,8 +99,8 @@ export const MovieForm = ({ movie, handleSubmit }) => {
           placeholderText='Movie description'
           required={true}
           label='Overview'
-          value={plot}
-          onChange={(value) => handleChange('plot', value)}
+          value={overview}
+          onChange={(value) => handleChange('overview', value)}
         />
       </div>
 
@@ -108,25 +117,6 @@ export const MovieForm = ({ movie, handleSubmit }) => {
 };
 
 MovieForm.propTypes = {
-  movie: PropTypes.shape({
-    id: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    genres: PropTypes.arrayOf(
-      PropTypes.shape({
-        value: PropTypes.number.isRequired,
-        label: PropTypes.string.isRequired,
-      })
-    ),
-    year: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    duration: PropTypes.string.isRequired,
-    plot: PropTypes.string.isRequired,
-    poster_url: PropTypes.string.isRequired,
-  }),
-
+  movie: MovieType,
   handleSubmit: PropTypes.func,
-};
-
-MovieForm.defaultProps = {
-  movie: INITIAL_STATE,
 };

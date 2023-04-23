@@ -11,23 +11,30 @@ describe('MovieDetail component tests:', () => {
   it('Should render if movie is displayed', () => {
     render(<MovieDetail activeMovie={MOCKED_MOVIES[0]} />);
 
-    const { title, year, genres, plot, rating, duration, poster_url } =
-      MOCKED_MOVIES[0];
+    const {
+      title,
+      release_date,
+      genres,
+      overview,
+      vote_average,
+      runtime,
+      poster_path,
+    } = MOCKED_MOVIES[0];
 
     const renderedPosterUrl = screen.getByTestId('movie-posterurl');
     const renderedTitle = screen.getByTestId('movie-title');
     const renderedGenre = screen.getByTestId('movie-genre').textContent;
-    const renderedYear = screen.getByTestId('movie-year').textContent;
-    const renderedPlot = screen.getByTestId('movie-plot').textContent;
-    const renderedRating = screen.getByTestId('movie-rating').textContent;
+    const renderedYear = screen.getByTestId('movie-release-date').textContent;
+    const renderedPlot = screen.getByTestId('movie-overview').textContent;
+    const renderedRating = screen.getByTestId('movie-vote-average').textContent;
     const renderedDuration = screen.getByTestId('movie-duration').textContent;
 
-    expect(renderedPosterUrl).toHaveAttribute('src', poster_url);
+    expect(renderedPosterUrl).toHaveAttribute('src', poster_path);
     expect(renderedTitle).toHaveTextContent(title);
-    expect(renderedYear).toBe(year);
+    expect(renderedYear).toBe(parseInt(release_date).toString());
     expect(renderedGenre).toBe(formatGenres(genres));
-    expect(renderedPlot).toBe(plot);
-    expect(renderedRating).toBe(rating);
-    expect(renderedDuration).toBe(getMovieDuration(duration));
+    expect(renderedPlot).toBe(overview);
+    expect(renderedRating).toBe(vote_average.toString());
+    expect(renderedDuration).toBe(getMovieDuration(runtime));
   });
 });

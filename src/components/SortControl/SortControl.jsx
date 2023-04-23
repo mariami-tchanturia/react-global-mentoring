@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 
 import styles from './SortControl.module.scss';
 
-export const SortControl = ({ options, label, defaultOption, onSort }) => {
-  const [selectedOption, setSelectedOption] = useState(defaultOption);
+export const SortControl = ({ options, label, setSortCriterion }) => {
+  const [selectedOption, setSelectedOption] = useState(options[0]);
 
   const handleChange = ({ target }) => {
     const { value } = target;
 
-    setSelectedOption(value);
-    onSort(value);
+    const selectedOptions = options.filter(({ name }) => name === value);
+
+    setSelectedOption(selectedOptions[0]);
+    setSortCriterion(selectedOptions[0].value);
   };
 
   return (
@@ -22,7 +24,8 @@ export const SortControl = ({ options, label, defaultOption, onSort }) => {
           id='sortControl'
           className={styles.sortControl_select}
           onChange={handleChange}
-          value={selectedOption}
+          value={selectedOption.name}
+          data-testid='sort-control'
         >
           {options.map(({ id, name }) => (
             <option
@@ -48,6 +51,5 @@ SortControl.propTypes = {
     })
   ).isRequired,
   label: PropTypes.string,
-  defaultOption: PropTypes.string,
-  onSort: PropTypes.func,
+  setSortCriterion: PropTypes.func,
 };

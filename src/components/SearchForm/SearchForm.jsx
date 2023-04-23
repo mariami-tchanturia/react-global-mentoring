@@ -1,46 +1,39 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Button, Input } from '../../common';
 import styles from './SearchForm.module.scss';
 
-export const SearchForm = ({ initialSearchQuery, onSearch, searchResult }) => {
-  const [searchQuery, setSearchQuery] = useState(initialSearchQuery);
+export const SearchForm = ({ setSearchQuery }) => {
+  const [searchKeyword, setSearchKeyword] = useState('');
 
-  const handleKeyUp = ({ key }) => {
-    if (key === 'Enter') {
-      console.log('Enter was triggered');
-      onSearch(searchQuery);
-    }
-  };
+  const handleSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+
+      setSearchQuery(searchKeyword);
+    },
+    [searchKeyword, setSearchQuery]
+  );
 
   return (
     <div className={styles.searchForm}>
-      <div className={styles.searchForm__form}>
+      <form className={styles.searchForm__form} onSubmit={handleSubmit}>
         <Input
           placeholderText='What do you want to watch?'
           className='searchForm__input'
-          value={searchQuery}
-          onChange={setSearchQuery}
-          onKeyUp={handleKeyUp}
+          value={searchKeyword}
+          onChange={setSearchKeyword}
           required={false}
         />
-        <Button onClick={() => onSearch(searchQuery)} className='btn--primary'>
+        <Button type='submit' className='btn--primary'>
           Search
         </Button>
-      </div>
-      <div className={styles.searchResult} data-cy='search-result-container'>
-        {searchResult}
-      </div>
+      </form>
     </div>
   );
 };
 
 SearchForm.propTypes = {
-  initialSearchQuery: PropTypes.string,
-  onSearch: PropTypes.func,
-};
-
-SearchForm.defaultProps = {
-  initialSearchQuery: '',
+  setSearchQuery: PropTypes.func,
 };

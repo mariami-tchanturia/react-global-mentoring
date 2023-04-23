@@ -23,7 +23,7 @@
 		text-transform: uppercase;
 	}
 
-	&_rating {
+	&_vote_average {
 		display: inline-flex;
 		justify-content: center;
 		align-items: center;
@@ -57,7 +57,7 @@
 		margin-left: 51px;
 	}
 
-	&_plot {
+	&_overview {
 		margin-top: 29px;
 		color: rgba(225, 255, 255, 0.5);
 		font-weight: 300;

@@ -9,15 +9,19 @@ export default {
 };
 
 const Template = (args) => {
-  // eslint-disable-next-line no-unused-vars
-  const [currentGenre, setCurrentGenre] = useState(args.defaultGenre);
+  const [activeGenre, setActiveGenre] = useState('Horror');
 
-  return <GenreSelect {...args} currentGenre={currentGenre} />;
+  return (
+    <GenreSelect
+      {...args}
+      activeGenre={activeGenre}
+      setActiveGenre={setActiveGenre}
+    />
+  );
 };
 
 export const Default = Template.bind({});
 
 Default.args = {
   genres: GENRES_OPTIONS,
-  defaultGenre: 'Horror',
 };

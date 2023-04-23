@@ -12,3 +12,4 @@ export { Footer } from './Footer/Footer';
 export { MovieForm } from './MovieForm/MovieForm';
 export { SuccessMessage } from './SuccessMessage/SuccessMessage';
 export { DeleteConfirmation } from './DeleteConfirmation/DeleteConfirmation';
+export { MoviePoster } from './MoviePoster/MoviePoster';
