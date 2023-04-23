@@ -9,29 +9,49 @@ describe('Search spec', () => {
   it('Check if search functionality works on submit button click', () => {
     cy.visit('http://localhost:3000');
 
-    const testSearchQuery = 'Test Search Query';
+    const searchQuery = 'Star Wars';
 
     const searchInput = cy.get('input[type="text"]');
     const searchButton = cy.get('button[type="submit"]');
     searchInput.clear();
-    searchInput.type(testSearchQuery);
+    searchInput.type(searchQuery);
     searchButton.click();
-    expect(
-      cy.get('[data-cy="search-result-container"]').contains(testSearchQuery)
-    );
+
+		cy.get('[data-testid="movies-listing"]').within(() => {
+			cy.get('[data-testid="movie-title"]').should("contain", searchQuery)
+		})
   });
 
-  it('Check if search functionality works on Enter click', () => {
+  it('Check if search functionality works on Enter press', () => {
     cy.visit('http://localhost:3000');
 
-    const testSearchQuery = 'Test Search Query';
+    const searchQuery = 'Harry Potter';
 
     const searchInput = cy.get('input[type="text"]');
     searchInput.clear();
-    searchInput.type(testSearchQuery);
+    searchInput.type(searchQuery);
     searchInput.type('{enter}');
-    expect(
-      cy.get('[data-cy="search-result-container"]').contains(testSearchQuery)
-    );
+
+		cy.get('[data-testid="movies-listing"]').within(() => {
+			cy.get('[data-testid="movie-title"]').should("contain", searchQuery)
+		})
   });
+
+	it('Check if searchbar shows up, when clicking on search icon on movie detail page', () => {
+    cy.visit('http://localhost:3000');
+
+		//Simulate displaying movie detail page
+
+		const movieTileTitle = cy.get('[data-testid="movie-title"]').last();
+		movieTileTitle.click();
+
+    const showSearchbarBtn = cy.get('[data-testid="show-searchbar"]');
+		showSearchbarBtn.should('be.visible');
+		showSearchbarBtn.click();
+
+    cy.get('input[type="text"]').should('be.visible');
+    cy.get('button[type="submit"]').should('be.visible');
+
+  });
+
 });

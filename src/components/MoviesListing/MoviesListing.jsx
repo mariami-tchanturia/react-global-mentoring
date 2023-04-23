@@ -30,7 +30,7 @@ export const MoviesListing = ({
         />
       </div>
 
-      <div className={styles.movies}>
+      <div className={styles.movies} data-testid='movies-listing'>
         {movies.map((movie) => (
           <MovieTile
             key={movie.id}

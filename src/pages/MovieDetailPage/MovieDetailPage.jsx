@@ -26,6 +26,7 @@ const MovieDetailPage = ({
           <Button
             className='btn--transparent'
             onClick={() => setActiveMovie(null)}
+            data-testid='show-searchbar'
           >
             <img src={searchIcon} alt='Switch to Search mode' />
           </Button>
