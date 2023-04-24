@@ -1,19 +1,33 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import styles from './SortControl.module.scss';
 
 export const SortControl = ({ options, label, setSortCriterion }) => {
-  const [selectedOption, setSelectedOption] = useState(options[0]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [selectedOption, setSelectedOption] = useState(
+    getSelectedOptionByName(searchParams.get('sortBy')) || options[0]
+  );
 
   const handleChange = ({ target }) => {
     const { value } = target;
 
-    const selectedOptions = options.filter(({ name }) => name === value);
+    const selectedOption = options.filter(({ name }) => name === value)[0];
 
-    setSelectedOption(selectedOptions[0]);
-    setSortCriterion(selectedOptions[0].value);
+    setSelectedOption(selectedOption);
+    setSortCriterion(selectedOption.value);
+
+    const existingParams = Object.fromEntries(searchParams.entries());
+    const newParams = { sortBy: selectedOption.value };
+    const mergedParams = { ...existingParams, ...newParams };
+
+    setSearchParams(new URLSearchParams(mergedParams));
   };
+
+  function getSelectedOptionByName(name) {
+    return options.filter(({ value }) => value === name)[0];
+  }
 
   return (
     <div className={styles.sortControl}>

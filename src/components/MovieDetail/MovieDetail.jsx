@@ -14,7 +14,7 @@ export const MovieDetail = ({ activeMovie }) => {
     vote_average,
     runtime,
     poster_path,
-  } = activeMovie;
+  } = activeMovie || {};
 
   return (
     <article className={styles.movideDetail} data-testid='movie-detail'>

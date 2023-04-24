@@ -1,0 +1,11 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+	&_text {
+		margin-top: 2rem;
+		color: tomato;
+	}
+}

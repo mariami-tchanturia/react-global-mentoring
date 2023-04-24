@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 import { v4 as uuidv4 } from 'uuid';
 
 import { Logo, SearchForm, MovieForm, SuccessMessage } from '../../components';
@@ -53,4 +54,8 @@ export const Header = ({ setSearchQuery }) => {
       )}
     </header>
   );
+};
+
+Header.propTypes = {
+  setSearchQuery: PropTypes.func,
 };

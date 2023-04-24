@@ -1,8 +1,21 @@
 import PropTypes from 'prop-types';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import styles from './GenreSelect.module.scss';
 
 export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleChange = (label) => {
+    setActiveGenre(label);
+
+    const existingParams = Object.fromEntries(searchParams.entries());
+    const newParams = { genre: label };
+    const mergedParams = { ...existingParams, ...newParams };
+
+    setSearchParams(new URLSearchParams(mergedParams));
+  };
+
   return (
     <nav className={styles.genreSelect}>
       <ul className={styles.genreSelect__list}>
@@ -12,9 +25,7 @@ export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
             className={activeGenre === label ? styles.active : ''}
             data-testid='movie-active-genre'
           >
-            <a href='#' title={label} onClick={() => setActiveGenre(label)}>
-              {label}
-            </a>
+            <button onClick={() => handleChange(label)}>{label}</button>
           </li>
         ))}
       </ul>
@@ -30,9 +41,9 @@ export const GenreOptionsType = PropTypes.arrayOf(
 );
 
 GenreSelect.propTypes = {
+  genres: GenreOptionsType,
   activeGenre: PropTypes.string,
   setActiveGenre: PropTypes.func,
-  genres: GenreOptionsType,
 };
 
 GenreSelect.defaultProps = {

@@ -1,57 +1,45 @@
 import PropTypes from 'prop-types';
 
 import { GenreSelect, MovieTile, SortControl } from '../../components';
+import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
 import styles from './MoviesListing.module.scss';
-
 import { MovieType } from '../MovieTile/MovieTile';
-import { GenreOptionsType } from '../GenreSelect/GenreSelect';
 
 export const MoviesListing = ({
   movies,
-  setActiveMovie,
-  genres,
-  options,
-  setSortCriterion,
   activeGenre,
   setActiveGenre,
-}) => (
-  <main className={styles.moviesWrapper}>
-    <div className='container-lg'>
-      <div className={styles.filterAndSort}>
-        <GenreSelect
-          genres={genres}
-          activeGenre={activeGenre}
-          setActiveGenre={setActiveGenre}
-        />
-        <SortControl
-          label='Sort by'
-          options={options}
-          setSortCriterion={setSortCriterion}
-        />
-      </div>
-
-      <div className={styles.movies} data-testid='movies-listing'>
-        {movies.map((movie) => (
-          <MovieTile
-            key={movie.id}
-            movie={movie}
-            setActiveMovie={setActiveMovie}
+  setSortCriterion,
+}) => {
+  return (
+    <main className={styles.moviesWrapper}>
+      <div className='container-lg'>
+        <div className={styles.filterAndSort}>
+          <GenreSelect
+            genres={GENRES_OPTIONS}
+            activeGenre={activeGenre}
+            setActiveGenre={setActiveGenre}
           />
-        ))}
+          <SortControl
+            label='Sort by'
+            options={SELECT_OPTIONS}
+            setSortCriterion={setSortCriterion}
+          />
+        </div>
+
+        <div className={styles.movies} data-testid='movies-listing'>
+          {movies.map((movie) => (
+            <MovieTile key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
-    </div>
-  </main>
-);
+    </main>
+  );
+};
 
 MoviesListing.propTypes = {
-  setActiveMovie: PropTypes.func,
   movies: PropTypes.arrayOf(MovieType),
-  genres: GenreOptionsType.isRequired,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      name: PropTypes.string.isRequired,
-      value: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  activeGenre: PropTypes.string,
+  setActiveMovie: PropTypes.func,
+  setSortCriterion: PropTypes.func,
 };

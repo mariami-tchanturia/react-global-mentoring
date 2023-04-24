@@ -1,58 +1,63 @@
-import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
 
-import { MoviesListing, MovieDetail, Footer, Logo } from '../../components';
+import { MovieDetail, Logo } from '../../components';
 import { Button } from '../../common';
-import styles from './MovieDetailPage.module.scss';
-import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
+import { getMovieByID } from '../../api/movieService';
 import searchIcon from '../../assets/search-icon.png';
+import styles from './MovieDetailPage.module.scss';
 
-import { MovieType } from '../../components/MovieTile/MovieTile';
+const MovieDetailPage = () => {
+  const { movieID } = useParams();
+  const [activeMovie, setactiveMovie] = useState(null);
+  const location = useLocation();
 
-const MovieDetailPage = ({
-  movies,
-  activeMovie,
-  setActiveMovie,
-  setSortCriterion,
-  activeGenre,
-  setActiveGenre,
-}) => {
+  // TODO: Display spinner and error
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+
+    getMovieByID(movieID)
+      .then((movie) => setactiveMovie(movie))
+      .catch((error) => setError(error.message))
+      .finally(setLoading(false));
+  }, [movieID]);
+
   return (
     <>
-      <section className={styles.movieDetailWrapper}>
-        <header className={`${styles.header} container-lg`}>
-          <Logo />
+      {loading ? (
+        'Loading'
+      ) : (
+        <>
+          <section className={styles.movieDetailWrapper}>
+            <header className={`${styles.header} container-lg`}>
+              <Logo />
 
-          <Button
-            className='btn--transparent'
-            onClick={() => setActiveMovie(null)}
-            data-testid='show-searchbar'
-          >
-            <img src={searchIcon} alt='Switch to Search mode' />
-          </Button>
-        </header>
+              <Link
+                to={{
+                  pathname: `/`,
+                  search: location.search,
+                }}
+              >
+                <Button
+                  className='btn--transparent'
+                  data-testid='show-searchbar'
+                >
+                  <img src={searchIcon} alt='Switch to Search mode' />
+                </Button>
+              </Link>
+            </header>
 
-        <div className={`container-lg`}>
-          <MovieDetail activeMovie={activeMovie} />
-        </div>
-      </section>
-
-      <MoviesListing
-        genres={GENRES_OPTIONS}
-        movies={movies}
-        setActiveMovie={setActiveMovie}
-        options={SELECT_OPTIONS}
-        setSortCriterion={setSortCriterion}
-        activeGenre={activeGenre}
-        setActiveGenre={setActiveGenre}
-      />
-      <Footer />
+            <div className={`container-lg`}>
+              <MovieDetail activeMovie={activeMovie} />
+            </div>
+          </section>
+        </>
+      )}
     </>
   );
-};
-
-MovieDetailPage.propTypes = {
-  setActiveMovie: PropTypes.func,
-  movies: PropTypes.arrayOf(MovieType).isRequired,
 };
 
 export default MovieDetailPage;

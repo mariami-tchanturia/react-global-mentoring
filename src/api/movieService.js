@@ -46,6 +46,17 @@ export const getMovies = async ({
   }
 };
 
+export const getMovieByID = async (id) => {
+  try {
+    const url = `${API_BASE_URL}/${API_BASE_PATH}/${id}`;
+
+    const response = await axios.get(url);
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
+
 // export const addMovie = async (data) => {
 //   try {
 //     const url = `${API_BASE_URL}/${API_BASE_PATH}`;
