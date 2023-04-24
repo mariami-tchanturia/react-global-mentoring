@@ -8,7 +8,7 @@ export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleChange = (label) => {
-    setActiveGenre(label);
+    setActiveGenre(label.toLowerCase());
 
     const existingParams = Object.fromEntries(searchParams.entries());
     const newParams = { genre: label.toLowerCase() };
@@ -23,7 +23,11 @@ export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
         {genres.map(({ value, label }) => (
           <li
             key={value}
-            className={activeGenre === label ? styles.active : ''}
+            className={
+              activeGenre.toLowerCase() === label.toLowerCase()
+                ? styles.active
+                : ''
+            }
             data-testid='movie-active-genre'
           >
             <Button

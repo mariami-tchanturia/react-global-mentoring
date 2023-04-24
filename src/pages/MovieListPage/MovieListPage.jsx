@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { MoviesListing, Footer } from '../../components';
 import { getMovies } from '../../api/movieService';
 
-const defaultGenre = 'All';
+const defaultGenre = 'all';
 const defaultSortCriterion = 'release_date';
 
 const MovieListPage = ({ searchQuery }) => {
@@ -26,7 +26,7 @@ const MovieListPage = ({ searchQuery }) => {
   useEffect(() => {
     setLoading(true);
 
-    const genre = activeGenre === 'All' ? '' : [activeGenre];
+    const genre = activeGenre === 'all' ? '' : [activeGenre];
 
     getMovies({ sortCriterion, searchQuery, genre })
       .then((movies) => {
