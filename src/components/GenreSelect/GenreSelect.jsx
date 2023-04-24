@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
+import { Button } from '../../common';
 import styles from './GenreSelect.module.scss';
 
 export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
@@ -10,7 +11,7 @@ export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
     setActiveGenre(label);
 
     const existingParams = Object.fromEntries(searchParams.entries());
-    const newParams = { genre: label };
+    const newParams = { genre: label.toLowerCase() };
     const mergedParams = { ...existingParams, ...newParams };
 
     setSearchParams(new URLSearchParams(mergedParams));
@@ -25,7 +26,12 @@ export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
             className={activeGenre === label ? styles.active : ''}
             data-testid='movie-active-genre'
           >
-            <button onClick={() => handleChange(label)}>{label}</button>
+            <Button
+              onClick={() => handleChange(label)}
+              className='btn--transparent'
+            >
+              {label}
+            </Button>
           </li>
         ))}
       </ul>

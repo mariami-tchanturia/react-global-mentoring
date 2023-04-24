@@ -40,13 +40,10 @@ const MovieDetailPage = () => {
                   pathname: `/`,
                   search: location.search,
                 }}
+                title='Switch to Search mode'
+                data-testid='show-searchbar'
               >
-                <Button
-                  className='btn--transparent'
-                  data-testid='show-searchbar'
-                >
-                  <img src={searchIcon} alt='Switch to Search mode' />
-                </Button>
+                <img src={searchIcon} alt='Switch to Search mode icon' />
               </Link>
             </header>
 
