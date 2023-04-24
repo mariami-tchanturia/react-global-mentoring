@@ -1,12 +1,20 @@
 import { useState } from 'react';
-import { MoviesListing } from './MoviesListing';
+import { BrowserRouter as Router } from 'react-router-dom';
 
+import { MoviesListing } from './MoviesListing';
 import { MOCKED_MOVIES } from '../../mocks/mocks';
-import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
+import { GENRES_OPTIONS } from '../../constants';
 
 export default {
   title: 'Components/MoviesListing',
   component: MoviesListing,
+  decorators: [
+    (Story) => (
+      <Router>
+        <Story />
+      </Router>
+    ),
+  ],
 };
 
 const Template = (args) => {
@@ -28,7 +36,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   movies: MOCKED_MOVIES,
-  genres: GENRES_OPTIONS,
-  options: SELECT_OPTIONS,
   activeGenre: GENRES_OPTIONS[0],
 };

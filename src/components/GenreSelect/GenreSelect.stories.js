@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import { GenreSelect } from './GenreSelect';
 import { GENRES_OPTIONS } from '../../constants';
@@ -6,6 +7,13 @@ import { GENRES_OPTIONS } from '../../constants';
 export default {
   title: 'Components/GenreSelect',
   component: GenreSelect,
+  decorators: [
+    (Story) => (
+      <Router>
+        <Story />
+      </Router>
+    ),
+  ],
 };
 
 const Template = (args) => {

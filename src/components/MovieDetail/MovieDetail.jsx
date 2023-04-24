@@ -3,7 +3,7 @@ import { getMovieDuration } from '../../helpers/getMovieDuration';
 import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieDetail.module.scss';
 
-import { MovieType } from '../MovieTile/MovieTile';
+import { MovieType } from '../';
 
 export const MovieDetail = ({ activeMovie }) => {
   const {
