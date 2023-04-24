@@ -41,7 +41,7 @@ export const MovieDetail = ({ activeMovie }) => {
             className={styles.movideDetail_releaseDate}
             data-testid='movie-release-date'
           >
-            {parseInt(release_date)}
+            {parseInt(release_date) || ''}
           </span>
           <span
             className={styles.movideDetail_duration}
