@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Outlet } from 'react-router-dom';
+import { useSearchParams, Outlet, Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { MoviesListing, Footer } from '../../components';
+import { Spinner } from '../../common';
 import { getMovies } from '../../api/movieService';
 
 const defaultGenre = 'all';
@@ -19,22 +20,25 @@ const MovieListPage = ({ searchQuery }) => {
     searchParams.get('sortBy') || defaultSortCriterion
   );
 
-  // TODO: Display spinner and error
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
-
     const genre = activeGenre === 'all' ? '' : [activeGenre];
 
     getMovies({ sortCriterion, searchQuery, genre })
-      .then((movies) => {
-        setMovies(movies.data);
-      })
-      .catch((error) => setError(error.message))
+      .then((movies) => setMovies(movies.data))
+      .catch((error) => setError(error))
       .finally(() => setLoading(false));
   }, [sortCriterion, searchQuery, activeGenre]);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Navigate to='/not-Found' />;
+  }
 
   return (
     <>
