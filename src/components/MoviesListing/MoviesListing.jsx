@@ -1,11 +1,7 @@
 import PropTypes from 'prop-types';
 
-import {
-  GenreSelect,
-  MovieTile,
-  SortControl,
-  MovieType,
-} from '../../components';
+import { GenreSelect, MovieTile, SortControl } from '../../components';
+import { MovieType } from '../MovieTile/MovieTile';
 import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
 import styles from './MoviesListing.module.scss';
 

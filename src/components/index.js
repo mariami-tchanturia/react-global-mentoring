@@ -15,7 +15,3 @@ export { SuccessMessage } from './SuccessMessage/SuccessMessage';
 export { DeleteConfirmation } from './DeleteConfirmation/DeleteConfirmation';
 export { MoviePoster } from './MoviePoster/MoviePoster';
 export { NotFound } from './NotFound/NotFound';
-
-//EXPORT TYPES
-export { MovieType } from './MovieTile/MovieTile';
-export { GenreOptionsType } from './GenreSelect/GenreSelect';

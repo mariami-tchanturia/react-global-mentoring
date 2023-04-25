@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 
 import { MovieDetail, Logo } from '../../components';
-import { Button } from '../../common';
 import { getMovieByID } from '../../api/movieService';
 import searchIcon from '../../assets/search-icon.png';
 import styles from './MovieDetailPage.module.scss';

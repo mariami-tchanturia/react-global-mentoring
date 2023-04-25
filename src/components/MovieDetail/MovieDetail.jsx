@@ -1,9 +1,8 @@
 import { MoviePoster } from '../MoviePoster/MoviePoster';
 import { getMovieDuration } from '../../helpers/getMovieDuration';
 import { formatGenres } from '../../helpers/formatGenres';
+import { MovieType } from '../MovieTile/MovieTile';
 import styles from './MovieDetail.module.scss';
-
-import { MovieType } from '../';
 
 export const MovieDetail = ({ activeMovie }) => {
   const {

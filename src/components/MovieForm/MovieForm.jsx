@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 
 import { Button, Input, Textarea } from '../../common';
-import { MovieType } from '../';
+import { MovieType } from '../MovieTile/MovieTile';
 import { GENRES_OPTIONS } from '../../constants';
 import styles from './MovieForm.module.scss';
 
