@@ -15,6 +15,12 @@ $light-grey: #555;
   Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
+.root {
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	min-height: 100vh;
+}
+
 .container-lg {
   margin-left: auto;
   margin-right: auto;
