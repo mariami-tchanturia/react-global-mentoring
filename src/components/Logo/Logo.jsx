@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { PATH_NAMES } from '../../config/routes';
+import { PATH_NAMES } from '../../routes/contants';
 import logo from '../../assets/logo.png';
 import styles from './Logo.module.scss';
 

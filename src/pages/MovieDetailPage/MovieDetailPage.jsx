@@ -4,7 +4,7 @@ import { useParams, Link, useLocation, Navigate } from 'react-router-dom';
 import { MovieDetail, Logo } from '../../components';
 import { Spinner } from '../../common';
 import { getMovieByID } from '../../api/movieService';
-import { PATH_NAMES } from '../../config/routes';
+import { PATH_NAMES } from '../../routes/contants';
 import searchIcon from '../../assets/search-icon.png';
 import styles from './MovieDetailPage.module.scss';
 

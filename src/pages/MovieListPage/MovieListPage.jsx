@@ -4,7 +4,7 @@ import { useSearchParams, Outlet, Navigate } from 'react-router-dom';
 import { MoviesListing, Footer } from '../../components';
 import { Spinner } from '../../common';
 import { getMovies } from '../../api/movieService';
-import { PATH_NAMES } from '../../config/routes';
+import { PATH_NAMES } from '../../routes/contants';
 
 const defaultGenre = 'all';
 const defaultSortCriterion = 'release_date';
