@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams, Outlet, Navigate } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { MoviesListing, Footer } from '../../components';
 import { Spinner } from '../../common';
 import { getMovies } from '../../api/movieService';
+import { PATH_NAMES } from '../../config/routes';
 
 const defaultGenre = 'all';
 const defaultSortCriterion = 'release_date';
 
-const MovieListPage = ({ searchQuery }) => {
+const MovieListPage = () => {
   const [searchParams] = useSearchParams();
 
   const [movies, setMovies] = useState([]);
@@ -19,6 +19,7 @@ const MovieListPage = ({ searchQuery }) => {
   const [sortCriterion, setSortCriterion] = useState(
     searchParams.get('sortBy') || defaultSortCriterion
   );
+  const searchQuery = searchParams.get('query') || '';
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -37,7 +38,7 @@ const MovieListPage = ({ searchQuery }) => {
   }
 
   if (error) {
-    return <Navigate to='/not-Found' />;
+    return <Navigate to={PATH_NAMES.NotFound} />;
   }
 
   return (
@@ -52,10 +53,6 @@ const MovieListPage = ({ searchQuery }) => {
       <Footer />
     </>
   );
-};
-
-MovieListPage.propTypes = {
-  searchQuery: PropTypes.string.isRequired,
 };
 
 export default MovieListPage;

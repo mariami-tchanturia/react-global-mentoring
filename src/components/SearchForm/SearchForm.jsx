@@ -1,13 +1,12 @@
 import { useCallback, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
 import { Button, Input } from '../../common';
 import styles from './SearchForm.module.scss';
 
-export const SearchForm = ({ setSearchQuery }) => {
+export const SearchForm = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [searchKeyword, setSearchKeyword] = useState(
+  const [searchQuery, setSeachQuery] = useState(
     searchParams.get('query') || ''
   );
 
@@ -15,15 +14,13 @@ export const SearchForm = ({ setSearchQuery }) => {
     (event) => {
       event.preventDefault();
 
-      setSearchQuery(searchKeyword);
-
       const existingParams = Object.fromEntries(searchParams.entries());
-      const newParams = { query: searchKeyword };
+      const newParams = { query: searchQuery };
       const mergedParams = { ...existingParams, ...newParams };
 
       setSearchParams(new URLSearchParams(mergedParams));
     },
-    [searchKeyword, setSearchQuery, searchParams, setSearchParams]
+    [searchQuery, searchParams, setSearchParams]
   );
 
   return (
@@ -32,8 +29,8 @@ export const SearchForm = ({ setSearchQuery }) => {
         <Input
           placeholderText='What do you want to watch?'
           className='searchForm__input'
-          value={searchKeyword}
-          onChange={setSearchKeyword}
+          value={searchQuery}
+          onChange={setSeachQuery}
           required={false}
         />
         <Button type='submit' className='btn--primary'>
@@ -42,8 +39,4 @@ export const SearchForm = ({ setSearchQuery }) => {
       </form>
     </div>
   );
-};
-
-SearchForm.propTypes = {
-  setSearchQuery: PropTypes.func,
 };
