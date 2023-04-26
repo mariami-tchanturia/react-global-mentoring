@@ -1,8 +1,8 @@
-import styles from './NotFound.module.scss';
+import styles from './NotFoundPage.module.scss';
 
 import errorImage from '../../assets/404.png';
 
-export const NotFound = () => {
+const NotFoundPage = () => {
   return (
     <div className={styles.error}>
       <img src={errorImage} alt='Some error occured.' />
@@ -10,3 +10,5 @@ export const NotFound = () => {
     </div>
   );
 };
+
+export default NotFoundPage;
