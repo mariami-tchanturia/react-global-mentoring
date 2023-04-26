@@ -3,9 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+	background: #232323;
+	height: 100vh;
 
 	&_text {
 		margin-top: 2rem;
-		color: tomato;
+		color: #F65261;
 	}
 }
