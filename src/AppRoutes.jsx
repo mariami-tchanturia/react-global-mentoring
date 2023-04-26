@@ -1,24 +1,21 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
+import Layout from './pages/Layout/Layout';
 import MovieDetailPage from './pages/MovieDetailPage/MovieDetailPage';
-import MovieListPage from './pages/MovieListPage/MovieListPage';
+import HomePage from './pages/HomePage/HomePage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import { Header } from './components/index';
 import { PATH_NAMES } from './routes/contants';
 
 export const AppRoutes = () => {
-  const { All, Home, MovieDetail, NotFound } = PATH_NAMES;
+  const { Home, MovieDetail, NotFound } = PATH_NAMES;
 
   return (
     <Routes>
-      <Route path={All} element={<Navigate replace to={NotFound} />} />
-
-      <Route path={Home} element={<MovieListPage />}>
-        <Route path={Home} element={<Header />} />
+      <Route path={Home} element={<Layout />}>
+        <Route path={Home} element={<HomePage />} />
         <Route path={MovieDetail} element={<MovieDetailPage />} />
+        <Route path={NotFound} element={<NotFoundPage />} />
       </Route>
-
-      <Route path={NotFound} element={<NotFoundPage />} />
     </Routes>
   );
 };

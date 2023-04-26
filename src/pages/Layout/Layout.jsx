@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useSearchParams, Outlet, Navigate } from 'react-router-dom';
+import { useSearchParams, Navigate, Outlet } from 'react-router-dom';
 
 import { MoviesListing, Footer } from '../../components';
 import { Spinner } from '../../common';
@@ -9,7 +9,7 @@ import { PATH_NAMES } from '../../routes/contants';
 const defaultGenre = 'all';
 const defaultSortCriterion = 'release_date';
 
-const MovieListPage = () => {
+const Layout = () => {
   const [searchParams] = useSearchParams();
 
   const [movies, setMovies] = useState([]);
@@ -55,4 +55,4 @@ const MovieListPage = () => {
   );
 };
 
-export default MovieListPage;
+export default Layout;
