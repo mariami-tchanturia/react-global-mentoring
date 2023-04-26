@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { useParams, Link, useLocation, Navigate } from 'react-router-dom';
 
 import { MovieDetail, Logo } from '../../components';
+import { Spinner } from '../../common';
 import { getMovieByID } from '../../api/movieService';
+import { PATH_NAMES } from '../../config/routes';
 import searchIcon from '../../assets/search-icon.png';
 import styles from './MovieDetailPage.module.scss';
-import { NotFound, Spinner } from '../../common';
 
 const MovieDetailPage = () => {
   const { movieID } = useParams();
@@ -24,12 +25,14 @@ const MovieDetailPage = () => {
       .finally(() => setLoading(false));
   }, [movieID]);
 
+  const { Home, NotFound } = PATH_NAMES;
+
   if (loading) {
     return <Spinner />;
   }
 
   if (error) {
-    return <Navigate to='/not-Found' />;
+    return <Navigate to={NotFound} />;
   }
 
   return (
@@ -39,7 +42,7 @@ const MovieDetailPage = () => {
 
         <Link
           to={{
-            pathname: `/`,
+            pathname: Home,
             search: location.search,
           }}
           title='Switch to Search mode'
