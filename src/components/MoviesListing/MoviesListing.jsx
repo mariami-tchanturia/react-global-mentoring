@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useSearchParams, Navigate, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { GenreSelect, MovieTile, SortControl } from '../../components';
 import { Spinner } from '../../common';
 import { getMovies } from '../../api/movieService';
 import { PATH_NAMES } from '../../routes/contants';
-import { MovieType } from '../MovieTile/MovieTile';
 import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
 import styles from './MoviesListing.module.scss';
 
@@ -37,12 +35,16 @@ export const MoviesListing = () => {
       .finally(() => setLoading(false));
   }, [sortCriterion, searchQuery, activeGenre]);
 
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      navigate(PATH_NAMES.NotFound);
+    }
+  }, [navigate, error]);
+
   if (loading) {
     return <Spinner />;
-  }
-
-  if (error) {
-    return <Navigate to={PATH_NAMES.NotFound} />;
   }
 
   return (

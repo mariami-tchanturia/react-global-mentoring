@@ -53,7 +53,7 @@ const MovieDetailPage = () => {
       </header>
 
       <div className={`container-lg`}>
-        <MovieDetail activeMovie={activeMovie} />
+        {activeMovie && <MovieDetail activeMovie={activeMovie} />}
       </div>
     </section>
   );
