@@ -1,20 +1,41 @@
 import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
 
+import { Button } from '../../common';
 import styles from './GenreSelect.module.scss';
 
 export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleChange = (label) => {
+    setActiveGenre(label.toLowerCase());
+
+    const existingParams = Object.fromEntries(searchParams.entries());
+    const newParams = { genre: label.toLowerCase() };
+    const mergedParams = { ...existingParams, ...newParams };
+
+    setSearchParams(new URLSearchParams(mergedParams));
+  };
+
   return (
     <nav className={styles.genreSelect}>
       <ul className={styles.genreSelect__list}>
         {genres.map(({ value, label }) => (
           <li
             key={value}
-            className={activeGenre === label ? styles.active : ''}
+            className={
+              activeGenre.toLowerCase() === label.toLowerCase()
+                ? styles.active
+                : ''
+            }
             data-testid='movie-active-genre'
           >
-            <a href='#' title={label} onClick={() => setActiveGenre(label)}>
+            <Button
+              onClick={() => handleChange(label)}
+              className='btn--transparent'
+            >
               {label}
-            </a>
+            </Button>
           </li>
         ))}
       </ul>
@@ -30,9 +51,9 @@ export const GenreOptionsType = PropTypes.arrayOf(
 );
 
 GenreSelect.propTypes = {
+  genres: GenreOptionsType,
   activeGenre: PropTypes.string,
   setActiveGenre: PropTypes.func,
-  genres: GenreOptionsType,
 };
 
 GenreSelect.defaultProps = {

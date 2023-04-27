@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SearchForm } from './SearchForm';
 
 export default {
@@ -5,4 +6,8 @@ export default {
   component: SearchForm,
 };
 
-export const Default = (args) => <SearchForm {...args} />;
+export const Default = (args) => {
+  const [searchQuery, setSearchQuery] = useState();
+
+  return <SearchForm {...args} setSearchQuery={setSearchQuery} />;
+};

@@ -19,7 +19,7 @@ export const MoviePoster = ({ src, alt }) => {
 
 MoviePoster.propTypes = {
   src: PropTypes.string,
-  alt: PropTypes.string.isRequired,
+  alt: PropTypes.string,
 };
 
 MoviePoster.defaultProps = {

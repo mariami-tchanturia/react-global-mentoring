@@ -19,16 +19,14 @@
 
 	&_title {
 		margin: 0 75px 8px 0;
-		button {
+		a {
 			font-size: 18px;
 			font-weight: 500;
 			line-height: 22px;
 			color: rgba(255, 255, 255, 0.7);
 			background: transparent;
-			box-shadow: none;
-			border: none;
-			cursor: pointer;
 			transition: all .3s ease-in-out;
+			text-decoration: none;
 
 			&:hover {
 				color: #F65261

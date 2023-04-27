@@ -11,5 +11,5 @@ const Template = (args) => <MovieDetail {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  activeMovie: MOCKED_MOVIES[0],
+  activeMovie: MOCKED_MOVIES[0] || {},
 };

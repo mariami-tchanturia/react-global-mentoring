@@ -1,0 +1,13 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+	padding: 50px 0;
+	background: #232323;
+
+	&_text {
+		margin-top: 2rem;
+		color: #F65261;
+	}
+}

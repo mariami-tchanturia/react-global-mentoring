@@ -1,7 +1,11 @@
+import { Link } from 'react-router-dom';
+
+import { PATH_NAMES } from '../../routes/contants';
+import logo from '../../assets/logo.png';
 import styles from './Logo.module.scss';
 
-import logo from '../../assets/logo.png';
-
 export const Logo = () => (
-  <img src={logo} alt='Netflixroulette Logo' className={styles.logo} />
+  <Link to={PATH_NAMES.Home}>
+    <img src={logo} alt='Netflixroulette Logo' className={styles.logo} />
+  </Link>
 );

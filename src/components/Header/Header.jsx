@@ -5,7 +5,7 @@ import { Logo, SearchForm, MovieForm, SuccessMessage } from '../../components';
 import { Button, Dialog } from '../../common';
 import styles from './Header.module.scss';
 
-export const Header = ({ setSearchQuery }) => {
+export const Header = () => {
   const [showAddMovie, toggleAddMovie] = useState(false);
   const [showAddMovieSuccess, toggleAddMovieSuccess] = useState(false);
 
@@ -32,7 +32,7 @@ export const Header = ({ setSearchQuery }) => {
       <div className='container-lg'>
         <div className='container-md'>
           <h1 className={styles.header__title}>Find your movie</h1>
-          <SearchForm setSearchQuery={setSearchQuery} />
+          <SearchForm />
         </div>
       </div>
 

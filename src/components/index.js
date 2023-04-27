@@ -1,3 +1,4 @@
+//EXPORT COMPONENTS
 export { Counter } from './Counter/Counter';
 export { SearchForm } from './SearchForm/SearchForm';
 export { GenreSelect } from './GenreSelect/GenreSelect';

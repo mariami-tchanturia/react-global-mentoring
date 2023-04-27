@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link, useLocation } from 'react-router-dom';
 
 import {
   DeleteConfirmation,
@@ -11,7 +12,8 @@ import { Dialog } from '../../common';
 import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieTile.module.scss';
 
-export const MovieTile = ({ movie, setActiveMovie }) => {
+export const MovieTile = ({ movie }) => {
+  const location = useLocation();
   const [showEditMovie, toggleEditMovie] = useState(false);
   const [showDeleteMovie, toggleDeleteMovie] = useState(false);
 
@@ -44,7 +46,14 @@ export const MovieTile = ({ movie, setActiveMovie }) => {
 
       <div className={styles.movieTile_description}>
         <h2 className={styles.movieTile_title} data-testid='movie-title'>
-          <button onClick={() => setActiveMovie(movie)}>{title}</button>
+          <Link
+            to={{
+              pathname: `/${id}`,
+              search: location.search,
+            }}
+          >
+            {title}
+          </Link>
         </h2>
         <p className={styles.movieTile_genre} data-testid='movie-genre'>
           {formatGenres(genres)}
@@ -92,6 +101,5 @@ export const MovieType = PropTypes.shape({
 });
 
 MovieTile.propTypes = {
-  setActiveMovie: PropTypes.func,
   movie: MovieType,
 };
