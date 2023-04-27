@@ -1,16 +1,50 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useSearchParams, Navigate, useNavigate } from 'react-router-dom';
 
 import { GenreSelect, MovieTile, SortControl } from '../../components';
+import { Spinner } from '../../common';
+import { getMovies } from '../../api/movieService';
+import { PATH_NAMES } from '../../routes/contants';
 import { MovieType } from '../MovieTile/MovieTile';
 import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
 import styles from './MoviesListing.module.scss';
 
-export const MoviesListing = ({
-  movies,
-  activeGenre,
-  setActiveGenre,
-  setSortCriterion,
-}) => {
+const defaultGenre = 'all';
+const defaultSortCriterion = 'release_date';
+
+export const MoviesListing = () => {
+  const [searchParams] = useSearchParams();
+
+  const [movies, setMovies] = useState([]);
+  const [activeGenre, setActiveGenre] = useState(
+    searchParams.get('genre') || defaultGenre
+  );
+  const [sortCriterion, setSortCriterion] = useState(
+    searchParams.get('sortBy') || defaultSortCriterion
+  );
+  const searchQuery = searchParams.get('query') || '';
+
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const genre = activeGenre === 'all' ? '' : [activeGenre];
+
+    getMovies({ sortCriterion, searchQuery, genre })
+      .then((movies) => setMovies(movies.data))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, [sortCriterion, searchQuery, activeGenre]);
+
+  if (loading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Navigate to={PATH_NAMES.NotFound} />;
+  }
+
   return (
     <main className={styles.moviesWrapper}>
       <div className='container-lg'>
@@ -35,11 +69,4 @@ export const MoviesListing = ({
       </div>
     </main>
   );
-};
-
-MoviesListing.propTypes = {
-  movies: PropTypes.arrayOf(MovieType),
-  activeGenre: PropTypes.string,
-  setActiveMovie: PropTypes.func,
-  setSortCriterion: PropTypes.func,
 };
