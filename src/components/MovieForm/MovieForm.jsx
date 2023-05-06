@@ -1,10 +1,11 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
 
-import { Button, Input, Textarea } from '../../common';
+import { Formik, Form } from 'formik';
+import { FormFields } from '../FormBuilder/FormFields';
+import { Button } from '../../common';
 import { MovieType } from '../MovieTile/MovieTile';
 import { GENRES_OPTIONS } from '../../constants';
+import { SCHEMA } from '../FormBuilder/validator';
 import styles from './MovieForm.module.scss';
 
 const INITIAL_STATE = {
@@ -18,101 +19,96 @@ const INITIAL_STATE = {
 };
 
 export const MovieForm = ({ movie, handleSubmit }) => {
-  const [formData, setFormData] = useState(movie);
+  const getDefaultGenres = (genreNames) => {
+    const activeGenres = [];
 
-  const handleReset = () => {
-    setFormData({ id, ...INITIAL_STATE });
+    genreNames.map((genreName) =>
+      activeGenres.push(
+        GENRES_OPTIONS.filter((genre) => genre.label === genreName)?.[0]
+      )
+    );
+
+    return activeGenres;
   };
-
-  const handleChange = (name, value) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const onSubmit = (event) => {
-    event.preventDefault();
-
-    handleSubmit(formData);
-  };
-
-  const {
-    id,
-    title,
-    release_date,
-    genres,
-    overview,
-    vote_average,
-    runtime,
-    poster_path,
-  } = formData;
 
   return (
-    <form onSubmit={onSubmit} data-testid='movie-form'>
-      <div className={styles.formItems}>
-        <Input
-          placeholderText='Movie title'
-          required={true}
-          label='Title'
-          value={title}
-          onChange={(value) => handleChange('title', value)}
-        />
-        <Input
-          required={true}
-          type='date'
-          data-date-inline-picker={true}
-          label='Release date'
-          value={release_date}
-          onChange={(value) => handleChange('release_date', value)}
-        />
-        <Input
-          placeholderText='https://'
-          required={true}
-          label='Movie URL'
-          value={poster_path}
-          onChange={(value) => handleChange('poster_path', value)}
-        />
-        <Input
-          placeholderText='7.6'
-          required={true}
-          label='Rating'
-          value={vote_average}
-          onChange={(value) => handleChange('vote_average', value)}
-        />
-        <Select
-          closeMenuOnSelect={false}
-          className={styles.multiSelect}
-          defaultValue={movie?.genres || genres}
-          isMulti
-          options={GENRES_OPTIONS.filter((item) => item.label !== 'All')}
-          onChange={(option) => handleChange('genres', option)}
-        />
-        <Input
-          placeholderText='minutes'
-          required={true}
-          label='Runtime'
-          value={runtime}
-          onChange={(value) => handleChange('runtime', value)}
-        />
-      </div>
+    <Formik
+      validationSchema={SCHEMA}
+      initialValues={movie || INITIAL_STATE}
+      onSubmit={(formData) => handleSubmit(formData)}
+      data-testid='movie-form'
+    >
+      {({ values, resetForm }) => (
+        <Form>
+          <div className={styles.formItems}>
+            <FormFields.TextField
+              name='title'
+              placeholder='Movie title'
+              label='Title'
+              value={values.title}
+            />
+            <FormFields.DateField
+              name='release_date'
+              placeholder='https://'
+              label='Release date'
+              value={values.release_date}
+            />
+            <FormFields.TextField
+              name='poster_path'
+              placeholder='https://'
+              label='Movie URL'
+              value={values.poster_path}
+            />
+            <FormFields.NumericField
+              name='vote_average'
+              placeholder='7.6'
+              label='Rating'
+              value={values.vote_average}
+            />
+            <FormFields.SelectField
+              name='genres'
+              label='Genre'
+              placeholder='Select Genre'
+              closeMenuOnSelect={false}
+              className={styles.multiSelect}
+              isMulti={true}
+              defaultValue={getDefaultGenres(values.genres)}
+              options={GENRES_OPTIONS.filter((item) => item.label !== 'All')}
+            />
+            <FormFields.NumericField
+              name='runtime'
+              placeholder='minutes'
+              label='Runtime'
+              value={values.runtime}
+            />
+          </div>
 
-      <div className={styles.textarea}>
-        <Textarea
-          placeholderText='Movie description'
-          required={true}
-          label='Overview'
-          value={overview}
-          onChange={(value) => handleChange('overview', value)}
-        />
-      </div>
+          <div className={styles.textarea}>
+            <FormFields.TextareaField
+              name='overview'
+              placeholder='Movie description'
+              label='Overview'
+              value={values.overview}
+            />
+          </div>
 
-      <div className={styles.formActions}>
-        <Button className='btn--default' onClick={handleReset}>
-          Reset
-        </Button>
-        <Button className='btn--primary' type='submit'>
-          Submit
-        </Button>
-      </div>
-    </form>
+          <div className={styles.formActions}>
+            <Button
+              className='btn--default'
+              type='reset'
+              onClick={() =>
+                resetForm({ values: INITIAL_STATE, genres: [null] })
+              }
+            >
+              Reset
+            </Button>
+            <Button className='btn--primary' type='submit'>
+              Submit
+            </Button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
 };
 

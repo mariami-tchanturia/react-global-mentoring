@@ -5,6 +5,18 @@
 	grid-template-columns: 1.5fr 1fr;
 	grid-gap: 30px;
 	margin-bottom: 30px;
+
+	label {
+		display: block;
+		margin-bottom: 13px;
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 20px;
+		letter-spacing: 0.9;
+		text-transform: uppercase;
+		color: #F65261;
+		opacity: 0.8;
+	}
 }
 
 .textarea {
@@ -27,12 +39,12 @@
 		padding: auto 21px auto;
 		// height: 57px;
 		// height: 100%;
-    color: #FFF;
-    background: rgba(50, 50, 50, 0.8);
-    border-radius: 4px;
-    border: none;
-    outline: none;
-    box-sizing: border-box;
+		color: #FFF;
+		background: rgba(50, 50, 50, 0.8);
+		border-radius: 4px;
+		border: none;
+		outline: none;
+		box-sizing: border-box;
 	}
 
 	.react-select__control.css-13cymwt-control {

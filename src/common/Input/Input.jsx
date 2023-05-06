@@ -3,26 +3,26 @@ import PropTypes from 'prop-types';
 import styles from './Input.module.scss';
 
 export const Input = ({
-  placeholderText,
+  placeholder,
   type,
   name,
   value,
   onChange,
   onKeyUp,
   className,
-  labelText,
+  label,
 }) => {
   return (
     <div className={styles.inputWrapper}>
-      {labelText && (
+      {label && (
         <label htmlFor={name} className={styles.label}>
-          {labelText}
+          {label}
         </label>
       )}
       <input
         type={type}
         name={name}
-        placeholder={placeholderText}
+        placeholder={placeholder}
         className={`${styles[className]} ${styles.input}`}
         value={value}
         onChange={onChange && (({ target }) => onChange(target.value))}
@@ -33,14 +33,14 @@ export const Input = ({
 };
 
 Input.propTypes = {
-  placeHolderText: PropTypes.string,
+  placeholder: PropTypes.string,
   type: PropTypes.string,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   className: PropTypes.string,
   onChange: PropTypes.func,
   onKeyUp: PropTypes.func,
-  labelText: PropTypes.string,
+  label: PropTypes.string,
 };
 
 Input.defaultProps = {

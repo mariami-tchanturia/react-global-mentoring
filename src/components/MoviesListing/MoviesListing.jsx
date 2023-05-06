@@ -5,7 +5,7 @@ import { GenreSelect, MovieTile, SortControl } from '../../components';
 import { Spinner } from '../../common';
 import { getMovies } from '../../api/movieService';
 import { PATH_NAMES } from '../../routes/contants';
-import { GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
+import { TOP_GENRES_OPTIONS, SELECT_OPTIONS } from '../../constants';
 import styles from './MoviesListing.module.scss';
 
 const defaultGenre = 'all';
@@ -52,7 +52,7 @@ export const MoviesListing = () => {
       <div className='container-lg'>
         <div className={styles.filterAndSort}>
           <GenreSelect
-            genres={GENRES_OPTIONS}
+            genres={TOP_GENRES_OPTIONS}
             activeGenre={activeGenre}
             setActiveGenre={setActiveGenre}
           />

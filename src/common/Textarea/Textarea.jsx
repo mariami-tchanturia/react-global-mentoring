@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './Textarea.module.scss';
 
 export const Textarea = ({
-  labelText = '',
-  placeholderText,
+  label = '',
+  placeholder,
   minLength,
   className = '',
   required,
@@ -14,12 +14,16 @@ export const Textarea = ({
 }) => {
   return (
     <div>
-      {labelText && <label htmlFor={name}>{labelText}</label>}
+      {label && (
+        <label htmlFor={name} className={styles.label}>
+          {label}
+        </label>
+      )}
       <textarea
         type='text'
         name={name}
         minLength={minLength}
-        placeholder={placeholderText}
+        placeholder={placeholder}
         className={`${styles.textarea} ${styles[className]}`}
         required={required}
         value={value}
