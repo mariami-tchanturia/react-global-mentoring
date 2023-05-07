@@ -2,6 +2,8 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
+import { deleteMovie, editMovie } from '../../api/movieService';
+
 import {
   DeleteConfirmation,
   MovieMenu,
@@ -16,22 +18,25 @@ export const MovieTile = ({ movie }) => {
   const location = useLocation();
   const [showEditMovie, toggleEditMovie] = useState(false);
   const [showDeleteMovie, toggleDeleteMovie] = useState(false);
+  const [error, setError] = useState(false);
+
+  const { id, title, release_date, genres, poster_path } = movie;
 
   const handleupdate = (movie) => {
-    console.log('Simulating Movie Update');
-    console.log(`This should be new movie: `, movie);
-
-    toggleEditMovie(false);
+    editMovie(movie)
+      .then(() => {
+        toggleEditMovie(false);
+      })
+      .catch((error) => setError(error));
   };
 
   const handleDelete = () => {
-    console.log('Simulating Movie Delete');
-    console.log(`The ID of movie, that should be removed is: `, id);
-
-    toggleDeleteMovie(false);
+    deleteMovie(id)
+      .then(() => {
+        toggleDeleteMovie(false);
+      })
+      .catch((error) => setError(error));
   };
-
-  const { id, title, release_date, genres, poster_path } = movie;
 
   return (
     <div className={styles.movieTile}>

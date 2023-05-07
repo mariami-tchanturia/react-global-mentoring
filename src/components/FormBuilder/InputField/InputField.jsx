@@ -19,7 +19,12 @@ export const InputField = ({ name, type, placeholder, label, ...props }) => (
             type={type}
             placeholder={placeholder}
             label={label}
-            onChange={(value) => form.setFieldValue(field.name, value)}
+            onChange={(value) =>
+              form.setFieldValue(
+                field.name,
+                type === 'number' ? parseFloat(value) : value
+              )
+            }
             {...props}
           />
         )}

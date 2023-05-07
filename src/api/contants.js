@@ -1,6 +1,8 @@
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const API_BASE_PATH = process.env.REACT_APP_API_BASE_PATH;
 
+export const MOVIE_BASE_URL = `${API_BASE_URL}/${API_BASE_PATH}`;
+
 export const GET_MOVIES_URL = ({
   url = API_BASE_URL,
   path = API_BASE_PATH,

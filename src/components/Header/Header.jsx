@@ -3,21 +3,27 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { Logo, SearchForm, MovieForm, SuccessMessage } from '../../components';
 import { Button, Dialog } from '../../common';
+import { addMovie } from '../../api/movieService';
 import styles from './Header.module.scss';
 
 export const Header = () => {
   const [showAddMovie, toggleAddMovie] = useState(false);
   const [showAddMovieSuccess, toggleAddMovieSuccess] = useState(false);
+  const [error, setError] = useState(false);
 
   const handleCreate = (movie) => {
-    const id = uuidv4();
+    const uuid = uuidv4();
+    const hex = '0x' + uuid.replace(/-/g, '').toString();
+    const id = BigInt(hex);
+
     const newMovie = { id, ...movie };
 
-    console.log('Simulating Movie Creation');
-    console.log(`This should be new movie: `, newMovie);
-
-    toggleAddMovie(false);
-    toggleAddMovieSuccess(true);
+    addMovie(newMovie)
+      .then(() => {
+        toggleAddMovie(false);
+        toggleAddMovieSuccess(true);
+      })
+      .catch((error) => setError(error));
   };
 
   return (
