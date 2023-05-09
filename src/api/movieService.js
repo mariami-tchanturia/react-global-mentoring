@@ -55,12 +55,13 @@ export const addMovie = async (data) => {
   }
 };
 
-export const deleteMovie = async (id) => {
+export const updateMovie = async (data) => {
   try {
-    const url = GET_MOVIE_URL(id);
+    const url = MOVIE_BASE_URL;
     const response = await axios.request({
-      method: 'DELETE',
+      method: 'PUT',
       url: url,
+      data: data,
     });
 
     return response.data;
@@ -69,13 +70,12 @@ export const deleteMovie = async (id) => {
   }
 };
 
-export const editMovie = async (data) => {
+export const deleteMovie = async (id) => {
   try {
-    const url = MOVIE_BASE_URL;
+    const url = GET_MOVIE_URL(id);
     const response = await axios.request({
-      method: 'PUT',
+      method: 'DELETE',
       url: url,
-      data: data,
     });
 
     return response.data;

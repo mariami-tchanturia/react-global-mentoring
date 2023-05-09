@@ -1,25 +1,28 @@
 import { createPortal } from 'react-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import FocusTrap from 'focus-trap-react';
 
-import { Button } from '../';
+import { PATH_NAMES } from '../../routes/contants';
 import styles from './Dialog.module.scss';
 import closeIcon from '../../assets/close-icon.png';
 
-export const Dialog = ({ title, children, handleClose, size }) => {
+export const Dialog = ({ title, children, size, isOpen }) => {
   const sizeClass = size === 'sm' ? 'dialog--sm' : 'dialog--lg';
+
+  if (!isOpen) return null;
 
   return createPortal(
     <FocusTrap>
       <div className={styles.overlay}>
         <div className={`${styles.dialog} ${styles[sizeClass]}`}>
-          <Button
+          <Link
+            to={PATH_NAMES.Home}
             className='btn--transparent'
-            onClick={handleClose}
             data-testid='modal-close'
           >
             <img src={closeIcon} alt='Close the modal' />
-          </Button>
+          </Link>
           {title && <h1 className={styles.dialog_title}>{title}</h1>}
           <div>{children}</div>
         </div>

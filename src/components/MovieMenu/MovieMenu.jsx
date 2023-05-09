@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { Button } from '../../common';
 import styles from './MovieMenu.module.scss';
 
-export const MovieMenu = ({ handleEdit, handleDelete }) => {
+export const MovieMenu = ({ id }) => {
   const [isOpened, setIsOpened] = useState(false);
 
   const toggleClass = isOpened ? 'open' : '';
@@ -24,22 +24,22 @@ export const MovieMenu = ({ handleEdit, handleDelete }) => {
       <div className={styles.movieMenu_content}>
         <ul>
           <li>
-            <Button
-              onClick={handleEdit}
-              className='movieMenu_button'
+            <Link
+              to={`${id}/edit`}
+              className={styles.movieMenu_button}
               data-testid='movie-edit'
             >
               Edit
-            </Button>
+            </Link>
           </li>
           <li>
-            <Button
-              onClick={handleDelete}
-              className='movieMenu_button'
+            <Link
+              to={`${id}/delete`}
+              className={styles.movieMenu_button}
               data-testid='movie-delete'
             >
               Delete
-            </Button>
+            </Link>
           </li>
         </ul>
       </div>
@@ -48,6 +48,7 @@ export const MovieMenu = ({ handleEdit, handleDelete }) => {
 };
 
 MovieMenu.propTypes = {
-  handleEdit: PropTypes.func,
-  handleDelete: PropTypes.func,
+  // handleEdit: PropTypes.func,
+  // handleDelete: PropTypes.func,
+  // id: XXX
 };

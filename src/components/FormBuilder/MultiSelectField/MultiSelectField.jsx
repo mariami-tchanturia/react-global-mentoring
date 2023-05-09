@@ -9,7 +9,7 @@ export const MultiSelectField = ({
   isMulti,
   label,
   className,
-  defaultValue,
+  value,
   ...props
 }) => {
   const handleChange = (option) => {
@@ -28,7 +28,7 @@ export const MultiSelectField = ({
         name={field.name}
         isMulti={isMulti}
         className={className}
-        defaultValue={defaultValue}
+        value={value}
         options={options}
         onChange={handleChange}
         {...props}
