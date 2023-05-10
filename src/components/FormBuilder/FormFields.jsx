@@ -1,15 +1,11 @@
-import {
-  TextField,
-  TextareaField,
-  SelectField,
-  DateField,
-  NumericField,
-} from './Fields';
+import { TextField, NumericField, DateField } from './InputField/InputField';
+import { TextareaField } from './TextareaField/TextareaField';
+import { MultiSelectField } from './MultiSelectField/MultiSelectField';
 
 export const FormFields = {
   TextField,
   NumericField,
-  TextareaField,
   DateField,
-  SelectField,
+  TextareaField,
+  MultiSelectField,
 };

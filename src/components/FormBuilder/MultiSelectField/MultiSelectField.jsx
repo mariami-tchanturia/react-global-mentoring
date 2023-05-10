@@ -1,40 +1,39 @@
-import Select from 'react-select';
+import { Field } from 'formik';
 import { FieldError } from '../FieldError/FieldError';
+import Select from 'react-select';
 
 export const MultiSelectField = ({
-  field,
-  form,
-  meta,
-  options,
+  name,
   isMulti,
   label,
   className,
+  options,
   value,
   ...props
-}) => {
-  const handleChange = (option) => {
-    form.setFieldValue(
-      field.name,
-      option ? option.map((item) => item.label) : []
-    );
-  };
+}) => (
+  <Field name={name}>
+    {({ field, meta, form }) => (
+      <div className={`${className}-wrapper`}>
+        <label htmlFor={field.name}>{label}</label>
 
-  return (
-    <div className={`${className}-wrapper`}>
-      <label htmlFor={field.name}>{label}</label>
+        <Select
+          classNamePrefix='react-select'
+          name={field.name}
+          isMulti={isMulti}
+          className={className}
+          value={value}
+          options={options}
+          onChange={(option) => {
+            form.setFieldValue(
+              field.name,
+              option ? option.map((item) => item.label) : []
+            );
+          }}
+          {...props}
+        />
 
-      <Select
-        classNamePrefix='react-select'
-        name={field.name}
-        isMulti={isMulti}
-        className={className}
-        value={value}
-        options={options}
-        onChange={handleChange}
-        {...props}
-      />
-
-      {meta && <FieldError meta={meta} />}
-    </div>
-  );
-};
+        {meta && <FieldError meta={meta} />}
+      </div>
+    )}
+  </Field>
+);

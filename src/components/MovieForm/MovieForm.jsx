@@ -80,27 +80,23 @@ export const MovieForm = () => {
               name='title'
               placeholder='Movie title'
               label='Title'
-              value={values.title}
             />
             <FormFields.DateField
               name='release_date'
               placeholder='https://'
               label='Release date'
-              value={values.release_date}
             />
             <FormFields.TextField
               name='poster_path'
               placeholder='https://'
               label='Movie URL'
-              value={values.poster_path}
             />
             <FormFields.NumericField
               name='vote_average'
               placeholder='7.6'
               label='Rating'
-              value={values.vote_average}
             />
-            <FormFields.SelectField
+            <FormFields.MultiSelectField
               name='genres'
               label='Genre'
               placeholder='Select Genre'
@@ -117,7 +113,6 @@ export const MovieForm = () => {
               name='runtime'
               placeholder='minutes'
               label='Runtime'
-              value={values.runtime}
             />
           </div>
 
@@ -126,7 +121,6 @@ export const MovieForm = () => {
               name='overview'
               placeholder='Movie description'
               label='Overview'
-              value={values.overview}
             />
           </div>
 
