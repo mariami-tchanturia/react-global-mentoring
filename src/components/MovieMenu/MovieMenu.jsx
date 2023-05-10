@@ -48,7 +48,5 @@ export const MovieMenu = ({ id }) => {
 };
 
 MovieMenu.propTypes = {
-  // handleEdit: PropTypes.func,
-  // handleDelete: PropTypes.func,
-  // id: XXX
+  id: PropTypes.number.isRequired,
 };
