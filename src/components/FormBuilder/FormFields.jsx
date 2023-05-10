@@ -7,9 +7,9 @@ import {
 } from './Fields';
 
 export const FormFields = {
-  TextField: TextField,
-  NumericField: NumericField,
-  TextareaField: TextareaField,
-  DateField: DateField,
-  SelectField: SelectField,
+  TextField,
+  NumericField,
+  TextareaField,
+  DateField,
+  SelectField,
 };

@@ -17,6 +17,13 @@ export const SCHEMA = Yup.object().shape({
   poster_path: Yup.string().url().required(poster_path),
   vote_average: Yup.number().min(0).max(10).required(vote_average),
   runtime: Yup.number().min(1).required(runtime),
-  genres: Yup.array().min(1).required(genres),
+  genres: Yup.array()
+    .of(
+      Yup.object().shape({
+        label: Yup.string().required(),
+        value: Yup.number().required(),
+      })
+    )
+    .min(0, genres),
   overview: Yup.string().required(overview),
 });
