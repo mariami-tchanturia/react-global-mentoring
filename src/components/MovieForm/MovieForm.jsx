@@ -98,8 +98,8 @@ export const MovieForm = () => {
             />
             <FormFields.MultiSelectField
               name='genres'
-              label='Genre'
               placeholder='Select Genre'
+              label='Genre'
               closeMenuOnSelect={false}
               className={styles.multiSelect}
               isMulti={true}
