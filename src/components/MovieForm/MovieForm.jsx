@@ -1,10 +1,15 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import Select from 'react-select';
+import { useState, useEffect } from 'react';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
+import { Formik, Form } from 'formik';
 
-import { Button, Input, Textarea } from '../../common';
-import { MovieType } from '../MovieTile/MovieTile';
+import { Spinner } from '../../common';
+import { getMovieByID, updateMovie, addMovie } from '../../api/movieService';
+import { PATH_NAMES } from '../../routes/contants';
+
+import { FormFields } from '../FormBuilder/FormFields';
+import { Button } from '../../common';
 import { GENRES_OPTIONS } from '../../constants';
+import { SCHEMA } from '../FormBuilder/validator';
 import styles from './MovieForm.module.scss';
 
 const INITIAL_STATE = {
@@ -17,106 +22,128 @@ const INITIAL_STATE = {
   genres: [],
 };
 
-export const MovieForm = ({ movie, handleSubmit }) => {
-  const [formData, setFormData] = useState(movie);
+export const MovieForm = () => {
+  const [movie, setMovie] = useState(null);
+  const { movieID } = useParams();
 
-  const handleReset = () => {
-    setFormData({ id, ...INITIAL_STATE });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (!movieID) {
+      setLoading(false);
+      return;
+    }
+
+    getMovieByID(movieID)
+      .then((data) => (data === 'Not Found' ? setError(data) : setMovie(data)))
+      .catch((error) => setError(error))
+      .finally(() => setLoading(false));
+  }, [movieID]);
+
+  const handleupdate = (movie) => {
+    updateMovie(movie)
+      .then(() => (window.location.href = PATH_NAMES.Home))
+      .catch((error) => setError(error));
   };
 
-  const handleChange = (name, value) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
+  const handleCreate = (movie) => {
+    addMovie(movie)
+      .then(
+        (newMovie) =>
+          (window.location.href = `${PATH_NAMES.Home}${newMovie.id}`)
+      )
+      .catch((error) => setError(error));
   };
 
-  const onSubmit = (event) => {
-    event.preventDefault();
+  if (loading) {
+    return <Spinner />;
+  }
 
-    handleSubmit(formData);
-  };
-
-  const {
-    id,
-    title,
-    release_date,
-    genres,
-    overview,
-    vote_average,
-    runtime,
-    poster_path,
-  } = formData;
+  if (error) {
+    return <Navigate to={PATH_NAMES.NotFound} />;
+  }
 
   return (
-    <form onSubmit={onSubmit} data-testid='movie-form'>
-      <div className={styles.formItems}>
-        <Input
-          placeholderText='Movie title'
-          required={true}
-          label='Title'
-          value={title}
-          onChange={(value) => handleChange('title', value)}
-        />
-        <Input
-          required={true}
-          type='date'
-          data-date-inline-picker={true}
-          label='Release date'
-          value={release_date}
-          onChange={(value) => handleChange('release_date', value)}
-        />
-        <Input
-          placeholderText='https://'
-          required={true}
-          label='Movie URL'
-          value={poster_path}
-          onChange={(value) => handleChange('poster_path', value)}
-        />
-        <Input
-          placeholderText='7.6'
-          required={true}
-          label='Rating'
-          value={vote_average}
-          onChange={(value) => handleChange('vote_average', value)}
-        />
-        <Select
-          closeMenuOnSelect={false}
-          className={styles.multiSelect}
-          defaultValue={movie?.genres || genres}
-          isMulti
-          options={GENRES_OPTIONS.filter((item) => item.label !== 'All')}
-          onChange={(option) => handleChange('genres', option)}
-        />
-        <Input
-          placeholderText='minutes'
-          required={true}
-          label='Runtime'
-          value={runtime}
-          onChange={(value) => handleChange('runtime', value)}
-        />
-      </div>
+    <Formik
+      validationSchema={SCHEMA}
+      initialValues={movie || INITIAL_STATE}
+      onSubmit={(formData) =>
+        movieID ? handleupdate(formData) : handleCreate(formData)
+      }
+      data-testid='movie-form'
+    >
+      {({ values, resetForm }) => (
+        <Form>
+          <div className={styles.formItems}>
+            <FormFields.TextField
+              name='title'
+              placeholder='Movie title'
+              label='Title'
+              dataTestId='title'
+            />
+            <FormFields.DateField
+              name='release_date'
+              placeholder='https://'
+              label='Release date'
+              dataTestId='release_date'
+            />
+            <FormFields.TextField
+              name='poster_path'
+              placeholder='https://'
+              label='Movie URL'
+              dataTestId='poster_path'
+            />
+            <FormFields.NumericField
+              name='vote_average'
+              placeholder='7.6'
+              label='Rating'
+              dataTestId='vote_average'
+            />
+            <FormFields.MultiSelectField
+              name='genres'
+              placeholder='Select Genre'
+              label='Genre'
+              id='genres'
+              className={styles.multiSelect}
+              isMulti={true}
+              options={GENRES_OPTIONS.filter((item) => item.label !== 'All')}
+            />
 
-      <div className={styles.textarea}>
-        <Textarea
-          placeholderText='Movie description'
-          required={true}
-          label='Overview'
-          value={overview}
-          onChange={(value) => handleChange('overview', value)}
-        />
-      </div>
+            <FormFields.NumericField
+              name='runtime'
+              placeholder='minutes'
+              label='Runtime'
+              dataTestId='runtime'
+            />
+          </div>
 
-      <div className={styles.formActions}>
-        <Button className='btn--default' onClick={handleReset}>
-          Reset
-        </Button>
-        <Button className='btn--primary' type='submit'>
-          Submit
-        </Button>
-      </div>
-    </form>
+          <FormFields.TextareaField
+            name='overview'
+            placeholder='Movie description'
+            label='Overview'
+            dataTestId='overview'
+          />
+
+          <div className={styles.formActions}>
+            <Button
+              className='btn--default'
+              type='reset'
+              dataTestId='form-reset'
+              onClick={() => resetForm({ values: INITIAL_STATE })}
+            >
+              Reset
+            </Button>
+            <Button
+              className='btn--primary'
+              type='submit'
+              dataTestId='form-submit'
+            >
+              Submit
+            </Button>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
-};
-
-MovieForm.propTypes = {
-  movie: MovieType,
-  handleSubmit: PropTypes.func,
 };

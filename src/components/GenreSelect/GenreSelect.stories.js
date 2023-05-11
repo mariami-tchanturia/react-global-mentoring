@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 import { GenreSelect } from './GenreSelect';
-import { GENRES_OPTIONS } from '../../constants';
+import { TOP_GENRES_OPTIONS } from '../../constants';
 
 export default {
   title: 'Components/GenreSelect',
@@ -23,5 +23,5 @@ const Template = (args) => {
 export const Default = Template.bind({});
 
 Default.args = {
-  genres: GENRES_OPTIONS,
+  genres: TOP_GENRES_OPTIONS,
 };

@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { MoviesListing } from './MoviesListing';
 import { MOCKED_MOVIES } from '../../mocks/mocks';
-import { GENRES_OPTIONS } from '../../constants';
+import { TOP_GENRES_OPTIONS } from '../../constants';
 
 export default {
   title: 'Components/MoviesListing',
@@ -11,7 +11,7 @@ export default {
 
 const Template = (args) => {
   // eslint-disable-next-line no-unused-vars
-  const [activeGenre, setActiveGenre] = useState(GENRES_OPTIONS[3].label);
+  const [activeGenre, setActiveGenre] = useState(TOP_GENRES_OPTIONS[3].label);
   // eslint-disable-next-line no-unused-vars
   const [sortCriterion, SetSortCriterion] = useState();
 

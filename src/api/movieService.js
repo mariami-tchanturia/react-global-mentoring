@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_MOVIES_URL, GET_MOVIE_URL } from './contants';
+import { GET_MOVIES_URL, GET_MOVIE_URL, MOVIE_BASE_URL } from './contants';
 
 export const getMovies = async ({
   searchBy = 'title',
@@ -40,49 +40,46 @@ export const getMovieByID = async (id) => {
   }
 };
 
-// export const addMovie = async (data) => {
-//   try {
-//     const url = `${API_BASE_URL}/${API_BASE_PATH}`;
-//     const response = await axios.request({
-//       method: 'POST',
-//       url: url,
-//       data: data,
-//     });
+export const addMovie = async (data) => {
+  try {
+    const url = MOVIE_BASE_URL;
+    const response = await axios.request({
+      method: 'POST',
+      url: url,
+      data: data,
+    });
 
-//     return response.data;
-//   } catch (error) {
-//     return error.response.data;
-//   }
-// };
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
 
-// export const deleteMovie = async (id) => {
-//   try {
-//     const url = createRequestUrl({
-//       url: API_BASE_URL,
-//       path: `${API_BASE_PATH}/${id}`,
-//     });
-//     const response = await axios.request({
-//       method: 'DELETE',
-//       url: url,
-//     });
+export const updateMovie = async (data) => {
+  try {
+    const url = MOVIE_BASE_URL;
+    const response = await axios.request({
+      method: 'PUT',
+      url: url,
+      data: data,
+    });
 
-//     return response.data;
-//   } catch (error) {
-//     return error.response.data;
-//   }
-// };
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};
 
-// export const editMovie = async (data) => {
-//   try {
-//     const url = `${API_BASE_URL}/${API_BASE_PATH}`;
-//     const response = await axios.request({
-//       method: 'PUT',
-//       url: url,
-//       data: data,
-//     });
+export const deleteMovie = async (id) => {
+  try {
+    const url = GET_MOVIE_URL(id);
+    const response = await axios.request({
+      method: 'DELETE',
+      url: url,
+    });
 
-//     return response.data;
-//   } catch (error) {
-//     return error.response.data;
-//   }
-// };
+    return response.data;
+  } catch (error) {
+    return error.response.data;
+  }
+};

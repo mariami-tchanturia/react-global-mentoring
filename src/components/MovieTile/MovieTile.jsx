@@ -1,47 +1,20 @@
-import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
-import {
-  DeleteConfirmation,
-  MovieMenu,
-  MovieForm,
-  MoviePoster,
-} from '../../components';
-import { Dialog } from '../../common';
+import { MovieMenu, MoviePoster } from '../../components';
 import { formatGenres } from '../../helpers/formatGenres';
 import styles from './MovieTile.module.scss';
 
 export const MovieTile = ({ movie }) => {
-  const location = useLocation();
-  const [showEditMovie, toggleEditMovie] = useState(false);
-  const [showDeleteMovie, toggleDeleteMovie] = useState(false);
-
-  const handleupdate = (movie) => {
-    console.log('Simulating Movie Update');
-    console.log(`This should be new movie: `, movie);
-
-    toggleEditMovie(false);
-  };
-
-  const handleDelete = () => {
-    console.log('Simulating Movie Delete');
-    console.log(`The ID of movie, that should be removed is: `, id);
-
-    toggleDeleteMovie(false);
-  };
-
   const { id, title, release_date, genres, poster_path } = movie;
+  const location = useLocation();
 
   return (
     <div className={styles.movieTile}>
       <div className={styles.movieTile_poster}>
         <MoviePoster src={poster_path} alt={title} />
 
-        <MovieMenu
-          handleEdit={() => toggleEditMovie(true)}
-          handleDelete={() => toggleDeleteMovie(true)}
-        />
+        <MovieMenu id={id} />
       </div>
 
       <div className={styles.movieTile_description}>
@@ -65,26 +38,6 @@ export const MovieTile = ({ movie }) => {
           {parseInt(release_date)}
         </span>
       </div>
-
-      {showEditMovie && (
-        <Dialog
-          title='Edit movie'
-          size='lg'
-          handleClose={() => toggleEditMovie(false)}
-        >
-          <MovieForm movie={movie} handleSubmit={handleupdate} />
-        </Dialog>
-      )}
-
-      {showDeleteMovie && (
-        <Dialog
-          title='Delete movie'
-          size='sm'
-          handleClose={() => toggleDeleteMovie(false)}
-        >
-          <DeleteConfirmation handleDelete={handleDelete} />
-        </Dialog>
-      )}
     </div>
   );
 };

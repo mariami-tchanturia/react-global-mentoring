@@ -1,33 +1,18 @@
-import { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import { Link, Outlet } from 'react-router-dom';
 
-import { Logo, SearchForm, MovieForm, SuccessMessage } from '../../components';
-import { Button, Dialog } from '../../common';
+import { Logo, SearchForm } from '../../components';
+import { PATH_NAMES } from '../../routes/contants';
 import styles from './Header.module.scss';
 
 export const Header = () => {
-  const [showAddMovie, toggleAddMovie] = useState(false);
-  const [showAddMovieSuccess, toggleAddMovieSuccess] = useState(false);
-
-  const handleCreate = (movie) => {
-    const id = uuidv4();
-    const newMovie = { id, ...movie };
-
-    console.log('Simulating Movie Creation');
-    console.log(`This should be new movie: `, newMovie);
-
-    toggleAddMovie(false);
-    toggleAddMovieSuccess(true);
-  };
-
   return (
     <header className={styles.header}>
       <div className={`${styles.logoButtonWrapper} container-lg`}>
         <Logo />
 
-        <Button className='btn--secondary' onClick={() => toggleAddMovie(true)}>
+        <Link to={PATH_NAMES.AddMovie} className={styles.btnLink}>
           + Add Movie
-        </Button>
+        </Link>
       </div>
       <div className='container-lg'>
         <div className='container-md'>
@@ -36,21 +21,7 @@ export const Header = () => {
         </div>
       </div>
 
-      {showAddMovie && (
-        <Dialog
-          title='Add movie'
-          size='lg'
-          handleClose={() => toggleAddMovie(false)}
-        >
-          <MovieForm handleSubmit={handleCreate} />
-        </Dialog>
-      )}
-
-      {showAddMovieSuccess && (
-        <Dialog size='sm' handleClose={() => toggleAddMovieSuccess(false)}>
-          <SuccessMessage />
-        </Dialog>
-      )}
+      <Outlet />
     </header>
   );
 };

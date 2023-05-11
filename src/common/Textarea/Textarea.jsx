@@ -3,23 +3,28 @@ import PropTypes from 'prop-types';
 import styles from './Textarea.module.scss';
 
 export const Textarea = ({
-  labelText = '',
-  placeholderText,
+  label = '',
+  placeholder,
   minLength,
   className = '',
   required,
   name,
+  dataTestId,
   value,
   onChange,
 }) => {
   return (
     <div>
-      {labelText && <label htmlFor={name}>{labelText}</label>}
+      {label && (
+        <label htmlFor={name} className={styles.label}>
+          {label}
+        </label>
+      )}
       <textarea
-        type='text'
         name={name}
         minLength={minLength}
-        placeholder={placeholderText}
+        placeholder={placeholder}
+        data-testid={dataTestId}
         className={`${styles.textarea} ${styles[className]}`}
         required={required}
         value={value}
@@ -38,4 +43,9 @@ Textarea.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  dataTestId: PropTypes.string,
+};
+
+Textarea.defaultProps = {
+  dataTestId: '',
 };

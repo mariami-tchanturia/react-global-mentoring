@@ -3,13 +3,13 @@ import userEvent from '@testing-library/user-event';
 
 import { GenreSelect } from '../GenreSelect';
 
-import { GENRES_OPTIONS } from '../../../constants';
+import { TOP_GENRES_OPTIONS } from '../../../constants';
 
 describe('GenreSelect component tests:', () => {
   it('Should render all genres passed in props', () => {
-    render(<GenreSelect genres={GENRES_OPTIONS} />);
+    render(<GenreSelect genres={TOP_GENRES_OPTIONS} />);
 
-    const passedGenreNames = GENRES_OPTIONS.map((genre) => genre.label);
+    const passedGenreNames = TOP_GENRES_OPTIONS.map((genre) => genre.label);
     const renderedGenreNames = screen
       .getAllByRole('listitem')
       .map((item) => item.textContent);
@@ -20,7 +20,9 @@ describe('GenreSelect component tests:', () => {
   it('Should highlight a defaultGenre, that is passed in props', () => {
     const defaultGenre = 'Documentary';
 
-    render(<GenreSelect genres={GENRES_OPTIONS} activeGenre={defaultGenre} />);
+    render(
+      <GenreSelect genres={TOP_GENRES_OPTIONS} activeGenre={defaultGenre} />
+    );
 
     expect(
       screen.getByText(new RegExp(defaultGenre, 'i')).parentElement
