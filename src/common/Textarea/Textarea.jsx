@@ -21,7 +21,6 @@ export const Textarea = ({
         </label>
       )}
       <textarea
-        type='text'
         name={name}
         minLength={minLength}
         placeholder={placeholder}
