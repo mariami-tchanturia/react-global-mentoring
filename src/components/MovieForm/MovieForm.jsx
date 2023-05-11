@@ -80,39 +80,50 @@ export const MovieForm = () => {
               name='title'
               placeholder='Movie title'
               label='Title'
+              dataTestId='title'
+              value={values.title}
             />
             <FormFields.DateField
               name='release_date'
               placeholder='https://'
               label='Release date'
+              dataTestId='release_date'
+              value={values.release_date}
             />
             <FormFields.TextField
               name='poster_path'
               placeholder='https://'
               label='Movie URL'
+              dataTestId='poster_path'
+              value={values.poster_path}
             />
             <FormFields.NumericField
               name='vote_average'
               placeholder='7.6'
               label='Rating'
+              dataTestId='vote_average'
+              value={values.vote_average}
             />
             <FormFields.MultiSelectField
               name='genres'
               placeholder='Select Genre'
               label='Genre'
-              closeMenuOnSelect={false}
+              // closeMenuOnSelect={false}
               className={styles.multiSelect}
               isMulti={true}
               value={GENRES_OPTIONS.filter((option) =>
                 values.genres.includes(option.label)
               )}
               options={GENRES_OPTIONS.filter((item) => item.label !== 'All')}
+              id='genres'
             />
 
             <FormFields.NumericField
               name='runtime'
               placeholder='minutes'
               label='Runtime'
+              dataTestId='runtime'
+              value={values.runtime}
             />
           </div>
 
@@ -121,6 +132,8 @@ export const MovieForm = () => {
               name='overview'
               placeholder='Movie description'
               label='Overview'
+              dataTestId='overview'
+              value={values.overview}
             />
           </div>
 
@@ -128,11 +141,16 @@ export const MovieForm = () => {
             <Button
               className='btn--default'
               type='reset'
+              dataTestId='form-reset'
               onClick={() => resetForm({ values: INITIAL_STATE })}
             >
               Reset
             </Button>
-            <Button className='btn--primary' type='submit'>
+            <Button
+              className='btn--primary'
+              type='submit'
+              dataTestId='form-submit'
+            >
               Submit
             </Button>
           </div>

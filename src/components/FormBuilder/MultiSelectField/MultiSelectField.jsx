@@ -9,6 +9,7 @@ export const MultiSelectField = ({
   className,
   options,
   value,
+  id,
   ...props
 }) => (
   <Field name={name}>
@@ -20,6 +21,7 @@ export const MultiSelectField = ({
           classNamePrefix='react-select'
           name={field.name}
           isMulti={isMulti}
+          id={id}
           className={className}
           value={value}
           options={options}

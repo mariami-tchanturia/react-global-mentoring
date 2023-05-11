@@ -10,6 +10,7 @@ export const Input = ({
   onChange,
   onKeyUp,
   className,
+  dataTestId,
   label,
 }) => {
   return (
@@ -23,6 +24,7 @@ export const Input = ({
         type={type}
         name={name}
         placeholder={placeholder}
+        data-testid={dataTestId}
         className={`${styles[className]} ${styles.input}`}
         value={value}
         onChange={onChange && (({ target }) => onChange(target.value))}

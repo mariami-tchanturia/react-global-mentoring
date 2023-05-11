@@ -9,6 +9,7 @@ export const Textarea = ({
   className = '',
   required,
   name,
+  dataTestId,
   value,
   onChange,
 }) => {
@@ -24,6 +25,7 @@ export const Textarea = ({
         name={name}
         minLength={minLength}
         placeholder={placeholder}
+        data-testid={dataTestId}
         className={`${styles.textarea} ${styles[className]}`}
         required={required}
         value={value}
