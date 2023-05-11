@@ -16,10 +16,12 @@ export const Button = ({ className, type, children, dataTestId, ...props }) => (
 Button.propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
+  dataTestId: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
 };
 
 Button.defaultProps = {
   className: '',
   type: 'button',
+  dataTestId: '',
 };

@@ -43,9 +43,11 @@ Input.propTypes = {
   onChange: PropTypes.func,
   onKeyUp: PropTypes.func,
   label: PropTypes.string,
+  dataTestId: PropTypes.string,
 };
 
 Input.defaultProps = {
   type: 'text',
   className: '',
+  dataTestId: '',
 };

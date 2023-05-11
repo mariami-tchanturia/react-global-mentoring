@@ -44,4 +44,9 @@ Textarea.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   onChange: PropTypes.func,
+  dataTestId: PropTypes.string,
+};
+
+Textarea.defaultProps = {
+  dataTestId: '',
 };
