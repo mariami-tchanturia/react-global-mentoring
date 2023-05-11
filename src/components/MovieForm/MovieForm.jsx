@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 
 import { Spinner } from '../../common';
@@ -127,15 +127,13 @@ export const MovieForm = () => {
             />
           </div>
 
-          <div className={styles.textarea}>
-            <FormFields.TextareaField
-              name='overview'
-              placeholder='Movie description'
-              label='Overview'
-              dataTestId='overview'
-              value={values.overview}
-            />
-          </div>
+          <FormFields.TextareaField
+            name='overview'
+            placeholder='Movie description'
+            label='Overview'
+            dataTestId='overview'
+            value={values.overview}
+          />
 
           <div className={styles.formActions}>
             <Button
