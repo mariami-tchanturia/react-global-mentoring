@@ -10,6 +10,7 @@ const InputField = ({ name, type, placeholder, label, ...props }) => (
           placeholder={placeholder}
           label={label}
           type={type}
+          value={field.value}
           onChange={(value) =>
             form.setFieldValue(
               field.name,

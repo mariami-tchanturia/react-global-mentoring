@@ -8,7 +8,6 @@ export const MultiSelectField = ({
   label,
   className,
   options,
-  value,
   id,
   ...props
 }) => (
@@ -18,13 +17,12 @@ export const MultiSelectField = ({
         <label htmlFor={field.name}>{label}</label>
 
         <Select
-          classNamePrefix='react-select'
           name={field.name}
-          isMulti={isMulti}
           id={id}
           className={className}
-          value={value}
+          isMulti={isMulti}
           options={options}
+          value={options.filter(({ label }) => field.value.includes(label))}
           onChange={(option) => {
             form.setFieldValue(
               field.name,

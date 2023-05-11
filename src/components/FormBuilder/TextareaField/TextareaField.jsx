@@ -9,6 +9,7 @@ export const TextareaField = ({ name, placeholder, label, ...props }) => (
         <Textarea
           placeholder={placeholder}
           label={label}
+          value={field.value}
           onChange={(value) => form.setFieldValue(field.name, value)}
           {...props}
         />
