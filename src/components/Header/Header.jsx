@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import Link from 'next/link';
 
 import { Logo, SearchForm } from '../../components';
 import { PATH_NAMES } from '../../routes/contants';
@@ -10,7 +10,7 @@ export const Header = () => {
       <div className={`${styles.logoButtonWrapper} container-lg`}>
         <Logo />
 
-        <Link to={PATH_NAMES.AddMovie} className={styles.btnLink}>
+        <Link href={PATH_NAMES.AddMovie} className={styles.btnLink}>
           + Add Movie
         </Link>
       </div>
@@ -20,8 +20,6 @@ export const Header = () => {
           <SearchForm />
         </div>
       </div>
-
-      <Outlet />
     </header>
   );
 };

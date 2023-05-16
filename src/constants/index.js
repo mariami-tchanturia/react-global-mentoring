@@ -100,3 +100,6 @@ export const SELECT_OPTIONS = [
     name: 'Title',
   },
 ];
+
+export const DEFAULT_SORT_CRITERION = 'release_date';
+export const DEFAULT_GENRE = 'all';

@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom';
 
 import { MovieMenu, MoviePoster } from '../../components';
 import { formatGenres } from '../../helpers/formatGenres';
@@ -7,7 +9,12 @@ import styles from './MovieTile.module.scss';
 
 export const MovieTile = ({ movie }) => {
   const { id, title, release_date, genres, poster_path } = movie;
-  const location = useLocation();
+  const { query } = useRouter();
+
+  const queryWithoutSearchValue = useMemo(() => {
+    const { query: _, ...rest } = query;
+    return rest;
+  }, [query]);
 
   return (
     <div className={styles.movieTile}>
@@ -19,12 +26,7 @@ export const MovieTile = ({ movie }) => {
 
       <div className={styles.movieTile_description}>
         <h2 className={styles.movieTile_title} data-testid='movie-title'>
-          <Link
-            to={{
-              pathname: `/${id}`,
-              search: location.search,
-            }}
-          >
+          <Link href={{ pathname: `/${id}`, query: queryWithoutSearchValue }}>
             {title}
           </Link>
         </h2>

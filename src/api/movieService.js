@@ -8,8 +8,8 @@ export const getMovies = async ({
   offset = 0,
   sortOrder = 'asc',
   genre,
-  sortCriterion: sortBy,
-  searchQuery: query,
+  sortBy,
+  query,
 }) => {
   try {
     const url = GET_MOVIES_URL({

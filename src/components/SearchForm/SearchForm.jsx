@@ -1,26 +1,19 @@
 import { useCallback, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { Button, Input } from '../../common';
 import styles from './SearchForm.module.scss';
 
 export const SearchForm = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [searchQuery, setSeachQuery] = useState(
-    searchParams.get('query') || ''
-  );
+  const { query, push } = useRouter();
+  const [searchQuery, setSeachQuery] = useState(query.query || '');
 
   const handleSubmit = useCallback(
     (event) => {
       event.preventDefault();
-
-      const existingParams = Object.fromEntries(searchParams.entries());
-      const newParams = { query: searchQuery };
-      const mergedParams = { ...existingParams, ...newParams };
-
-      setSearchParams(new URLSearchParams(mergedParams));
+      push({ query: { ...(query || {}), query: searchQuery } });
     },
-    [searchQuery, searchParams, setSearchParams]
+    [searchQuery, query, push]
   );
 
   return (

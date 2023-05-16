@@ -4,5 +4,5 @@ export const PATH_NAMES = {
   EditMovie: 'edit',
   AddMovie: 'new',
   DeleteMovie: 'delete',
-  NotFound: '/not-found',
+  NotFound: '/404',
 };
