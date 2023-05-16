@@ -1,11 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import { MovieDetail, Logo, MoviesListing } from '../components';
 import { getMovieByID, getMovies } from '../api/movieService';
 import { PATH_NAMES } from '../routes/contants';
 import { DEFAULT_SORT_CRITERION } from '../constants';
 
-import Image from 'next/image';
 import Images from '../assets/images';
 import styles from '../styles/MovieDetailPage.module.scss';
 

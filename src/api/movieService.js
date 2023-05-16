@@ -11,9 +11,6 @@ export const getMovies = async ({
   sortBy,
   query,
 }) => {
-  console.log({ genre });
-  console.log({ sortBy });
-  console.log({ query });
   try {
     const url = GET_MOVIES_URL({
       searchBy,
