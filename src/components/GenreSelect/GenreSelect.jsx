@@ -1,20 +1,15 @@
 import PropTypes from 'prop-types';
-import { useSearchParams } from 'react-router-dom';
+import { useRouter } from 'next/router';
 
 import { Button } from '../../common';
 import styles from './GenreSelect.module.scss';
 
 export const GenreSelect = ({ genres, activeGenre, setActiveGenre }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { query, push } = useRouter();
 
   const handleChange = (label) => {
     setActiveGenre(label.toLowerCase());
-
-    const existingParams = Object.fromEntries(searchParams.entries());
-    const newParams = { genre: label.toLowerCase() };
-    const mergedParams = { ...existingParams, ...newParams };
-
-    setSearchParams(new URLSearchParams(mergedParams));
+    push({ query: { ...(query || {}), genre: label.toLowerCase() } });
   };
 
   return (

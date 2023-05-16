@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 
 import styles from './MovieMenu.module.scss';
@@ -25,7 +25,7 @@ export const MovieMenu = ({ id }) => {
         <ul>
           <li>
             <Link
-              to={`${id}/edit`}
+              href={`${id}/edit`}
               className={styles.movieMenu_button}
               data-testid='movie-edit'
             >
@@ -34,7 +34,7 @@ export const MovieMenu = ({ id }) => {
           </li>
           <li>
             <Link
-              to={`${id}/delete`}
+              href={`${id}/delete`}
               className={styles.movieMenu_button}
               data-testid='movie-delete'
             >

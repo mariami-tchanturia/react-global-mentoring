@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
 
 import styles from './SortControl.module.scss';
 
 export const SortControl = ({ options, label, setSortCriterion }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { query, push } = useRouter();
   const [selectedOption, setSelectedOption] = useState(
-    getSelectedOptionByName(searchParams.get('sortBy')) || options[0]
+    getSelectedOptionByName(query.sortBy) || options[0]
   );
 
   const handleChange = ({ target }) => {
@@ -16,13 +16,9 @@ export const SortControl = ({ options, label, setSortCriterion }) => {
     const selectedOption = options.filter(({ name }) => name === value)[0];
 
     setSelectedOption(selectedOption);
-    setSortCriterion(selectedOption.value);
+    // setSortCriterion(selectedOption.value);
 
-    const existingParams = Object.fromEntries(searchParams.entries());
-    const newParams = { sortBy: selectedOption.value };
-    const mergedParams = { ...existingParams, ...newParams };
-
-    setSearchParams(new URLSearchParams(mergedParams));
+    push({ query: { ...(query || {}), sortBy: selectedOption.value } });
   };
 
   function getSelectedOptionByName(name) {

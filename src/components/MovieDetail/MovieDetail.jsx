@@ -1,4 +1,3 @@
-import { Outlet } from 'react-router-dom';
 import { MoviePoster } from '../MoviePoster/MoviePoster';
 import { getMovieDuration } from '../../helpers/getMovieDuration';
 import { formatGenres } from '../../helpers/formatGenres';
@@ -60,8 +59,6 @@ export const MovieDetail = ({ activeMovie }) => {
           </p>
         </div>
       </article>
-
-      <Outlet />
     </>
   );
 };
